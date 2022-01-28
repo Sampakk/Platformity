@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28688e6c919359e43a2d1d3c1c2615e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 8453608389312924277, guid: b226257684529bb48a20043a8d44eef0, type: 3}
   targetPrefab: {fileID: 138311076482743082, guid: 8902d18519a676046863c26657e19476, type: 3}
   blockPrefab: {fileID: 2144958984770630227, guid: a74adef2f89ed9847866fee1dd6c3d30, type: 3}
   maxBlocks: 5
