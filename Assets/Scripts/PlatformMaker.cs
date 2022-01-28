@@ -41,10 +41,11 @@ public class PlatformMaker : MonoBehaviour
         {
             //Get speed and direction
             float particleSpeed = 20f;
-            Vector2 lookDirection = mousePosInWorld - player.transform.position;
+            Vector3 playerCenter = new Vector3(player.transform.position.x, player.transform.position.y + 1f, player.transform.position.z);
+            Vector2 lookDirection = mousePosInWorld - playerCenter;
 
             //Instantiate particle and add force
-            GameObject particle = Instantiate(particlePrefab, player.transform.position, Quaternion.identity);
+            GameObject particle = Instantiate(particlePrefab, playerCenter, Quaternion.identity);
             particle.GetComponent<Rigidbody2D>().AddForce(lookDirection.normalized * particleSpeed, ForceMode2D.Impulse);
             particle.GetComponent<Rigidbody2D>().AddTorque(25f);
 
