@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6067033
+  m_Radius: 0.6
 --- !u!1 &3127833960661753360
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,12 +160,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 19.44
+  jumpHeight: 40
   groundCheck: {fileID: 3127833959374114481}
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  groundDistance: 0.45
+  groundDistance: 0.6
+  doubleJumpEnabled: 0
 --- !u!114 &5302102199768438240
 MonoBehaviour:
   m_ObjectHideFlags: 0
