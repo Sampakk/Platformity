@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 453984673}
   m_Layer: 0
   m_Name: Maa (1)
-  m_TagString: Untagged
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -806,6 +806,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   groundDistance: 0.45
+  doubleJumpEnabled: 0
 --- !u!70 &1048436748
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
