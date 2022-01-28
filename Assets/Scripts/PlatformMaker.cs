@@ -46,6 +46,7 @@ public class PlatformMaker : MonoBehaviour
             //Instantiate particle and add force
             GameObject particle = Instantiate(particlePrefab, player.transform.position, Quaternion.identity);
             particle.GetComponent<Rigidbody2D>().AddForce(lookDirection.normalized * particleSpeed, ForceMode2D.Impulse);
+            particle.GetComponent<Rigidbody2D>().AddTorque(25f);
 
             //Calculate how long it will take particle to reach target position
             float delay = lookDirection.magnitude / particleSpeed;
