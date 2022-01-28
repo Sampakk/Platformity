@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        Debug.Log(hasDoubleJumped);
     }   
     private void FixedUpdate()
     {
@@ -64,4 +63,13 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundLayer)) return true; 
         return false;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Spike")
+        {
+            //Die function
+            Debug.Log("Dead");
+        }
+    }
+
 }   
