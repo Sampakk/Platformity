@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+    SpriteRenderer sprite;
+
     public float moveSpeed = 4f;
     public float jumpHeight = 3f;
     float moveX;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,17 +28,19 @@ public class PlayerMovement : MonoBehaviour
     {
         moveX = Input.GetAxis("Horizontal");
 
-        if (isGrounded())
+        if (IsGrounded())
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
             }
+
             hasDoubleJumped = false;
         }
+
         if (doubleJumpEnabled == true)
         {
-            if (!isGrounded() && hasDoubleJumped == false)
+            if (!IsGrounded() && hasDoubleJumped == false)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -44,8 +49,11 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        Animations();
     }   
-    private void FixedUpdate()
+
+    void FixedUpdate()
     {
         Vector2 moveDir = transform.right * moveX + transform.forward;
         moveDir = Vector2.ClampMagnitude(moveDir, 1f);
@@ -58,18 +66,46 @@ public class PlayerMovement : MonoBehaviour
         Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
         rb.velocity = horizontalVelocity;
     }
-    bool isGrounded()
+
+    bool IsGrounded()
     {
         if (Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundLayer)) return true; 
         return false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Spike")
+        if (collision.gameObject.tag == "Spike")
         {
             //Die function
             Debug.Log("Dead");
         }
     }
 
+    void Animations()
+    {
+        //Left and right turning
+        float maxAngle = 5f;
+
+        Vector3 spriteLocalEulers = sprite.transform.localEulerAngles;
+        spriteLocalEulers.z = -(moveX * maxAngle);
+
+        sprite.transform.localRotation = Quaternion.Euler(spriteLocalEulers);
+
+        //Vertical, jumping
+        if (IsGrounded())
+        {
+            Vector3 spriteLocalScale = sprite.transform.localScale;
+            spriteLocalScale.y = Mathf.MoveTowards(spriteLocalScale.y, 2f, 5f * Time.deltaTime);
+
+            sprite.transform.localScale = spriteLocalScale;
+        }
+        else
+        {
+            Vector3 spriteLocalScale = sprite.transform.localScale;
+            spriteLocalScale.y = Mathf.MoveTowards(spriteLocalScale.y, 1.9f, 5f * Time.deltaTime);
+
+            sprite.transform.localScale = spriteLocalScale;
+        }
+    }
 }   
