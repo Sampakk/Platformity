@@ -27,8 +27,8 @@ public class PlatformMaker : MonoBehaviour
         //Get necessary vectors
         Vector2 mousePos = Input.mousePosition;
         Vector3 mousePosInWorld = cam.ScreenToWorldPoint(mousePos);
-        mousePosInWorld.x = Mathf.RoundToInt(mousePosInWorld.x);
-        mousePosInWorld.y = Mathf.RoundToInt(mousePosInWorld.y);
+        mousePosInWorld.x = Mathf.RoundToInt(mousePosInWorld.x) + 0.5f;
+        mousePosInWorld.y = Mathf.RoundToInt(mousePosInWorld.y) - 0.5f;
         mousePosInWorld.z = 0;
 
         //Update target position
