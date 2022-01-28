@@ -8,13 +8,14 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer sprite;
 
     public float moveSpeed = 4f;
-    public float jumpHeight = 3f;
-    float moveX;
-    public Transform groundCheck;
+    public float jumpHeight = 3f; 
+    public BoxCollider2D groundCheck;
     public LayerMask groundLayer;
     public float groundDistance = 0.45f;
     public bool doubleJumpEnabled = false;
     bool hasDoubleJumped = false;
+
+    float moveX;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +70,9 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsGrounded()
     {
-        if (Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundLayer)) return true; 
+        if (Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, 0, groundLayer))
+            return true;
+
         return false;
     }
 
@@ -107,5 +110,10 @@ public class PlayerMovement : MonoBehaviour
 
             sprite.transform.localScale = spriteLocalScale;
         }
+    }
+
+    public float GetMoveX()
+    {
+        return moveX;
     }
 }   
