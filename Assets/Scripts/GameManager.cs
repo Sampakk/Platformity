@@ -10,7 +10,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Spawn player
         Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+
+        //Hide cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

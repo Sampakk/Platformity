@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 3127833960661753373}
   - component: {fileID: 3127833960661753374}
   - component: {fileID: 7320698499793367295}
-  - component: {fileID: 2254955169768584436}
+  - component: {fileID: 2028021700934870349}
   - component: {fileID: 3127833960661753372}
   - component: {fileID: 5302102199768438240}
   m_Layer: 6
@@ -96,10 +96,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 0.975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -129,10 +129,10 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 2}
+  m_Size: {x: 0.95, y: 1.95}
   m_EdgeRadius: 0
---- !u!70 &2254955169768584436
-CapsuleCollider2D:
+--- !u!61 &2028021700934870349
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,9 +144,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
-  m_Size: {x: 1, y: 1.95}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 1.01}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.98}
+  m_EdgeRadius: 0
 --- !u!114 &3127833960661753372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 40
+  jumpHeight: 15
   groundCheck: {fileID: 3127833959374114481}
   groundLayer:
     serializedVersion: 2
@@ -179,8 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28688e6c919359e43a2d1d3c1c2615e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetBlockPrefab: {fileID: 138311076482743082, guid: 8902d18519a676046863c26657e19476, type: 3}
+  spriteMaskPrefab: {fileID: 8055168400316956543, guid: a87ead74e0ccbe44284fff350670fd68, type: 3}
   particlePrefab: {fileID: 8453608389312924277, guid: b226257684529bb48a20043a8d44eef0, type: 3}
-  targetPrefab: {fileID: 138311076482743082, guid: 8902d18519a676046863c26657e19476, type: 3}
   blockPrefab: {fileID: 2144958984770630227, guid: a74adef2f89ed9847866fee1dd6c3d30, type: 3}
   maxBlocks: 5
 --- !u!1 &8711401150865563537

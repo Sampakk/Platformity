@@ -7,13 +7,18 @@ public class PlatformMaker : MonoBehaviour
     Camera cam;
     PlayerMovement player;
 
+    [Header("Cursor / aiming")]
+    public GameObject targetBlockPrefab;
+    public GameObject spriteMaskPrefab;
+
+    [Header("Adding blocks")]
     public GameObject particlePrefab;
-    public GameObject targetPrefab;
     public GameObject blockPrefab;
     public int maxBlocks = 5;
 
     List<GameObject> usedBlocks = new List<GameObject>();
     GameObject targetBlock;
+    GameObject spriteMask;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +26,8 @@ public class PlatformMaker : MonoBehaviour
         cam = FindObjectOfType<Camera>();
         player = FindObjectOfType<PlayerMovement>();
 
-        targetBlock = Instantiate(targetPrefab, Vector3.zero, Quaternion.identity);
+        targetBlock = Instantiate(targetBlockPrefab, Vector3.zero, Quaternion.identity);
+        spriteMask = Instantiate(spriteMaskPrefab, Vector3.zero, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -29,11 +35,14 @@ public class PlatformMaker : MonoBehaviour
     {
         //Get necessary vectors
         Vector3 mousePosInWorld = cam.ScreenToWorldPoint(Input.mousePosition);
-        mousePosInWorld.x = Mathf.RoundToInt(mousePosInWorld.x) + 0.5f;
-        mousePosInWorld.y = Mathf.RoundToInt(mousePosInWorld.y) - 0.5f;
         mousePosInWorld.z = 0;
 
-        //Update target position
+        spriteMask.transform.position = mousePosInWorld;
+
+        //Snap mouse position
+        mousePosInWorld.x = Mathf.RoundToInt(mousePosInWorld.x) + 0.5f;
+        mousePosInWorld.y = Mathf.RoundToInt(mousePosInWorld.y) - 0.5f;
+
         targetBlock.transform.position = mousePosInWorld;
 
         //Add block
