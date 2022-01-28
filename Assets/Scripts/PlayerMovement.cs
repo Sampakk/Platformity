@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float groundDistance = 0.45f;
+    public bool doubleJumpEnabled = false;
+    bool hasDoubleJumped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +24,27 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         moveX = Input.GetAxis("Horizontal");
+
         if (isGrounded())
         {
             if (Input.GetKeyDown(KeyCode.Space))
+            {
                 rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            }
+            hasDoubleJumped = false;
         }
-        Debug.Log(isGrounded());    
+        if (doubleJumpEnabled == true)
+        {
+            if (!isGrounded() && hasDoubleJumped == false)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                    hasDoubleJumped = true;
+                }
+            }
+        }
+        Debug.Log(hasDoubleJumped);
     }   
     private void FixedUpdate()
     {
@@ -44,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     }
     bool isGrounded()
     {
-        if (Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundLayer)) return true;
+        if (Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundLayer)) return true; 
         return false;
     }
 }   
