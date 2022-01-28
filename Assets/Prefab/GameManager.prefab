@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3127833960661753360, guid: b56e03a47310a4f4994efd331da9f73a, type: 3}
-  spawnPosition: {x: -19, y: 0, z: 0}
+  spawnPosition: {x: -19, y: -6, z: 0}
 --- !u!1 &3607927473231883482
 GameObject:
   m_ObjectHideFlags: 0
