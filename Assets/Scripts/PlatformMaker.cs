@@ -83,4 +83,11 @@ public class PlatformMaker : MonoBehaviour
         GameObject newBlock = Instantiate(blockPrefab, position, Quaternion.identity);
         usedBlocks.Add(newBlock);
     }
+
+    public void DestroyTarget()
+    {
+        Destroy(targetBlock);
+        Destroy(spriteMask);
+        Destroy(gameObject);
+    }
 }
