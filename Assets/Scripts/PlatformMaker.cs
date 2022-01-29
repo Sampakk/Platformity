@@ -84,7 +84,7 @@ public class PlatformMaker : MonoBehaviour
                 FadeBlock fadeBlock = hit.collider.GetComponent<FadeBlock>();
                 if (fadeBlock != null)
                 {
-                    fadeBlock.FadeOut();
+                    StartCoroutine(FadeBlock(fadeBlock, delay));
                 }
             }
             else //Block can be placed
@@ -92,6 +92,14 @@ public class PlatformMaker : MonoBehaviour
                 StartCoroutine(AddBlock(mousePosInWorld, delay));
             }
         }
+    }
+
+    IEnumerator FadeBlock(FadeBlock fadeBlock, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        //Fade out the block
+        fadeBlock.FadeOut();
     }
 
     IEnumerator AddBlock(Vector3 position, float delay)
