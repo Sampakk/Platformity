@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643b2841dfaf90844a7cb645c8325eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwSound: {fileID: 8300000, guid: 3303e9bb0358bd1428246c935770a6c2, type: 3}
   jumpSound: {fileID: 8300000, guid: 590784c81bd33b148b1ca8d7ded00fbe, type: 3}
   deathSound: {fileID: 8300000, guid: de99db922b0a0294ea9400fe9ebf281d, type: 3}
   completeSound: {fileID: 8300000, guid: e758c53e3d74d62449ab894fe44a3003, type: 3}

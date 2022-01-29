@@ -53,6 +53,9 @@ public class PlatformMaker : MonoBehaviour
             Vector3 playerCenter = new Vector3(player.transform.position.x, player.transform.position.y + 1f, player.transform.position.z);
             Vector2 lookDirection = mousePosInWorld - playerCenter;
 
+            //Play audio
+            AudioManager.audioMan.PlayThrowSound();
+
             //Instantiate particle and add force
             GameObject particle = Instantiate(particlePrefab, playerCenter, Quaternion.identity);
             particle.GetComponent<Rigidbody2D>().AddForce(lookDirection.normalized * particleSpeed, ForceMode2D.Impulse);

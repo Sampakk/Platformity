@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager audioMan;
     AudioSource audioSrc;
 
+    public AudioClip throwSound;
     public AudioClip jumpSound;
     public AudioClip deathSound;
     public AudioClip completeSound;
@@ -26,6 +27,11 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayThrowSound()
+    {
+        audioSrc.PlayOneShot(throwSound);
     }
 
     public void PlayJumpSound()
