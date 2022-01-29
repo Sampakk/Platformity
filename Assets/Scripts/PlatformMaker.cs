@@ -47,7 +47,10 @@ public class PlatformMaker : MonoBehaviour
         Vector3 mousePosInWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosInWorld.z = 0;
 
-        spriteMask.transform.position = mousePosInWorld;
+        Vector3 spriteMaskPosInWorld = mousePosInWorld;
+        spriteMaskPosInWorld.x += 0.5f;
+        spriteMaskPosInWorld.y -= 0.5f;
+        spriteMask.transform.position = spriteMaskPosInWorld;
 
         //Snap mouse position
         mousePosInWorld.x = Mathf.RoundToInt(mousePosInWorld.x) + 0.5f;
