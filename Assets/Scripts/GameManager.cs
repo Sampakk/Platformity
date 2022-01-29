@@ -55,6 +55,13 @@ public class GameManager : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = (reload) ? currentScene : currentScene + 1;
 
+        //Save this level completed
+        if (!reload)
+        {
+            string levelPrefsName = "Level" + nextScene;
+            PlayerPrefs.SetInt(levelPrefsName, 1);
+        }     
+
         SceneManager.LoadScene(nextScene);
     }
 }
