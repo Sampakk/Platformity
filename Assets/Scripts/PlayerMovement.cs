@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sprite;
 
+    public GameObject deadEffectPrefab;
+
     public float moveSpeed = 4f;
     public float jumpHeight = 3f; 
     public BoxCollider2D groundCheck;
@@ -80,8 +82,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spike")
         {
-            //Die function
-            Debug.Log("Dead");
+            Die();
         }
     }
 
@@ -110,6 +111,18 @@ public class PlayerMovement : MonoBehaviour
 
             sprite.transform.localScale = spriteLocalScale;
         }
+    }
+
+    void Die()
+    {
+        //Instantiate effect
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        GameObject deadEffect = Instantiate(deadEffectPrefab, spawnPos, Quaternion.identity);
+        Destroy(deadEffect, 1f);
+
+        //Destroy player & mouselook
+        GetComponent<PlatformMaker>().DestroyTarget();
+        Destroy(gameObject);
     }
 
     public float GetMoveX()
