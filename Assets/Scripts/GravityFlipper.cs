@@ -22,7 +22,6 @@ public class GravityFlipper : MonoBehaviour
     {
         rb = collision.attachedRigidbody;
     
-        Debug.Log(collision.attachedRigidbody.gravityScale);
         if (collision.gameObject.tag == "Player")
         {
             rb.gravityScale = -gravityScale;
