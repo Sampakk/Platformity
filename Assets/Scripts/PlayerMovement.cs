@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+
+                //Play audio
+                AudioManager.audioMan.PlayJumpSound();
             }
 
             hasDoubleJumped = false;
@@ -49,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
                 {
                     rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
                     hasDoubleJumped = true;
+
+                    //Play audio
+                    AudioManager.audioMan.PlayJumpSound();
                 }
             }
         }
@@ -90,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag == "Goal")
         {
+            //Play audio
+            AudioManager.audioMan.PlayCompleteSound();
+
+            //Load next level
             FindObjectOfType<GameManager>().LoadLevel(0, false);
         }
     }
@@ -128,11 +138,15 @@ public class PlayerMovement : MonoBehaviour
         GameObject deadEffect = Instantiate(deadEffectPrefab, spawnPos, Quaternion.identity);
         Destroy(deadEffect, 1f);
 
+        //Play audio
+        AudioManager.audioMan.PlayDeathSound();
+
+        //Reload scene
+        FindObjectOfType<GameManager>().LoadLevel(1f, true);
+
         //Destroy player & mouselook
         GetComponent<PlatformMaker>().DestroyTarget();
         Destroy(gameObject);
-
-        FindObjectOfType<GameManager>().LoadLevel(1f, true);
     }
 
     public float GetMoveX()
