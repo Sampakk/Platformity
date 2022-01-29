@@ -45,6 +45,10 @@ public class PlatformMaker : MonoBehaviour
 
         targetBlock.transform.position = mousePosInWorld;
 
+        //Check if mouse is over something
+        Vector2 mousePos2D = new Vector2(mousePosInWorld.x, mousePosInWorld.y);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+
         //Add block
         if (Input.GetMouseButtonDown(0))
         {
@@ -65,7 +69,18 @@ public class PlatformMaker : MonoBehaviour
             float delay = lookDirection.magnitude / particleSpeed;
             Destroy(particle, delay);
 
-            StartCoroutine(AddBlock(mousePosInWorld, delay));
+            if (hit.collider != null) //Mouse over something
+            {
+                FadeBlock fadeBlock = hit.collider.GetComponent<FadeBlock>();
+                if (fadeBlock != null)
+                {
+                    fadeBlock.FadeOut();
+                }
+            }
+            else //Block can be placed
+            {
+                StartCoroutine(AddBlock(mousePosInWorld, delay));
+            }
         }
     }
 
