@@ -46,6 +46,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlayCompleteSound()
     {
-        audioSrc.PlayOneShot(completeSound);
+        audioSrc.PlayOneShot(completeSound, 0.5f);
     }
 }

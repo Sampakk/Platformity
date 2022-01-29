@@ -204,7 +204,7 @@ MonoBehaviour:
   spriteMaskPrefab: {fileID: 8055168400316956543, guid: a87ead74e0ccbe44284fff350670fd68, type: 3}
   particlePrefab: {fileID: 8453608389312924277, guid: b226257684529bb48a20043a8d44eef0, type: 3}
   blockPrefab: {fileID: 2144958984770630227, guid: a74adef2f89ed9847866fee1dd6c3d30, type: 3}
-  maxBlocks: 5
+  maxBlocks: 3
 --- !u!1 &8711401150865563537
 GameObject:
   m_ObjectHideFlags: 0
