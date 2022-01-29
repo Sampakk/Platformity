@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer sprite;
 
     public GameObject deadEffectPrefab;
-
     public float moveSpeed = 4f;
     public float jumpHeight = 3f; 
     public BoxCollider2D groundCheck;
@@ -17,10 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public bool doubleJumpEnabled = false;
     bool hasDoubleJumped = false;
 
+    bool canTakeInput = true;
     float moveX;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -29,35 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveX = Input.GetAxisRaw("Horizontal");
-
-        if (IsGrounded())
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-
-                //Play audio
-                AudioManager.audioMan.PlayJumpSound();
-            }
-
-            hasDoubleJumped = false;
-        }
-
-        if (doubleJumpEnabled == true)
-        {
-            if (!IsGrounded() && hasDoubleJumped == false)
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-                    hasDoubleJumped = true;
-
-                    //Play audio
-                    AudioManager.audioMan.PlayJumpSound();
-                }
-            }
-        }
+        GetInput();
 
         Animations();
     }   
@@ -76,14 +48,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = horizontalVelocity;
     }
 
-    bool IsGrounded()
-    {
-        if (Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, 0, groundLayer))
-            return true;
-
-        return false;
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Spike")
@@ -99,8 +63,43 @@ public class PlayerMovement : MonoBehaviour
             //Play audio
             AudioManager.audioMan.PlayCompleteSound();
 
-            //Load next level
-            FindObjectOfType<GameManager>().LoadLevel(0, false);
+            LevelAnimation(false);
+        }
+    }
+
+    void GetInput()
+    {
+        if (canTakeInput)
+        {
+            moveX = Input.GetAxisRaw("Horizontal");
+
+            if (IsGrounded())
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+
+                    //Play audio
+                    AudioManager.audioMan.PlayJumpSound();
+                }
+
+                hasDoubleJumped = false;
+            }
+
+            if (doubleJumpEnabled == true)
+            {
+                if (!IsGrounded() && hasDoubleJumped == false)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                        hasDoubleJumped = true;
+
+                        //Play audio
+                        AudioManager.audioMan.PlayJumpSound();
+                    }
+                }
+            }
         }
     }
 
@@ -147,6 +146,66 @@ public class PlayerMovement : MonoBehaviour
         //Destroy player & mouselook
         GetComponent<PlatformMaker>().DestroyTarget();
         Destroy(gameObject);
+    }
+
+    public void LevelAnimation(bool moveIn)
+    {
+        StartCoroutine(MoveInOrOut(moveIn));
+    }
+
+    IEnumerator MoveInOrOut(bool moveIn)
+    {
+        //Disable input & physics
+        canTakeInput = false;
+        rb.simulated = false;
+
+        //Setup position when moving in to level
+        if (moveIn)
+        {
+            Vector3 moveInPos = GameManager.game.spawnPosition;
+            moveInPos.x -= 3f;
+
+            transform.position = moveInPos;
+
+            //Move to start position
+            while (transform.position != GameManager.game.spawnPosition)
+            {
+                moveX = 1f; //For animations
+                transform.position = Vector3.MoveTowards(transform.position, GameManager.game.spawnPosition, moveSpeed * Time.deltaTime);
+
+                yield return null;
+            }
+        }
+        else
+        {
+            //Move to end position
+            while (transform.position != GameManager.game.endPosition)
+            {
+                moveX = 1f; //For animations
+                transform.position = Vector3.MoveTowards(transform.position, GameManager.game.endPosition, moveSpeed * Time.deltaTime);
+
+                yield return null;
+            }
+        }
+        
+        //Finished moving
+        if (moveIn)
+        {
+            rb.simulated = true;
+            canTakeInput = true;
+        }
+        else //Load next level
+        {
+            FindObjectOfType<GameManager>().LoadLevel(0, false);
+        }
+    }
+
+    bool IsGrounded()
+    {
+        if (Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, 0, groundLayer))
+            return true;
+
+        return false;
     }
 
     public float GetMoveX()
