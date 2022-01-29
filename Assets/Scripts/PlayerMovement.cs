@@ -86,6 +86,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Goal")
+        {
+            FindObjectOfType<GameManager>().LoadLevel(0, false);
+        }
+    }
+
     void Animations()
     {
         //Left and right turning
@@ -123,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
         //Destroy player & mouselook
         GetComponent<PlatformMaker>().DestroyTarget();
         Destroy(gameObject);
+
+        FindObjectOfType<GameManager>().LoadLevel(1f, true);
     }
 
     public float GetMoveX()
