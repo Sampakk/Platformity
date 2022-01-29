@@ -5,14 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager game;
+
     public GameObject playerPrefab;
     public Vector3Int spawnPosition;
+    public Vector3Int endPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Singleton
+        if (game == null)
+            game = this;
+
         //Spawn player
-        Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        player.GetComponent<PlayerMovement>().LevelAnimation(true);
 
         //Hide cursor
         Cursor.lockState = CursorLockMode.None;
