@@ -144,7 +144,8 @@ public class PlayerMovement : MonoBehaviour
         FindObjectOfType<GameManager>().LoadLevel(1f, true);
 
         //Destroy player & mouselook
-        GetComponent<PlatformMaker>().DestroyTarget();
+        PlatformMaker platformMaker = GetComponent<PlatformMaker>();
+        if (platformMaker != null) platformMaker.DestroyTarget();
         Destroy(gameObject);
     }
 

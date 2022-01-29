@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlatformMaker : MonoBehaviour
 {
@@ -20,12 +21,21 @@ public class PlatformMaker : MonoBehaviour
     GameObject targetBlock;
     GameObject spriteMask;
 
+    void Awake()
+    {
+        //Destroy this on first levels because they are tutorials
+        if (SceneManager.GetActiveScene().buildIndex < 6)
+            Destroy(this);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        //Find components
         cam = FindObjectOfType<Camera>();
         player = FindObjectOfType<PlayerMovement>();
 
+        //Instantiate cursor objects
         targetBlock = Instantiate(targetBlockPrefab, Vector3.zero, Quaternion.identity);
         spriteMask = Instantiate(spriteMaskPrefab, Vector3.zero, Quaternion.identity);
     }
