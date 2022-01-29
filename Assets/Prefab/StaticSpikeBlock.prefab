@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 307983720548460815}
   - component: {fileID: 307983720548460808}
-  - component: {fileID: 307983720548460809}
   - component: {fileID: 307983720548460810}
   - component: {fileID: 307983720548460814}
+  - component: {fileID: 6120394090079010889}
   m_Layer: 0
   m_Name: StaticSpikeBlock
   m_TagString: Spike
@@ -85,32 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &307983720548460809
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307983720548460811}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 1
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &307983720548460810
 Rigidbody2D:
   serializedVersion: 4
@@ -144,3 +118,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23225f4fc4c5f784ba7cb83c4d8696f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &6120394090079010889
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307983720548460811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.49944055, y: -0.4994154}
+  - {x: -0.49789393, y: -0.49860382}
+  - {x: -0.00030517578, y: 0.49983692}
+  - {x: 0.4995165, y: -0.4989133}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
