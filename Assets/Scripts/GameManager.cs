@@ -17,6 +17,16 @@ public class GameManager : MonoBehaviour
         //Hide cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+
+        //Flip colors if scene index is even
+        if (SceneManager.GetActiveScene().buildIndex % 2 == 0)
+        {
+            foreach (SpriteRenderer sprite in FindObjectsOfType<SpriteRenderer>())
+            {
+                if (sprite.color == Color.black) sprite.color = Color.white;
+                else if (sprite.color == Color.white) sprite.color = Color.black;
+            }
+        }
     }
 
     // Update is called once per frame
