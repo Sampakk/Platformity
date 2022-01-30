@@ -203,7 +203,16 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsGrounded()
     {
-        if (Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, 0, groundLayer))
+        //Make custom filter
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(groundLayer);
+        contactFilter.useTriggers = false;
+
+        List<Collider2D> results = new List<Collider2D>();
+
+        //If it collides anything return true
+        int collisionCount = Physics2D.OverlapBox(groundCheck.transform.position, groundCheck.size, 0, contactFilter, results);
+        if (collisionCount > 0)
             return true;
 
         return false;
