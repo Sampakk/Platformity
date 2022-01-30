@@ -111,22 +111,6 @@ public class PlayerMovement : MonoBehaviour
         spriteLocalEulers.z = -(moveX * maxAngle);
 
         sprite.transform.localRotation = Quaternion.Euler(spriteLocalEulers);
-
-        //Vertical, jumping
-        if (IsGrounded())
-        {
-            Vector3 spriteLocalScale = sprite.transform.localScale;
-            spriteLocalScale.y = Mathf.MoveTowards(spriteLocalScale.y, 2f, 5f * Time.deltaTime);
-
-            sprite.transform.localScale = spriteLocalScale;
-        }
-        else
-        {
-            Vector3 spriteLocalScale = sprite.transform.localScale;
-            spriteLocalScale.y = Mathf.MoveTowards(spriteLocalScale.y, 1.9f, 5f * Time.deltaTime);
-
-            sprite.transform.localScale = spriteLocalScale;
-        }
     }
 
     void Die()
