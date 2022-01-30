@@ -6,14 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     SpriteRenderer sprite;
+    Animator anim;
 
-    public GameObject deadEffectPrefab;
+    [Header("Movement")]
     public float moveSpeed = 4f;
-    public float jumpHeight = 3f; 
+    public float jumpHeight = 3f;
     public BoxCollider2D groundCheck;
     public LayerMask groundLayer;
     public float groundDistance = 0.45f;
 
+    [Header("Effects")]
+    public GameObject deadEffectPrefab;
+   
     bool canTakeInput = true;
     float gravityScale;
     float moveX;
@@ -23,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
         gravityScale = rb.gravityScale;
     }
@@ -87,16 +92,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canTakeInput)
         {
+            //Horizontal movement
             moveX = Input.GetAxisRaw("Horizontal");
 
             if (IsGrounded())
             {
+                //Jumping
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
 
                     //Play audio
                     AudioManager.audioMan.PlayJumpSound();
+
+                    //Animation
+                    anim.SetTrigger("Jump");
                 }
             }
         }

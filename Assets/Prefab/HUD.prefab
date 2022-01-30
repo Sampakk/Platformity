@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3056d047d7a23ad4abf73239a9148efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 8629121317202327075}
   levelText: {fileID: 8629121316701022490}
 --- !u!1 &8629121316701022488
 GameObject:
@@ -282,7 +281,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -20}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8629121317202327084
 CanvasRenderer:
@@ -312,7 +311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TIme: 0.0s'
+  m_text: 'Esc: Back to menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad09ed00b060c1040a190b3f05061d59, type: 2}
   m_sharedMaterial: {fileID: -3588271199174955087, guid: ad09ed00b060c1040a190b3f05061d59, type: 2}
