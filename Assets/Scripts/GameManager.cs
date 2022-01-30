@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = (reload) ? currentScene : currentScene + 1;
+        if (nextScene > 35) nextScene = 0;
 
         //Save this level completed
         if (!reload)
