@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b92742b5e35aa97458f15265829b0b53, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,7 +91,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5685973917442219399}
-  - component: {fileID: 5685973917442219400}
   - component: {fileID: 5685973917442219401}
   - component: {fileID: 5685973917442219398}
   - component: {fileID: 5685973917442219403}
@@ -117,18 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5685973917442219400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5685973917442219396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23225f4fc4c5f784ba7cb83c4d8696f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &5685973917442219401
 BoxCollider2D:
   m_ObjectHideFlags: 0
