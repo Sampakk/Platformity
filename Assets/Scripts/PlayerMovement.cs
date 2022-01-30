@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D groundCheck;
     public LayerMask groundLayer;
     public float groundDistance = 0.45f;
-    public bool doubleJumpEnabled = false;
-    bool hasDoubleJumped = false;
 
     bool canTakeInput = true;
     float gravityScale;
@@ -99,23 +97,6 @@ public class PlayerMovement : MonoBehaviour
 
                     //Play audio
                     AudioManager.audioMan.PlayJumpSound();
-                }
-
-                hasDoubleJumped = false;
-            }
-
-            if (doubleJumpEnabled == true)
-            {
-                if (!IsGrounded() && hasDoubleJumped == false)
-                {
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-                        hasDoubleJumped = true;
-
-                        //Play audio
-                        AudioManager.audioMan.PlayJumpSound();
-                    }
                 }
             }
         }
