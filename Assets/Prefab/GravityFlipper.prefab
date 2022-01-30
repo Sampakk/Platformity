@@ -4816,11 +4816,10 @@ GameObject:
   - component: {fileID: 1385374992807308783}
   - component: {fileID: 1385374992807308780}
   - component: {fileID: 1385374992807308781}
-  - component: {fileID: 1385374992807308778}
   - component: {fileID: 2512483531193009738}
   m_Layer: 0
   m_Name: GravityFlipper
-  m_TagString: Untagged
+  m_TagString: Gravity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4914,19 +4913,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!114 &1385374992807308778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385374992807308776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f5da57b1640e94ab4d4c963064e0a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityScale: 3
 --- !u!114 &2512483531193009738
 MonoBehaviour:
   m_ObjectHideFlags: 0

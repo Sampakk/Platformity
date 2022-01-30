@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     bool hasDoubleJumped = false;
 
     bool canTakeInput = true;
+    float gravityScale;
     float moveX;
 
     // Start is called before the first frame update
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+
+        gravityScale = rb.gravityScale;
     }
 
     // Update is called once per frame
@@ -51,9 +54,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Spike")
-        {
             Die();
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +65,23 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.audioMan.PlayCompleteSound();
 
             LevelAnimation(false);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Gravity")
+        {
+            if (rb.gravityScale == gravityScale)
+                rb.gravityScale = -gravityScale;
+        }        
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Gravity")
+        {
+            rb.gravityScale = gravityScale;
         }
     }
 
