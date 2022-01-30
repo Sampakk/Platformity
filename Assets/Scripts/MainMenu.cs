@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
     public RectTransform header;
     public GameObject levelsRoot;
 
+    [Header("Master Volume")]
+    public Slider masterVolumeSlider;
+    public TextMeshProUGUI masterVolumeText;
+
     TextMeshProUGUI headerText;
     float headerFontSize;
 
@@ -19,6 +23,13 @@ public class MainMenu : MonoBehaviour
         //Get header text
         headerText = header.GetComponent<TextMeshProUGUI>();
         headerFontSize = headerText.fontSize;
+
+        //Setup master volume slider
+        masterVolumeSlider.onValueChanged.AddListener(delegate { UpdateMasterVolume(); });
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        masterVolumeText.text = "Master volume: " + masterVolumeSlider.value;
+
+        AudioListener.volume = masterVolumeSlider.value;
 
         //Setup level buttons
         Button[] levelButtons = levelsRoot.GetComponentsInChildren<Button>();
@@ -52,6 +63,16 @@ public class MainMenu : MonoBehaviour
 
         //Scale font
         headerText.fontSize = headerFontSize + Mathf.Sin(Time.time * 4f) * 5f;
+    }
+
+    public void UpdateMasterVolume()
+    {
+        float value = (float)System.Math.Round(masterVolumeSlider.value, 1);
+        masterVolumeSlider.value = value;
+        masterVolumeText.text = "Master volume: " + value;
+
+        PlayerPrefs.SetFloat("MasterVolume", value);
+        AudioListener.volume = value;
     }
 
     public void LoadLevel(int index)
