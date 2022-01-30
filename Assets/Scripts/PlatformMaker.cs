@@ -82,7 +82,7 @@ public class PlatformMaker : MonoBehaviour
             float delay = lookDirection.magnitude / particleSpeed;
             Destroy(particle, delay);
 
-            if (hit.collider != null) //Mouse over something
+            if (hit.collider != null && !hit.collider.isTrigger) //Mouse over something
             {
                 FadeBlock fadeBlock = hit.collider.GetComponent<FadeBlock>();
                 if (fadeBlock != null)
