@@ -20,6 +20,10 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Show cursor & unlock
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         //Get header text
         headerText = header.GetComponent<TextMeshProUGUI>();
         headerFontSize = headerText.fontSize;
