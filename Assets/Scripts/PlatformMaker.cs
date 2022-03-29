@@ -47,7 +47,7 @@ public class PlatformMaker : MonoBehaviour
     {
         //Get necessary vectors
         Vector3 mousePosInWorld = cam.ScreenToWorldPoint(Input.mousePosition);
-        mousePosInWorld.z = 0;
+        mousePosInWorld.z = -0.5f; //Towards camera so cursor is over blocks
 
         Vector3 spriteMaskPosInWorld = mousePosInWorld;
         spriteMaskPosInWorld.x += 0.5f;
