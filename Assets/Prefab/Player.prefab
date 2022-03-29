@@ -201,6 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28688e6c919359e43a2d1d3c1c2615e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockSprites:
+  - {fileID: 21300000, guid: 9524da802b100f040a068343b6ae4a3c, type: 3}
+  - {fileID: 21300000, guid: b91378c026f5fde46a9bcf30a476ee2a, type: 3}
+  - {fileID: 21300000, guid: dc814ad33bce0134ebe1b5d69f484acd, type: 3}
   targetBlockPrefab: {fileID: 138311076482743082, guid: 8902d18519a676046863c26657e19476, type: 3}
   spriteMaskPrefab: {fileID: 8055168400316956543, guid: a87ead74e0ccbe44284fff350670fd68, type: 3}
   particlePrefab: {fileID: 8453608389312924277, guid: b226257684529bb48a20043a8d44eef0, type: 3}

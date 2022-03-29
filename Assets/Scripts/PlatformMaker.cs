@@ -8,6 +8,8 @@ public class PlatformMaker : MonoBehaviour
     Camera cam;
     PlayerMovement player;
 
+    public Sprite[] blockSprites;
+
     [Header("Cursor / aiming")]
     public GameObject targetBlockPrefab;
     public GameObject spriteMaskPrefab;
@@ -121,6 +123,23 @@ public class PlatformMaker : MonoBehaviour
         //Add new block to list
         GameObject newBlock = Instantiate(blockPrefab, position, Quaternion.identity);
         usedBlocks.Add(newBlock);
+
+        //Update all blocks sprites
+        if (usedBlocks.Count == 1) //Only 1 block used
+        {
+            usedBlocks[0].GetComponent<SpriteRenderer>().sprite = blockSprites[0]; //Newest & only block
+        }
+        else if (usedBlocks.Count == 2) //2 blocks used
+        {
+            usedBlocks[0].GetComponent<SpriteRenderer>().sprite = blockSprites[1]; //New
+            usedBlocks[1].GetComponent<SpriteRenderer>().sprite = blockSprites[0]; //Newest
+        }
+        else if (usedBlocks.Count >= 3) //All 3 blocks used
+        {
+            usedBlocks[0].GetComponent<SpriteRenderer>().sprite = blockSprites[2]; //Old
+            usedBlocks[1].GetComponent<SpriteRenderer>().sprite = blockSprites[1]; //New
+            usedBlocks[2].GetComponent<SpriteRenderer>().sprite = blockSprites[0]; //Newest
+        }     
     }
 
     public void DestroyTarget()
