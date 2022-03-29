@@ -95,19 +95,21 @@ public class PlayerMovement : MonoBehaviour
             //Horizontal movement
             moveX = Input.GetAxisRaw("Horizontal");
 
-            if (IsGrounded())
+            
+        }
+
+        if (IsGrounded())
+        {
+            //Jumping
+            if (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))
             {
-                //Jumping
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
 
-                    //Play audio
-                    AudioManager.audioMan.PlayJumpSound();
+                //Play audio
+                AudioManager.audioMan.PlayJumpSound();
 
-                    //Animation
-                    anim.SetTrigger("Jump");
-                }
+                //Animation
+                anim.SetTrigger("Jump");
             }
         }
     }
