@@ -41,6 +41,7 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < levelButtons.Length; i++)
         {
             Button button = levelButtons[i];
+            button.gameObject.AddComponent<ButtonController>();
 
             //Add onClick function to button
             int levelIndex = i + 1;
