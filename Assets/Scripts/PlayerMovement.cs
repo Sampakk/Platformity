@@ -90,13 +90,9 @@ public class PlayerMovement : MonoBehaviour
 
     void GetInput()
     {
-        if (canTakeInput)
-        {
-            //Horizontal movement
+        //Horizontal movement
+        if (canTakeInput)          
             moveX = Input.GetAxisRaw("Horizontal");
-
-            
-        }
 
         if (IsGrounded())
         {
