@@ -7,12 +7,17 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Menu & Levels")]
     public RectTransform header;
     public GameObject levelsRoot;
 
     [Header("Master Volume")]
     public Slider masterVolumeSlider;
     public TextMeshProUGUI masterVolumeText;
+
+    [Header("Black Screen")]
+    public Image blackScreen;
+    public float fadeTime = 1f;
 
     TextMeshProUGUI headerText;
     float headerFontSize;
@@ -82,11 +87,33 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLevel(int index)
     {
-        SceneManager.LoadScene(index);
+        StartCoroutine(FadeInAndLoadLevel(index));
     }
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator FadeInAndLoadLevel(int index)
+    {
+        //Black screen will block all raycasts
+        blackScreen.raycastTarget = true;
+
+        //Load level sound
+        MenuSounds.sounds.PlayLoadLevelSound();
+
+        //Wait for to fade in
+        while (blackScreen.color.a < 1f)
+        {
+            Color color = blackScreen.color;
+            color.a = Mathf.MoveTowards(color.a, 1f, 1f / fadeTime * Time.deltaTime);
+            blackScreen.color = color;
+
+            yield return null;
+        }
+
+        //Load level
+        SceneManager.LoadScene(index);
     }
 }
