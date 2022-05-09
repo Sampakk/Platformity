@@ -188,8 +188,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   groundDistance: 0.6
+  verticalClamp: 30
   deadEffectPrefab: {fileID: 7256910364144001365, guid: fba41285aed80b74984e5fa8b5f2a871, type: 3}
-  jumpEffectPrefab: {fileID: 6837734184413029396, guid: c066b66ca522c334aaf9d430bfbc932f, type: 3}
 --- !u!114 &5302102199768438240
 MonoBehaviour:
   m_ObjectHideFlags: 0

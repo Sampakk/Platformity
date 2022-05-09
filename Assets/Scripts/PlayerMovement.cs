@@ -14,13 +14,16 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D groundCheck;
     public LayerMask groundLayer;
     public float groundDistance = 0.45f;
+    public float verticalClamp = 20f;
 
     [Header("Effects")]
     public GameObject deadEffectPrefab;
-   
+
     bool canTakeInput = true;
     float gravityScale;
     float moveX;
+    float bounceForce = 100f;
+    float yVelocity;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +41,15 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
 
         Animations();
+
+        if (yVelocity > rb.velocity.y)
+        {
+            yVelocity = rb.velocity.y / 2;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                yVelocity = rb.velocity.y;
+            }
+        }
     }   
 
     void FixedUpdate()
@@ -48,16 +60,26 @@ public class PlayerMovement : MonoBehaviour
         //Add force
         rb.AddForce(moveDir, ForceMode2D.Impulse);
 
+
         //Clamp movement
-        float verticalVelocity = Mathf.Clamp(rb.velocity.y, float.MinValue, jumpHeight);
+        float verticalVelocity = Mathf.Clamp(rb.velocity.y, float.MinValue, verticalClamp);
         Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
         rb.velocity = horizontalVelocity;
+
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Spike")
             Die();
+
+        else if (collision.gameObject.tag == "Trampoline")
+        {
+            //Vector3 velocity = rb.velocity;
+            //rb.velocity = new Vector2(velocity.x, -yVelocity);
+            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -96,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsGrounded())
         {
+            yVelocity = 0;
+            
             //Jumping
             if (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))
             {
