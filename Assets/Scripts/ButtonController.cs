@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Button))]
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    MenuSounds menuSounds;
     RectTransform rect;
     Button button;
 
@@ -19,6 +20,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // Start is called before the first frame update
     void Start()
     {
+        menuSounds = FindObjectOfType<MenuSounds>();
         rect = GetComponent<RectTransform>();
         button = GetComponent<Button>();
 
@@ -31,15 +33,24 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (button.interactable) //If button is unlocked
         {
             if (mouseOver) //Scale bigger
+            {
                 rect.localScale = Vector3.Lerp(rect.localScale, startScale * scaleAmount, scaleSpeed * Time.deltaTime);
+            }       
             else //Scale to normal
+            {
                 rect.localScale = Vector3.Lerp(rect.localScale, startScale, scaleSpeed * Time.deltaTime);
+            }             
         }   
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        mouseOver = true;
+        if (button.interactable)
+        {
+            menuSounds.PlayHoverSound();
+
+            mouseOver = true;
+        }      
     }
 
     public void OnPointerExit(PointerEventData eventData)
