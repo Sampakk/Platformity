@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Button))]
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    MenuSounds menuSounds;
     RectTransform rect;
     Button button;
 
@@ -20,7 +19,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // Start is called before the first frame update
     void Start()
     {
-        menuSounds = FindObjectOfType<MenuSounds>();
         rect = GetComponent<RectTransform>();
         button = GetComponent<Button>();
 
@@ -47,7 +45,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (button.interactable)
         {
-            menuSounds.PlayHoverSound();
+            MenuSounds.sounds.PlayHoverSound();
 
             mouseOver = true;
         }      
