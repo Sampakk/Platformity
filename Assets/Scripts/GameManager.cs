@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Vector3Int spawnPosition;
     public Vector3Int endPosition;
+    public int CurrentLevelPool;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
 
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = (reload) ? currentScene : currentScene + 1;
-        if (nextScene > 35) nextScene = 0;
+        if (nextScene > CurrentLevelPool) nextScene = 0;
 
         //Save this level completed
         if (!reload)
