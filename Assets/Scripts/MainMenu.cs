@@ -49,7 +49,7 @@ public class MainMenu : MonoBehaviour
             button.gameObject.AddComponent<ButtonController>();
 
             //Add onClick function to button
-            int levelIndex = i + 1;
+            int levelIndex = i + 2;
             button.onClick.AddListener(delegate { LoadLevel(levelIndex); });
 
             //Check if level isn't completed and then disable button
@@ -83,6 +83,11 @@ public class MainMenu : MonoBehaviour
 
         PlayerPrefs.SetFloat("MasterVolume", value);
         AudioListener.volume = value;
+    }
+
+    public void LoadShop()
+    {
+        StartCoroutine(FadeInAndLoadLevel(1));
     }
 
     public void LoadLevel(int index)

@@ -17,7 +17,7 @@ public class PlatformMaker : MonoBehaviour
     [Header("Adding blocks")]
     public GameObject particlePrefab;
     public GameObject blockPrefab;
-    public int maxBlocks = 5;
+    public int maxBlocks = 3;
 
     List<GameObject> usedBlocks = new List<GameObject>();
     GameObject targetBlock;
@@ -26,7 +26,7 @@ public class PlatformMaker : MonoBehaviour
     void Awake()
     {
         //Destroy this on first levels because they are tutorials
-        if (SceneManager.GetActiveScene().buildIndex < 6)
+        if (SceneManager.GetActiveScene().buildIndex < 7)
             Destroy(this);
     }
 
