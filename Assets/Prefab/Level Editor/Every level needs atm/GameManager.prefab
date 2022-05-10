@@ -50,7 +50,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 3127833960661753360, guid: b56e03a47310a4f4994efd331da9f73a, type: 3}
   spawnPosition: {x: -18, y: -6, z: 0}
   endPosition: {x: 21, y: -6, z: 0}
-  CurrentLevelPool: 40
+  CurrentLevelPool: 41
 --- !u!1 &3607927473231883482
 GameObject:
   m_ObjectHideFlags: 0
