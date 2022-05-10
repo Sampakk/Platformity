@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     float gravityScale;
     float moveX;
     float yVelocity;
-    bool isOnIce = false;
+    bool isOnIce;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
                 yVelocity = rb.velocity.y;
             }
         }
+
+        //Debug.Log(isOnIce);
     }   
 
     void FixedUpdate()
@@ -62,9 +64,8 @@ public class PlayerMovement : MonoBehaviour
         if (isOnIce)
         {
             rb.AddForce(new Vector2( moveX * moveSpeed, rb.velocity.y),ForceMode2D.Force);
-            Debug.Log("moving on ice");
         }
-        else
+        else if (!isOnIce)
         {
             //Add force
             rb.AddForce(moveDir, ForceMode2D.Impulse);
@@ -76,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        
+
         if (collision.gameObject.tag == "Spike")
             Die();
 
@@ -88,12 +91,21 @@ public class PlayerMovement : MonoBehaviour
         else if ( collision.gameObject.tag == "Ice")
         {
             isOnIce = true;
-            Debug.Log("on Ice");
+            
         }
         else
         {
             //isOnIce = false;
             //Debug.Log("not on ice");
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ice")
+        {
+            isOnIce = false;
+            Debug.Log(collision.gameObject.tag);
         }
     }
 
@@ -146,11 +158,6 @@ public class PlayerMovement : MonoBehaviour
                 //Animation
                 anim.SetTrigger("Jump");
             }
-        }
-        else
-        {
-            isOnIce = false;
-            Debug.Log("not on ice");
         }
     }
 
