@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
             button.onClick.AddListener(delegate { LoadLevel(levelIndex); });
 
             //Check if level isn't completed and then disable button
-            if (levelIndex > 1)
+            if (levelIndex > 2)
             {
                 string levelPrefsName = "Level" + levelIndex;
                 if (PlayerPrefs.GetInt(levelPrefsName) == 0)

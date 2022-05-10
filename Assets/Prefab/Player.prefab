@@ -76,7 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a6d31ddbd18c7419c324deea5e4378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hats:
+  - {fileID: 11400000, guid: 71246191a11a3dd488c7756f666fc92b, type: 2}
+  - {fileID: 11400000, guid: 7c2ffb270aabb30419a64c733a636c8b, type: 2}
+  - {fileID: 11400000, guid: 698e2546683245f4fa91bbcae11f05a8, type: 2}
+  eyes: []
   hatRoot: {fileID: 750715874483951019}
+  hatSprite: {fileID: 6310459137829118349}
   moveRange: 0.1
   moveSpeed: 10
 --- !u!1 &3127833959374114482
@@ -320,7 +326,7 @@ GameObject:
   - component: {fileID: 1320457451804932488}
   - component: {fileID: 6310459137829118349}
   m_Layer: 6
-  m_Name: Square
+  m_Name: HatSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +386,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 49aba994d9b3d6543ab28a4bca1bc9e7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -388,7 +394,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8334175561388624845
