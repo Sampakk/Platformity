@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         //Flip colors if scene index is even
-        if (SceneManager.GetActiveScene().buildIndex % 2 == 0)
+        if (SceneManager.GetActiveScene().buildIndex % 2 != 0)
         {
             foreach (SpriteRenderer sprite in FindObjectsOfType<SpriteRenderer>())
             {
