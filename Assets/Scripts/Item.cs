@@ -25,6 +25,11 @@ public class Item : MonoBehaviour
         //Update texts
         itemNameText.text = customizable.itemName;
         itemPriceText.text = "Price: " + customizable.itemPrice;
+
+        //Update sprite
+        SpriteRenderer itemSprite = GetComponentInChildren<SpriteRenderer>();
+        itemSprite.sprite = customizable.itemSprite;
+        itemSprite.color = Color.gray;
     }
 
     // Update is called once per frame

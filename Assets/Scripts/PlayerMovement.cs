@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
-    SpriteRenderer sprite;
     Animator anim;
 
     [Header("Movement")]
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
         gravityScale = rb.gravityScale;
@@ -60,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
         //Clamp movement
         float verticalVelocity = Mathf.Clamp(rb.velocity.y, float.MinValue, verticalClamp);
 
-
         if (isOnIce)
         {
             rb.AddForce(new Vector2( moveX * moveSpeed, rb.velocity.y),ForceMode2D.Force);
@@ -77,8 +74,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
-
         if (collision.gameObject.tag == "Spike")
             Die();
 
@@ -146,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             yVelocity = 0;
-            
+
             //Jumping
             if (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -155,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
                 //Play audio
                 AudioManager.audioMan.PlayJumpSound();
 
-                //Animation
+                //Jump animation
                 anim.SetTrigger("Jump");
             }
         }

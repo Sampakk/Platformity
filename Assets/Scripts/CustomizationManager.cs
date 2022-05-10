@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CustomizationManager : MonoBehaviour
 {
+    Animator anim;
     PlayerMovement player;
 
     public Customizable[] hats;
@@ -14,17 +15,12 @@ public class CustomizationManager : MonoBehaviour
     [Header("Hat")]
     public Transform hatRoot;
     public SpriteRenderer hatSprite;
-    public float moveRange = 0.2f;
-    public float moveSpeed = 2f;
-
-    Vector3 hatPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInParent<Animator>();
         player = GetComponentInParent<PlayerMovement>();
-
-        hatPos = hatRoot.localPosition;
 
         UpdateCustomizationsOnStart();
     }
@@ -46,16 +42,9 @@ public class CustomizationManager : MonoBehaviour
         localEulers.z = -(moveX * maxAngle);
         transform.localRotation = Quaternion.Euler(localEulers);
 
-        //Animate hat
-        if (player.IsGrounded() && moveX != 0) //Moving
-        {
-            float yOffset = Mathf.Sin(Time.time * moveSpeed) * (moveRange / 2f);
-            hatRoot.localPosition = new Vector3(hatPos.x, hatPos.y + yOffset, hatPos.z);
-        }
-        else //Staying still
-        {
-            hatRoot.localPosition = hatPos;
-        }
+        //Move animation
+        bool isMoving = (player.IsGrounded() && moveX != 0) ? true : false;
+        anim.SetBool("Moving", isMoving);
     }
 
     void UpdateCustomizationsOnStart()
