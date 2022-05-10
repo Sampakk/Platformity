@@ -8,6 +8,7 @@ TagManager:
   - Goal
   - Gravity
   - Trampoline
+  - Ice
   layers:
   - Default
   - TransparentFX

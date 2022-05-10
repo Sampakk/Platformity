@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour
     bool canTakeInput = true;
     float gravityScale;
     float moveX;
-    float bounceForce = 100f;
     float yVelocity;
+    bool isOnIce = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,8 +40,6 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
 
-        Animations();
-
         if (yVelocity > rb.velocity.y)
         {
             yVelocity = rb.velocity.y / 2;
@@ -57,16 +55,23 @@ public class PlayerMovement : MonoBehaviour
         Vector2 moveDir = transform.right * moveX + transform.forward;
         moveDir = Vector2.ClampMagnitude(moveDir, 1f);
 
-        //Add force
-        rb.AddForce(moveDir, ForceMode2D.Impulse);
-
-
         //Clamp movement
         float verticalVelocity = Mathf.Clamp(rb.velocity.y, float.MinValue, verticalClamp);
-        Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
-        rb.velocity = horizontalVelocity;
 
+
+        if (isOnIce)
+        {
+            rb.AddForce(new Vector2( moveX * moveSpeed, rb.velocity.y),ForceMode2D.Force);
+            Debug.Log("moving on ice");
+        }
+        else
+        {
+            //Add force
+            rb.AddForce(moveDir, ForceMode2D.Impulse);
         
+             Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
+            rb.velocity = horizontalVelocity;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -79,6 +84,16 @@ public class PlayerMovement : MonoBehaviour
             //Vector3 velocity = rb.velocity;
             //rb.velocity = new Vector2(velocity.x, -yVelocity);
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+        }
+        else if ( collision.gameObject.tag == "Ice")
+        {
+            isOnIce = true;
+            Debug.Log("on Ice");
+        }
+        else
+        {
+            //isOnIce = false;
+            //Debug.Log("not on ice");
         }
     }
 
@@ -132,17 +147,11 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetTrigger("Jump");
             }
         }
-    }
-
-    void Animations()
-    {
-        //Left and right turning
-        float maxAngle = 5f;
-
-        Vector3 spriteLocalEulers = sprite.transform.localEulerAngles;
-        spriteLocalEulers.z = -(moveX * maxAngle);
-
-        sprite.transform.localRotation = Quaternion.Euler(spriteLocalEulers);
+        else
+        {
+            isOnIce = false;
+            Debug.Log("not on ice");
+        }
     }
 
     void Die()
