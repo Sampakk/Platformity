@@ -225,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         //Make custom filter
         ContactFilter2D contactFilter = new ContactFilter2D();

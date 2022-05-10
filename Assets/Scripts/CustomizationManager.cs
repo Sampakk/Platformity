@@ -39,7 +39,7 @@ public class CustomizationManager : MonoBehaviour
         transform.localRotation = Quaternion.Euler(localEulers);
 
         //Animate hat
-        if (player.GetMoveX() != 0) //Moving
+        if (player.IsGrounded() && moveX != 0) //Moving
         {
             float yOffset = Mathf.Sin(Time.time * moveSpeed) * (moveRange / 2f);
             hatRoot.localPosition = new Vector3(hatPos.x, hatPos.y + yOffset, hatPos.z);
