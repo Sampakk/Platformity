@@ -89,11 +89,7 @@ public class PlayerMovement : MonoBehaviour
             //rb.velocity = new Vector2(velocity.x, -yVelocity);
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
-        else if ( collision.gameObject.tag == "Ice")
-        {
-            isOnIce = true;
-            
-        }
+
         else
         {
             //isOnIce = false;
@@ -103,11 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ice")
-        {
-            isOnIce = false;
-            Debug.Log(collision.gameObject.tag);
-        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -118,6 +110,10 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.audioMan.PlayCompleteSound();
 
             LevelAnimation(false);
+        }
+        else if (collision.gameObject.tag == "Ice")
+        {
+            isOnIce = true;
         }
     }
 
@@ -136,6 +132,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = gravityScale;
         }
+
+        if (collision.gameObject.tag == "Ice")
+        {
+            isOnIce = false;
+            Debug.Log(collision.gameObject.tag);
+        }
+
     }
 
     void GetInput()
