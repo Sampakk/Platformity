@@ -25,9 +25,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_Color.b
+      value: 0.17911181
+      objectReference: {fileID: 0}
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_Color.g
+      value: 0.17911181
+      objectReference: {fileID: 0}
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_Color.r
+      value: 0.23584908
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
-      value: StaticBlock
+      value: SpikeSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_RootOrder
