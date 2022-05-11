@@ -513,7 +513,7 @@ MonoBehaviour:
   maxY: 999
   minY: -999
   StartDirection: 0
-  speed: 4
+  speed: 3
 --- !u!1001 &184682211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -706,7 +706,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8984868758281793993, guid: 1051e4a0c46623242ad3c428af063ab5, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8984868758281793994, guid: 1051e4a0c46623242ad3c428af063ab5, type: 3}
       propertyPath: m_Constraints
@@ -847,7 +847,7 @@ MonoBehaviour:
   maxY: 999
   minY: -999
   StartDirection: 0
-  speed: 4
+  speed: 3
 --- !u!1 &297409357 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8984868758281793995, guid: 1051e4a0c46623242ad3c428af063ab5, type: 3}
@@ -2548,7 +2548,7 @@ MonoBehaviour:
   maxX: 999
   minX: -999
   StartDirection: 0
-  speed: 4
+  speed: 6
 --- !u!1001 &1161374309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4499,4 +4499,4 @@ MonoBehaviour:
   maxY: 999
   minY: -999
   StartDirection: 0
-  speed: 4
+  speed: 3
