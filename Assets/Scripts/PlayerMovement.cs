@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 4f;
+    public float iceMultiplier = 4f;
     public float jumpHeight = 3f;
     public BoxCollider2D groundCheck;
     public LayerMask groundLayer;
@@ -66,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isOnIce)
         {
-            rb.AddForce(new Vector2( moveX * moveSpeed, rb.velocity.y),ForceMode2D.Force);
+            rb.AddForce(new Vector2( moveX * iceMultiplier, rb.velocity.y),ForceMode2D.Force);
         }
         else if (!isOnIce)
         {
@@ -82,24 +83,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spike")
             Die();
-
         else if (collision.gameObject.tag == "Trampoline")
         {
-            //Vector3 velocity = rb.velocity;
-            //rb.velocity = new Vector2(velocity.x, -yVelocity);
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
-
-        else
-        {
-            //isOnIce = false;
-            //Debug.Log("not on ice");
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
