@@ -8,19 +8,22 @@ public class HMovingPlatform : MonoBehaviour
     public float maxX;
     public float minX;
     private float platformPosition;
-    private int direction = 1;
+    private int direction;
+    public int StartDirection;
     public float speed;
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        direction = StartDirection;
     }
 
     void FixedUpdate()
     {
 
         platformPosition = rb.transform.position.x;
+        
 
         if (platformPosition >= maxX)
             direction = 0;

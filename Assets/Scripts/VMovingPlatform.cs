@@ -9,12 +9,14 @@ public class VMovingPlatform : MonoBehaviour
     public float minY;
     private float platformPosition;
     private int direction = 1;
+    public int StartDirection;
     public float speed;
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        direction = StartDirection;
     }
 
     void FixedUpdate()
