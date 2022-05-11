@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.45f;
     public float verticalClamp = 20f;
 
+    [Header("Footsteps")]
+    public float footstepDelay = 0.5f;
+    float lastFootstepAt;
+
     [Header("Effects")]
     public GameObject deadEffectPrefab;
 
@@ -37,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
+
+        Footsteps();
 
         if (yVelocity > rb.velocity.y)
         {
@@ -152,6 +158,19 @@ public class PlayerMovement : MonoBehaviour
 
                 //Jump animation
                 anim.SetTrigger("Jump");
+            }
+        }
+    }
+
+    void Footsteps()
+    {
+        if (IsGrounded() && moveX != 0)
+        {
+            if (Time.time >= lastFootstepAt + footstepDelay)
+            {
+                lastFootstepAt = Time.time;
+
+                AudioManager.audioMan.PlayFootstepSound(0.2f);
             }
         }
     }

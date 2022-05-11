@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager audioMan;
     AudioSource audioSrc;
 
+    public AudioClip footstepSound;
     public AudioClip throwSound;
     public AudioClip jumpSound;
     public AudioClip deathSound;
@@ -27,6 +28,11 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayFootstepSound(float volume)
+    {
+        audioSrc.PlayOneShot(footstepSound, volume);
     }
 
     public void PlayThrowSound()
