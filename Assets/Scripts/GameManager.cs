@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,7 +42,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if ((EditorApplication.isPlaying))
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+                LoadLevel(0, false);
+        }
     }
 
     public void LoadLevel(float delay, bool reload)
