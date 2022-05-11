@@ -53,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
                 yVelocity = rb.velocity.y;
             }
         }
-
-        //Debug.Log(isOnIce);
     }   
 
     void FixedUpdate()
@@ -67,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isOnIce)
         {
-            rb.AddForce(new Vector2( moveX * iceMultiplier, rb.velocity.y),ForceMode2D.Force);
+            rb.AddForce(new Vector2( moveX * iceMultiplier, 0),ForceMode2D.Force);
         }
         else if (!isOnIce)
         {
@@ -77,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
              Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
             rb.velocity = horizontalVelocity;
         }
+        Debug.Log(isOnIce);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -86,6 +85,10 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.tag == "Trampoline")
         {
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+        }
+        else if (collision.gameObject.tag != "Ice")
+        {
+            isOnIce = false;
         }
     }
 
@@ -110,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (rb.gravityScale == gravityScale)
                 rb.gravityScale = -gravityScale;
-        }        
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -119,15 +122,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = gravityScale;
         }
-
-        if (collision.gameObject.tag == "Ice")
+        else if (collision.gameObject.tag == "Ice" && rb.velocity.y == 0) 
         {
             isOnIce = false;
-            Debug.Log(collision.gameObject.tag);
         }
-
     }
-
     void GetInput()
     {
         //Horizontal movement
@@ -148,6 +147,32 @@ public class PlayerMovement : MonoBehaviour
 
                 //Jump animation
                 anim.SetTrigger("Jump");
+
+                /*if (isOnIce)
+                {
+                    rb.AddForce(new Vector2(rb.velocity.x * iceMultiplier, jumpHeight), ForceMode2D.Impulse);
+                    
+                    //Play audio
+                    AudioManager.audioMan.PlayJumpSound();
+
+                    //Jump animation
+                    anim.SetTrigger("Jump");
+
+                    Debug.Log("j‰‰hyppy");
+
+                    //rb.AddForce(new Vector2(rb.velocity.x * iceMultiplier * 100f, rb.velocity.y), ForceMode2D.Force);
+                    //rb.velocity = new Vector2(rb.velocity.x * iceMultiplier, rb.velocity.y);
+                }
+                else
+                {
+                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+
+                    //Play audio
+                    AudioManager.audioMan.PlayJumpSound();
+
+                    //Jump animation
+                    anim.SetTrigger("Jump");
+                }*/
             }
         }
     }
