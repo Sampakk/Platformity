@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 3127833960661753372}
   - component: {fileID: 5302102199768438240}
   - component: {fileID: 4078704763171898328}
+  - component: {fileID: 4297130070022729590}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -207,7 +208,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3127833960661753360}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -265,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  iceMultiplier: 4
   jumpHeight: 15
   groundCheck: {fileID: 5148203961355040940}
   groundLayer:
@@ -314,6 +316,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!68 &4297130070022729590
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3127833960661753360}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.39999747, y: 0.012450176}
+  - {x: -0.39997515, y: 0.012365658}
+  - {x: -0.37499997, y: 1.7}
+  - {x: 0.375, y: 1.7}
+  - {x: 0.39999747, y: 0.012450187}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &6767840788006645204
 GameObject:
   m_ObjectHideFlags: 0
