@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager game;
-    TimerManager timerManager;
 
     public GameObject playerPrefab;
     public Vector3Int spawnPosition;
@@ -16,8 +15,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timerManager = FindObjectOfType<TimerManager>();
-
         //Singleton
         if (game == null)
             game = this;
@@ -69,7 +66,6 @@ public class GameManager : MonoBehaviour
         {
             string levelPrefsName = "Level" + nextScene;
             PlayerPrefs.SetInt(levelPrefsName, 1);
-            timerManager.LevelCompleted();
         }     
 
         SceneManager.LoadScene(nextScene);
