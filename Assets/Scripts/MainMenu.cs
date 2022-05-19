@@ -7,13 +7,9 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    [Header("Roots")]
-    public GameObject levelsRoot;
-    public GameObject controlsRoot;
-
     [Header("Menu & Levels")]
     public RectTransform header;
-    public GameObject levelButtonRoots;
+    public GameObject levelsRoot;
 
     [Header("Master Volume")]
     public Slider masterVolumeSlider;
@@ -33,9 +29,6 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        //Hide controls root
-        ShowLevels();
-
         //Get header text
         headerText = header.GetComponent<TextMeshProUGUI>();
         headerFontSize = headerText.fontSize;
@@ -48,7 +41,7 @@ public class MainMenu : MonoBehaviour
         AudioListener.volume = masterVolumeSlider.value;
 
         //Setup level buttons
-        Button[] levelButtons = levelButtonRoots.GetComponentsInChildren<Button>();
+        Button[] levelButtons = levelsRoot.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
@@ -92,39 +85,21 @@ public class MainMenu : MonoBehaviour
         AudioListener.volume = value;
     }
 
-    //Show levels root
-    public void ShowLevels()
-    {
-        levelsRoot.SetActive(true);
-        controlsRoot.SetActive(false);
-    }
-
-    //Show controls root
-    public void ShowControls()
-    {
-        levelsRoot.SetActive(false);
-        controlsRoot.SetActive(true);
-    }
-
-    //Load to shop scene
     public void LoadShop()
     {
         StartCoroutine(FadeInAndLoadLevel(1));
     }
 
-    //Load to level with index
     public void LoadLevel(int index)
     {
         StartCoroutine(FadeInAndLoadLevel(index));
     }
 
-    //Exit game
     public void ExitGame()
     {
         Application.Quit();
     }
 
-    //Fade in to black & change scene
     IEnumerator FadeInAndLoadLevel(int index)
     {
         //Black screen will block all raycasts
