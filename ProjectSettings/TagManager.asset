@@ -9,6 +9,7 @@ TagManager:
   - Gravity
   - Trampoline
   - Ice
+  - Bounds
   layers:
   - Default
   - TransparentFX

@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
              Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
             rb.velocity = horizontalVelocity;
         }
-        Debug.Log(isOnIce);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -86,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
-        else if (collision.gameObject.tag != "Ice")
+        else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds")
         {
             isOnIce = false;
         }
@@ -147,32 +146,6 @@ public class PlayerMovement : MonoBehaviour
 
                 //Jump animation
                 anim.SetTrigger("Jump");
-
-                /*if (isOnIce)
-                {
-                    rb.AddForce(new Vector2(rb.velocity.x * iceMultiplier, jumpHeight), ForceMode2D.Impulse);
-                    
-                    //Play audio
-                    AudioManager.audioMan.PlayJumpSound();
-
-                    //Jump animation
-                    anim.SetTrigger("Jump");
-
-                    Debug.Log("j‰‰hyppy");
-
-                    //rb.AddForce(new Vector2(rb.velocity.x * iceMultiplier * 100f, rb.velocity.y), ForceMode2D.Force);
-                    //rb.velocity = new Vector2(rb.velocity.x * iceMultiplier, rb.velocity.y);
-                }
-                else
-                {
-                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-
-                    //Play audio
-                    AudioManager.audioMan.PlayJumpSound();
-
-                    //Jump animation
-                    anim.SetTrigger("Jump");
-                }*/
             }
         }
     }
