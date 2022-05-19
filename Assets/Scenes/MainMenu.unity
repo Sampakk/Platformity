@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 38664435}
   - component: {fileID: 38664434}
   m_Layer: 5
-  m_Name: Black
+  m_Name: BlackScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
