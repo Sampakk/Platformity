@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastFootstepAt = Time.time;
 
-                AudioManager.audioMan.PlayFootstepSound(0.2f);
+                AudioManager.audioMan.PlayFootstepSound(0.5f);
             }
         }
     }

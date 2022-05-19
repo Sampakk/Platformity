@@ -273,7 +273,7 @@ MonoBehaviour:
     m_Bits: 1
   groundDistance: 0.6
   verticalClamp: 30
-  footstepDelay: 0.25
+  footstepDelay: 0.225
   deadEffectPrefab: {fileID: 7256910364144001365, guid: fba41285aed80b74984e5fa8b5f2a871, type: 3}
 --- !u!114 &5302102199768438240
 MonoBehaviour:

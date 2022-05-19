@@ -141,11 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643b2841dfaf90844a7cb645c8325eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSound: {fileID: 8300000, guid: ccef7d0c0acb092469e6d0ec14a24975, type: 3}
   throwSound: {fileID: 8300000, guid: ae700394cf3defb4298e12a485206db1, type: 3}
   jumpSound: {fileID: 8300000, guid: 590784c81bd33b148b1ca8d7ded00fbe, type: 3}
   deathSound: {fileID: 8300000, guid: de99db922b0a0294ea9400fe9ebf281d, type: 3}
   completeSound: {fileID: 8300000, guid: e758c53e3d74d62449ab894fe44a3003, type: 3}
+  footstepSounds:
+  - {fileID: 8300000, guid: 744f29219c4c9fa43945abfce71c63fd, type: 3}
+  - {fileID: 8300000, guid: 5de2633d3202a7648ac697b0646763d0, type: 3}
 --- !u!1 &8799445318094748303
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,11 +7,14 @@ public class AudioManager : MonoBehaviour
     public static AudioManager audioMan;
     AudioSource audioSrc;
 
-    public AudioClip footstepSound;
     public AudioClip throwSound;
     public AudioClip jumpSound;
     public AudioClip deathSound;
     public AudioClip completeSound;
+
+    [Header("Footsteps")]
+    public AudioClip[] footstepSounds;
+    int footstepIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +35,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayFootstepSound(float volume)
     {
-        audioSrc.PlayOneShot(footstepSound, volume);
+        if (footstepIndex == 0) footstepIndex++;
+        else footstepIndex = 0;
+
+        audioSrc.PlayOneShot(footstepSounds[footstepIndex], volume);
     }
 
     public void PlayThrowSound()
