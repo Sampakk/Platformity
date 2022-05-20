@@ -44,10 +44,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
         //If in editor, skip this level
         if (Input.GetKeyDown(KeyCode.P))
             LoadLevel(0, false);
+
+#if UNITY_EDITOR
+
 #endif
     }
 
