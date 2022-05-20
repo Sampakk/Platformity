@@ -80,7 +80,9 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Spike")
+        {
             Die();
+        }
         else if (collision.gameObject.tag == "Trampoline")
         {
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
@@ -129,15 +131,19 @@ public class PlayerMovement : MonoBehaviour
     void GetInput()
     {
         //Horizontal movement
-        if (canTakeInput)          
-            moveX = Input.GetAxisRaw("Horizontal");
+        if (canTakeInput)
+        {
+            moveX = 0;
+            if (Input.GetKey(KeyCode.D)) moveX += 1;
+            if (Input.GetKey(KeyCode.A)) moveX -= 1;
+        }
 
         if (IsGrounded())
         {
             yVelocity = 0;
 
             //Jumping
-            if (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
 
@@ -146,32 +152,6 @@ public class PlayerMovement : MonoBehaviour
 
                 //Jump animation
                 anim.SetTrigger("Jump");
-
-                /*if (isOnIce)
-                {
-                    rb.AddForce(new Vector2(rb.velocity.x * iceMultiplier, jumpHeight), ForceMode2D.Impulse);
-                    
-                    //Play audio
-                    AudioManager.audioMan.PlayJumpSound();
-
-                    //Jump animation
-                    anim.SetTrigger("Jump");
-
-                    Debug.Log("j‰‰hyppy");
-
-                    //rb.AddForce(new Vector2(rb.velocity.x * iceMultiplier * 100f, rb.velocity.y), ForceMode2D.Force);
-                    //rb.velocity = new Vector2(rb.velocity.x * iceMultiplier, rb.velocity.y);
-                }
-                else
-                {
-                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-
-                    //Play audio
-                    AudioManager.audioMan.PlayJumpSound();
-
-                    //Jump animation
-                    anim.SetTrigger("Jump");
-                }*/
             }
         }
     }
