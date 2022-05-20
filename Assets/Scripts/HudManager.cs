@@ -73,9 +73,14 @@ public class HudManager : MonoBehaviour
         completionRoot.SetActive(true);
 
         //Update completion text
-        completeText.text = "You have completed chapter " + chapter; 
+        completeText.text = "You have completed chapter " + chapter;
 
         //Update level times
+        level1TimeText.text = TimerManager.timerMan.GetSavedTime("1-" + chapter);
+        level2TimeText.text = TimerManager.timerMan.GetSavedTime("2-" + chapter);
+        level3TimeText.text = TimerManager.timerMan.GetSavedTime("3-" + chapter);
+        level4TimeText.text = TimerManager.timerMan.GetSavedTime("4-" + chapter);
+        level5TimeText.text = TimerManager.timerMan.GetSavedTime("5-" + chapter);
     }
 
     public void LoadNextChapter()

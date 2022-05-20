@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
-    string timerPrefsName = "highScores";
     public static TimerManager timerMan;
     HudManager hud;
+
+    string timerPrefsName = "highScores";
     float timer = 0;
     bool timerGoing = false;
     string allTimes = "";
@@ -19,6 +20,9 @@ public class TimerManager : MonoBehaviour
     {
         if (timerMan == null) timerMan = this;
         else Destroy(gameObject);
+
+        allTimes = PlayerPrefs.GetString(timerPrefsName);
+        Debug.Log(allTimes);
 
         DontDestroyOnLoad(gameObject);
     }
@@ -69,9 +73,9 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    string GetSavedTime(string sceneName)
+    public string GetSavedTime(string sceneName)
     {
-        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(',');
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(';');
         if (times.Contains(sceneName))
         {
             int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
@@ -79,12 +83,11 @@ public class TimerManager : MonoBehaviour
             return savedTime;
         }
         else return "none";
-
     }
 
     public void LevelCompleted()
     {
-        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(',');
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(';');
 
         if (times.Contains(SceneManager.GetActiveScene().name))
         {
@@ -99,7 +102,7 @@ public class TimerManager : MonoBehaviour
         }
         else
         {
-            allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
+            allTimes += SceneManager.GetActiveScene().name.ToString() + ";" + Math.Round(timer, 2) + ";";
             SaveTimer(allTimes);
         }
         StopTimer();
