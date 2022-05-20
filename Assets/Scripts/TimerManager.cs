@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,7 @@ public class TimerManager : MonoBehaviour
 
             if (hud != null)
             {
-                hud.timerText.text = "Time: " + Mathf.Round(timer * 100.0f) * 0.01f;
+                hud.timerText.text = "Time: " + Math.Round(timer,2);
             }
         }
     }
@@ -54,8 +55,10 @@ public class TimerManager : MonoBehaviour
 
         hud = FindObjectOfType<HudManager>();
 
-        timer = 0;
-        timerGoing = true;
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        {
+            timerGoing = true;
+        }
     }
 
     public void LevelCompleted()
@@ -63,7 +66,13 @@ public class TimerManager : MonoBehaviour
         string allTimes = SceneManager.GetActiveScene().name.ToString() + " , " + timer + " , ";
         Debug.Log(allTimes);
         //PlayerPrefs.SetString(levelPrefsName, 1);
+        StopTimer();
+    }
+
+    public void StopTimer()
+    {
         timerGoing = false;
+        timer = 0;
     }
 
     void SaveTimer(string allTimes)

@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3056d047d7a23ad4abf73239a9148efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 8629121317319128201}
   levelText: {fileID: 8629121316701022490}
   timerText: {fileID: 4001493392228010928}
 --- !u!1 &8629121316701022488
@@ -533,7 +534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8629121317319128206
 RectTransform:
   m_ObjectHideFlags: 0
