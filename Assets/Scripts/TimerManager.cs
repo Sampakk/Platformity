@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
-    string playerPrefsName = "highScores";
+    string timerPrefsName = "highScores";
     public static TimerManager timerMan;
     HudManager hud;
     float timer = 0;
@@ -60,35 +60,50 @@ public class TimerManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1)
         {
+            Debug.Log(GetSavedTime());
+            string savedTime = GetSavedTime();
+            //Debug.Log(savedTime);
+            UpdateHSHud(savedTime);
+
             timerGoing = true;
         }
     }
 
-    public void LevelCompleted()
+    string GetSavedTime()
     {
-        string[] times = allTimes.Split(',');
-        
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(',');
         if (times.Contains(SceneManager.GetActiveScene().name))
         {
-            /*int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
-            //Debug.Log(times[index + 1] + " nice");
+            int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
+            string savedTime = times[index + 1];
+            return savedTime;
+        }
+        else return "0";
 
-            float savedTime = float.Parse(times[index + 1]);
+    }
 
-            if (timer < savedTime)
+    public void LevelCompleted()
+    {
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(',');
+
+        if (times.Contains(SceneManager.GetActiveScene().name))
+        {
+            float savedTime = float.Parse(GetSavedTime());
+
+            if (timer < savedTime && timer != 0)
             {
-                Debug.Log("new hs");
-                allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
+                string allTimesUpdated = allTimes.Replace(savedTime.ToString(), Math.Round(timer, 2).ToString());
+                SaveTimer(allTimesUpdated);
             }
-            else Debug.Log("shit time");*/
+            else Debug.Log("shit time");
         }
         else
         {
             allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
+            SaveTimer(allTimes);
         }
-
-        SaveTimer(allTimes);
         StopTimer();
+        //Debug.Log(PlayerPrefs.GetString(timerPrefsName));
     }
 
     public void StopTimer()
@@ -97,17 +112,15 @@ public class TimerManager : MonoBehaviour
         timer = 0;
     }
 
-    void SaveTimer(string allTimes)
+    void SaveTimer(string timesToSave)
     {
-        /*string[] times = allTimes.Split(',');
-
-        if (times.Contains(SceneManager.GetActiveScene().name))
-        {
-            int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
-            Debug.Log(times[index + 1] + " nice");  
-        }*/
+        PlayerPrefs.SetString(timerPrefsName, timesToSave);
     }
 
+    void UpdateHSHud(string highScore)
+    {
+        hud.highScoreText.text = "Highscore: " + highScore;
+    }
 }
 //PlayerPrefs.SetString(playerPrefsName, allTimes);
 //allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
