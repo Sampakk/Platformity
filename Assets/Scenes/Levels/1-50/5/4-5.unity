@@ -485,6 +485,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 107728594}
     m_Modifications:
+    - target: {fileID: 8984868758281793993, guid: 1051e4a0c46623242ad3c428af063ab5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984868758281793993, guid: 1051e4a0c46623242ad3c428af063ab5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.97
+      objectReference: {fileID: 0}
     - target: {fileID: 8984868758281793994, guid: 1051e4a0c46623242ad3c428af063ab5, type: 3}
       propertyPath: m_Constraints
       value: 6
@@ -689,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxY: 5
   minY: -5
+  StartDirection: 0
   speed: 9
 --- !u!1 &1094384108 stripped
 GameObject:
@@ -714,6 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxY: 5
   minY: -5
+  StartDirection: 0
   speed: 9
 --- !u!1 &1145690965 stripped
 GameObject:
@@ -739,6 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxY: 5
   minY: -5
+  StartDirection: 0
   speed: 9
 --- !u!1001 &1188196728
 PrefabInstance:
@@ -824,6 +835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxX: 10
   minX: -10
+  StartDirection: 1
   speed: 9
 --- !u!4 &1331286965 stripped
 Transform:
@@ -919,6 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxX: 10
   minX: -10
+  StartDirection: 1
   speed: 9
 --- !u!1 &1657913522 stripped
 GameObject:
@@ -939,6 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxX: 10
   minX: -10
+  StartDirection: 1
   speed: 9
 --- !u!4 &1657913528 stripped
 Transform:
@@ -969,6 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxX: 10
   minX: -10
+  StartDirection: 1
   speed: 9
 --- !u!1001 &1952808343
 PrefabInstance:
@@ -1051,4 +1066,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxY: 5
   minY: -5
+  StartDirection: 0
   speed: 9
