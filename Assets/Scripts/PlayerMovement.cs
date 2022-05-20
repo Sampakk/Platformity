@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
              Vector2 horizontalVelocity = new Vector2(moveDir.x * moveSpeed, verticalVelocity);
             rb.velocity = horizontalVelocity;
         }
-        Debug.Log(isOnIce);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -86,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
-        else if (collision.gameObject.tag != "Ice")
+        else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds")
         {
             isOnIce = false;
         }
