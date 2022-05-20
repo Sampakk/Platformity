@@ -22,14 +22,15 @@ public class HudManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //Update level text
-        string levelName = SceneManager.GetActiveScene().name;
-        levelText.text = "Level: " + levelName;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Update level text
+        string levelName = SceneManager.GetActiveScene().name;
+        levelText.text = "Level: " + levelName;
+
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             canvas.enabled = false;

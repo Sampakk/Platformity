@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
+    string playerPrefsName = "highScores";
     public static TimerManager timerMan;
     HudManager hud;
     float timer = 0;
     bool timerGoing = false;
+    string allTimes = "";
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +58,7 @@ public class TimerManager : MonoBehaviour
 
         hud = FindObjectOfType<HudManager>();
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1)
         {
             timerGoing = true;
         }
@@ -63,9 +66,27 @@ public class TimerManager : MonoBehaviour
 
     public void LevelCompleted()
     {
-        string allTimes = SceneManager.GetActiveScene().name.ToString() + " , " + timer + " , ";
-        Debug.Log(allTimes);
-        //PlayerPrefs.SetString(levelPrefsName, 1);
+        string[] times = allTimes.Split(',');
+        
+        if (times.Contains(SceneManager.GetActiveScene().name))
+        {
+            int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
+            Debug.Log(times[index + 1] + " nice");
+
+            float savedTime = float.Parse(times[index + 1]);
+            if (timer < savedTime)
+            {
+                Debug.Log("new hs");
+                allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
+            }
+            else Debug.Log("shit time");
+        }
+        else
+        {
+            allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
+        }
+
+        SaveTimer(allTimes);
         StopTimer();
     }
 
@@ -77,7 +98,15 @@ public class TimerManager : MonoBehaviour
 
     void SaveTimer(string allTimes)
     {
+        /*string[] times = allTimes.Split(',');
 
+        if (times.Contains(SceneManager.GetActiveScene().name))
+        {
+            int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
+            Debug.Log(times[index + 1] + " nice");  
+        }*/
     }
 
 }
+//PlayerPrefs.SetString(playerPrefsName, allTimes);
+//allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";

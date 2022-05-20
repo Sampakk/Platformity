@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestHat2
   m_EditorClassIdentifier: 
   itemName: Test Hat2
-  itemPrice: 0
+  itemPrice: 100
   itemSprite: {fileID: 21300000, guid: dc488fe785ca4474793ab98bb3d06411, type: 3}
   itemType: 0
