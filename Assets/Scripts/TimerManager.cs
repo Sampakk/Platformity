@@ -75,10 +75,10 @@ public class TimerManager : MonoBehaviour
 
     public string GetSavedTime(string sceneName)
     {
-        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(';');
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(' ');
         if (times.Contains(sceneName))
         {
-            int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
+            int index = Array.IndexOf(times, sceneName);
             string savedTime = times[index + 1];
             return savedTime;
         }
@@ -87,7 +87,7 @@ public class TimerManager : MonoBehaviour
 
     public void LevelCompleted()
     {
-        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(';');
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(' ');
 
         if (times.Contains(SceneManager.GetActiveScene().name))
         {
@@ -102,7 +102,7 @@ public class TimerManager : MonoBehaviour
         }
         else
         {
-            allTimes += SceneManager.GetActiveScene().name.ToString() + ";" + Math.Round(timer, 2) + ";";
+            allTimes += SceneManager.GetActiveScene().name.ToString() + " " + Math.Round(timer, 2) + " ";
             SaveTimer(allTimes);
         }
         StopTimer();
