@@ -19,6 +19,9 @@ public class PlatformMaker : MonoBehaviour
     public GameObject blockPrefab;
     public int maxBlocks = 3;
 
+    [Header("Effects")]
+    public GameObject blockDestroyEffectPrefab;
+
     List<GameObject> usedBlocks = new List<GameObject>();
     GameObject targetBlock;
     GameObject spriteMask;
@@ -116,6 +119,10 @@ public class PlatformMaker : MonoBehaviour
         {
             GameObject oldestBlock = usedBlocks[0];
             usedBlocks.RemoveAt(0);
+
+            //Particle effect on destroy
+            GameObject blockDestroyEffect = Instantiate(blockDestroyEffectPrefab, oldestBlock.transform.position, Quaternion.identity);
+            Destroy(blockDestroyEffect, 1.5f);
 
             Destroy(oldestBlock);
         }
