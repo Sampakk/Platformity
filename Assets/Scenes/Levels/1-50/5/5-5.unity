@@ -760,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxX: 99
   minX: -99
+  StartDirection: 1
   speed: 4
 --- !u!4 &313663295 stripped
 Transform:

@@ -392,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxX: 14
   minX: -14
+  StartDirection: 1
   speed: 4
 --- !u!1001 &1368579675
 PrefabInstance:
