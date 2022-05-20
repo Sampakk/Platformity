@@ -6,12 +6,22 @@ using TMPro;
 
 public class HudManager : MonoBehaviour
 {
+    public static HudManager hudMan;
+    TimerManager timer;
+    public Canvas canvas;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI timerText;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (hudMan == null) hudMan = this;
+        else Destroy(gameObject);
+
+        timer = FindObjectOfType<TimerManager>();
+
+        DontDestroyOnLoad(gameObject);
+
         //Update level text
         string levelName = SceneManager.GetActiveScene().name;
         levelText.text = "Level: " + levelName;
@@ -20,8 +30,20 @@ public class HudManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        {
+            canvas.enabled = false;
+        }
+        else
+        {
+            canvas.enabled = true;
+        }
+
         //Back to menu with esc
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             SceneManager.LoadScene(0);
+            timer.StopTimer();
+        }
     }
 }
