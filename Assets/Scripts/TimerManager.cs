@@ -78,7 +78,7 @@ public class TimerManager : MonoBehaviour
             string savedTime = times[index + 1];
             return savedTime;
         }
-        else return "0";
+        else return "none";
 
     }
 
@@ -92,7 +92,7 @@ public class TimerManager : MonoBehaviour
 
             if (timer < savedTime && timer != 0)
             {
-                string allTimesUpdated = allTimes.Replace(savedTime.ToString(), Math.Round(timer, 2).ToString());
+                string allTimesUpdated = allTimes.Replace(savedTime.ToString(), timer.ToString());
                 SaveTimer(allTimesUpdated);
             }
             else Debug.Log("shit time");
