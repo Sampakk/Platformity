@@ -70,16 +70,17 @@ public class TimerManager : MonoBehaviour
         
         if (times.Contains(SceneManager.GetActiveScene().name))
         {
-            int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
-            Debug.Log(times[index + 1] + " nice");
+            /*int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
+            //Debug.Log(times[index + 1] + " nice");
 
             float savedTime = float.Parse(times[index + 1]);
+
             if (timer < savedTime)
             {
                 Debug.Log("new hs");
                 allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";
             }
-            else Debug.Log("shit time");
+            else Debug.Log("shit time");*/
         }
         else
         {

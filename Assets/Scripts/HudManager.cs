@@ -11,6 +11,7 @@ public class HudManager : MonoBehaviour
     public Canvas canvas;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI highScoreText;
 
     // Start is called before the first frame update
     void Start()

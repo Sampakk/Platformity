@@ -18660,8 +18660,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1437134774}
   m_HandleRect: {fileID: 1437134773}
   m_Direction: 2
-  m_Value: 1.0000006
-  m_Size: 0.80000013
+  m_Value: 0.99999976
+  m_Size: 0.8
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24203,14 +24203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4001493392228010928, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8406590004398206788, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -71.4
-      objectReference: {fileID: 0}
     - target: {fileID: 8629121316437898100, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -24258,14 +24250,6 @@ PrefabInstance:
     - target: {fileID: 8629121316437898101, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629121316701022489, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629121317319128205, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e674a9776a0585248b7d6372aa1fc088, type: 3}
