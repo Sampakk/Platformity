@@ -264,7 +264,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Make custom filter
         ContactFilter2D contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(groundLayer);
+        contactFilter.SetLayerMask(groundLayer | LayerMask.GetMask("FadeBlock"));
         contactFilter.useTriggers = false;
 
         List<Collider2D> results = new List<Collider2D>();
