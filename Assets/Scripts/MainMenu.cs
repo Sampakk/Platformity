@@ -7,6 +7,8 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    Canvas canvas;
+
     [Header("Roots")]
     public GameObject levelsRoot;
     public GameObject controlsRoot;
@@ -25,12 +27,21 @@ public class MainMenu : MonoBehaviour
     public Image blackScreen;
     public float fadeTime = 1f;
 
+    [Header("Dynamic Menu")]
+    public RectTransform levelsTurnable;
+    public RectTransform controlsTurnable;
+    public float threshold = 0.55f;
+    public float maxAngle = 5f;
+    public float turnSpeed = 4f;
+
     TextMeshProUGUI headerText;
     float headerFontSize;
 
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GetComponentInChildren<Canvas>();
+
         //Show cursor & unlock
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -62,6 +73,11 @@ public class MainMenu : MonoBehaviour
             Button button = levelButtons[i];
             button.gameObject.AddComponent<ButtonController>();
 
+            //Setup highlight color to button
+            ColorBlock colors = button.colors;
+            colors.highlightedColor = Color.green;
+            button.colors = colors;
+
             //Add onClick function to button
             int levelIndex = i + 2;
             button.onClick.AddListener(delegate { LoadLevel(levelIndex); });
@@ -79,6 +95,13 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AnimateHeader();
+
+        AnimateContent();
+    }
+
+    void AnimateHeader()
+    {
         //Rotate header
         Vector3 eulers = header.rotation.eulerAngles;
         eulers.z = Mathf.Sin(Time.time * 2f) * 5f;
@@ -87,6 +110,37 @@ public class MainMenu : MonoBehaviour
 
         //Scale font
         headerText.fontSize = headerFontSize + Mathf.Sin(Time.time * 4f) * 5f;
+    }
+
+    void AnimateContent()
+    {
+        //Get mouse position from center of the screen
+        Vector2 mousePos = Input.mousePosition;
+        mousePos.x = mousePos.x - Screen.width / 2;
+        mousePos.y = mousePos.y - Screen.height / 2;
+
+        //Get multiplier from mouse position
+        Vector2 mouseMultiplier = new Vector2(mousePos.x / (Screen.width / 2), mousePos.y / (Screen.height / 2));
+        mouseMultiplier.x = Mathf.Clamp(mouseMultiplier.x, -1f, 1f);
+        mouseMultiplier.y = Mathf.Clamp(mouseMultiplier.y, -1f, 1f);
+
+        bool canRotateX = (mouseMultiplier.x > -threshold && mouseMultiplier.x < threshold) ? false : true;
+        bool canRotateY = (mouseMultiplier.y > -threshold && mouseMultiplier.y < threshold) ? false : true;
+
+        if (!canRotateX && !canRotateY)
+        {
+            mouseMultiplier.x = 0;
+            mouseMultiplier.y = 0;
+        }        
+
+        //Create rotation towards mouse
+        Vector3 rotation = new Vector3(-mouseMultiplier.y * maxAngle, mouseMultiplier.x * maxAngle, 0f);
+
+        if (levelsRoot.activeSelf) //Rotate levels
+            levelsTurnable.localRotation = Quaternion.Slerp(levelsTurnable.localRotation, Quaternion.Euler(rotation), turnSpeed * Time.deltaTime);
+        
+        if (controlsRoot.activeSelf) //Rotate controls
+            controlsTurnable.localRotation = Quaternion.Slerp(controlsTurnable.localRotation, Quaternion.Euler(rotation), turnSpeed * Time.deltaTime);
     }
 
     //Saves master volume when slider is moved
@@ -116,6 +170,8 @@ public class MainMenu : MonoBehaviour
     {
         levelsRoot.SetActive(true);
         controlsRoot.SetActive(false);
+
+        StartCoroutine(FadeInContent(true));
     }
 
     //Show controls root
@@ -123,6 +179,25 @@ public class MainMenu : MonoBehaviour
     {
         levelsRoot.SetActive(false);
         controlsRoot.SetActive(true);
+
+        StartCoroutine(FadeInContent(false));
+    }
+
+    IEnumerator FadeInContent(bool isLevels)
+    {
+        //Get correct canvas group
+        CanvasGroup canvasGroup = null;
+        if (isLevels) canvasGroup = levelsTurnable.GetComponent<CanvasGroup>();
+        else canvasGroup = controlsTurnable.GetComponent<CanvasGroup>();
+
+        canvasGroup.alpha = 0;
+
+        while (canvasGroup.alpha < 1)
+        {
+            canvasGroup.alpha += Time.deltaTime * 2f;
+
+            yield return null;
+        }
     }
 
     //Load to shop scene

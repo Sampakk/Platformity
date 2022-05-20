@@ -70,6 +70,17 @@ public class GameManager : MonoBehaviour
         if (!reload)
         {
             string levelPrefsName = "Level" + nextScene;
+
+            //First time completed level, add coins & save them
+            if (PlayerPrefs.GetInt(levelPrefsName) == 0)
+            {
+                int coins = PlayerPrefs.GetInt("Coins");
+                coins += 10;
+
+                PlayerPrefs.SetInt("Coins", coins);
+            }
+
+            //Save completion & save time
             PlayerPrefs.SetInt(levelPrefsName, 1);
             timerManager.LevelCompleted();
         }     

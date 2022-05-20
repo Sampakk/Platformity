@@ -132,6 +132,11 @@ public class CustomizationManager : MonoBehaviour
                         //Check if we have enough coins
                         if (coins >= customizable.itemPrice)
                         {
+                            //Decrease coins & update shop ui
+                            coins -= customizable.itemPrice;
+                            PlayerPrefs.SetInt("Coins", coins);
+                            FindObjectOfType<ShopManager>().UpdateCoinsText();
+
                             //Update the one we just bought
                             ownedHatsArray[i] = unlocked;
 
