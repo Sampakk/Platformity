@@ -225,7 +225,7 @@ public class MainMenu : MonoBehaviour
         blackScreen.raycastTarget = true;
 
         //Load level sound
-        MenuSounds.sounds.PlayLoadLevelSound();
+        UISounds.sounds.PlayLoadLevelSound();
 
         //Wait for to fade in
         while (blackScreen.color.a < 1f)

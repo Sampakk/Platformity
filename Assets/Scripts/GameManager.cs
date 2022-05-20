@@ -55,7 +55,27 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(float delay, bool reload)
     {
-        StartCoroutine(LoadScene(delay, reload));
+        //Check if level is last of its chapter
+        string sceneName = SceneManager.GetActiveScene().name;
+        int level = (int)char.GetNumericValue(sceneName[0]);
+        int chapter = (int)char.GetNumericValue(sceneName[2]);
+        Debug.Log("Level " + level);
+
+        if (level == 5 && !reload)
+        {
+            //Show completion screen on hud
+            HudManager.hudMan.UpdateCompletion(chapter);
+        }
+        else
+        {
+            //Load to next level
+            StartCoroutine(LoadScene(delay, reload));
+        }  
+    }
+
+    public void LoadNextChapter()
+    {
+        StartCoroutine(LoadScene(0, false));
     }
 
     IEnumerator LoadScene(float delay, bool reload)
@@ -86,5 +106,5 @@ public class GameManager : MonoBehaviour
         }     
 
         SceneManager.LoadScene(nextScene);
-    }
+    }  
 }

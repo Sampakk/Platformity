@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuSounds : MonoBehaviour
+public class UISounds : MonoBehaviour
 {
-    public static MenuSounds sounds;
+    public static UISounds sounds;
     AudioSource audioSrc;
 
     public AudioClip hoverSound;
@@ -13,10 +13,13 @@ public class MenuSounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (sounds == null)
-            sounds = this;
+        if (sounds == null) sounds = this;
+        else Destroy(gameObject);
 
+        //Get audiosource
         audioSrc = GetComponent<AudioSource>();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
