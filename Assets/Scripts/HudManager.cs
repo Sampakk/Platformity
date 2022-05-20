@@ -7,6 +7,7 @@ using TMPro;
 public class HudManager : MonoBehaviour
 {
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI timerText;
 
     // Start is called before the first frame update
     void Start()

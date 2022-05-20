@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class TimerManager : MonoBehaviour
 {
     public static TimerManager timerMan;
-
+    HudManager hud;
     float timer = 0;
+    bool timerGoing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,15 @@ public class TimerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timerGoing)
+        {
+            timer += Time.deltaTime;
 
+            if (hud != null)
+            {
+                hud.timerText.text = "Time: " + Mathf.Round(timer * 100.0f) * 0.01f;
+            }
+        }
     }
 
     void OnEnable()
@@ -39,15 +48,27 @@ public class TimerManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Level Loaded");
-        Debug.Log(scene.name);
-        Debug.Log(mode);
+        //Debug.Log("Level Loaded");
+        //Debug.Log(scene.name);
+        //Debug.Log(mode);
 
-        timer += Time.deltaTime;
+        hud = FindObjectOfType<HudManager>();
+
+        timer = 0;
+        timerGoing = true;
     }
 
     public void LevelCompleted()
     {
+        string allTimes = SceneManager.GetActiveScene().name.ToString() + " , " + timer + " , ";
+        Debug.Log(allTimes);
         //PlayerPrefs.SetString(levelPrefsName, 1);
+        timerGoing = false;
     }
+
+    void SaveTimer(string allTimes)
+    {
+
+    }
+
 }
