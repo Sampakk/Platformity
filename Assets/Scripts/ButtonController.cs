@@ -45,7 +45,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (button.interactable)
         {
-            MenuSounds.sounds.PlayHoverSound();
+            UISounds.sounds.PlayHoverSound();
 
             mouseOver = true;
         }      

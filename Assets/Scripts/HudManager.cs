@@ -13,16 +13,30 @@ public class HudManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI highScoreText;
 
+    [Header("Completion")]
+    public GameObject completionRoot;
+    public TextMeshProUGUI completeText;
+
+    [Header("Level Times")]
+    public TextMeshProUGUI level1TimeText;
+    public TextMeshProUGUI level2TimeText;
+    public TextMeshProUGUI level3TimeText;
+    public TextMeshProUGUI level4TimeText;
+    public TextMeshProUGUI level5TimeText;
+
     // Start is called before the first frame update
     void Start()
     {
         if (hudMan == null) hudMan = this;
         else Destroy(gameObject);
 
+        //Get timer
         timer = FindObjectOfType<TimerManager>();
 
-        DontDestroyOnLoad(gameObject);
+        //Hide completion root
+        completionRoot.SetActive(false);
 
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -47,5 +61,40 @@ public class HudManager : MonoBehaviour
             SceneManager.LoadScene(0);
             timer.StopTimer();
         }
+    }
+
+    public void UpdateCompletion(int chapter)
+    {
+        //Show cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        //Show completion root
+        completionRoot.SetActive(true);
+
+        //Update completion text
+        completeText.text = "You have completed chapter " + chapter; 
+
+        //Update level times
+    }
+
+    public void LoadNextChapter()
+    {
+        GameManager.game.LoadNextChapter();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        completionRoot.SetActive(false);
     }
 }

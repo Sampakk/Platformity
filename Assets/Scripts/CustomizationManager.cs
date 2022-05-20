@@ -45,6 +45,9 @@ public class CustomizationManager : MonoBehaviour
         //Move animation
         bool isMoving = (player.IsGrounded() && moveX != 0) ? true : false;
         anim.SetBool("Moving", isMoving);
+
+        //Fall animation/grounded
+        anim.SetBool("Grounded", player.IsGrounded());
     }
 
     void UpdateCustomizationsOnStart()
