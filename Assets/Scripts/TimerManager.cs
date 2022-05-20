@@ -60,8 +60,8 @@ public class TimerManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1)
         {
-            Debug.Log(GetSavedTime());
-            string savedTime = GetSavedTime();
+            Debug.Log(GetSavedTime(SceneManager.GetActiveScene().name));
+            string savedTime = GetSavedTime(SceneManager.GetActiveScene().name);
             //Debug.Log(savedTime);
             UpdateHSHud(savedTime);
 
@@ -69,10 +69,10 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    string GetSavedTime()
+    string GetSavedTime(string sceneName)
     {
         string[] times = PlayerPrefs.GetString(timerPrefsName).Split(',');
-        if (times.Contains(SceneManager.GetActiveScene().name))
+        if (times.Contains(sceneName))
         {
             int index = Array.IndexOf(times, SceneManager.GetActiveScene().name);
             string savedTime = times[index + 1];
@@ -88,7 +88,7 @@ public class TimerManager : MonoBehaviour
 
         if (times.Contains(SceneManager.GetActiveScene().name))
         {
-            float savedTime = float.Parse(GetSavedTime());
+            float savedTime = float.Parse(GetSavedTime(SceneManager.GetActiveScene().name));
 
             if (timer < savedTime && timer != 0)
             {
