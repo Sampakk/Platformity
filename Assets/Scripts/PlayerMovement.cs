@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     float moveX;
     float yVelocity;
     bool isOnIce;
+    bool loadedScene;
 
     // Start is called before the first frame update
     void Awake()
@@ -81,7 +82,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Spike")
         {
-            Die();
+            if (!loadedScene)
+            {
+                loadedScene = true;
+                Die();
+            }
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
@@ -100,7 +105,11 @@ public class PlayerMovement : MonoBehaviour
             //Play audio
             AudioManager.audioMan.PlayCompleteSound();
 
-            LevelAnimation(false);
+            if (!loadedScene)
+            {
+                loadedScene = true;
+                LevelAnimation(false);
+            }  
         }
         else if (collision.gameObject.tag == "Ice")
         {
@@ -236,6 +245,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else //Load next level
         {
+            moveX = 0;
+
             FindObjectOfType<GameManager>().LoadLevel(0, false);
         }
     }
