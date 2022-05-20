@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioMan;
     AudioSource audioSrc;
+    AudioSource musicSrc;
 
     public AudioClip throwSound;
     public AudioClip jumpSound;
@@ -22,7 +23,12 @@ public class AudioManager : MonoBehaviour
         if (audioMan == null) audioMan = this;
         else Destroy(gameObject);
 
+        //Get components
         audioSrc = GetComponent<AudioSource>();
+        musicSrc = transform.GetChild(0).GetComponent<AudioSource>();
+
+        //Setup music volume
+        UpdateMusicVolume();
 
         DontDestroyOnLoad(gameObject);
     }
@@ -31,6 +37,11 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateMusicVolume()
+    {
+        musicSrc.volume = PlayerPrefs.GetFloat("MusicVolume");
     }
 
     public void PlayFootstepSound(float volume)

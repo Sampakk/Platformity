@@ -15,9 +15,11 @@ public class MainMenu : MonoBehaviour
     public RectTransform header;
     public GameObject levelButtonRoots;
 
-    [Header("Master Volume")]
+    [Header("Volume Sliders")]
     public Slider masterVolumeSlider;
     public TextMeshProUGUI masterVolumeText;
+    public Slider musicVolumeSlider;
+    public TextMeshProUGUI musicVolumeText;
 
     [Header("Black Screen")]
     public Image blackScreen;
@@ -46,6 +48,11 @@ public class MainMenu : MonoBehaviour
         masterVolumeText.text = "Master volume: " + masterVolumeSlider.value;
 
         AudioListener.volume = masterVolumeSlider.value;
+
+        //Setup music volume slider
+        musicVolumeSlider.onValueChanged.AddListener(delegate { UpdateMusicVolume(); });
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        musicVolumeText.text = "Music Volume: " + musicVolumeSlider.value;
 
         //Setup level buttons
         Button[] levelButtons = levelButtonRoots.GetComponentsInChildren<Button>();
@@ -82,6 +89,7 @@ public class MainMenu : MonoBehaviour
         headerText.fontSize = headerFontSize + Mathf.Sin(Time.time * 4f) * 5f;
     }
 
+    //Saves master volume when slider is moved
     public void UpdateMasterVolume()
     {
         float value = (float)System.Math.Round(masterVolumeSlider.value, 1);
@@ -90,6 +98,17 @@ public class MainMenu : MonoBehaviour
 
         PlayerPrefs.SetFloat("MasterVolume", value);
         AudioListener.volume = value;
+    }
+
+    //Saves music volume when slider is moved
+    public void UpdateMusicVolume()
+    {
+        float value = (float)System.Math.Round(musicVolumeSlider.value, 1);
+        musicVolumeSlider.value = value;
+        musicVolumeText.text = "Music volume: " + value;
+
+        PlayerPrefs.SetFloat("MusicVolume", value);
+        AudioManager.audioMan.UpdateMusicVolume();
     }
 
     //Show levels root
