@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateMusicVolume()
     {
-        musicSrc.volume = PlayerPrefs.GetFloat("MusicVolume");
+        musicSrc.volume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
     }
 
     public void PlayFootstepSound(float volume)

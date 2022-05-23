@@ -17,7 +17,8 @@ public class HudManager : MonoBehaviour
     public GameObject completionRoot;
     public TextMeshProUGUI completeText;
 
-    [Header("Level Times")]
+    [Header("Levels")]
+    public GameObject levelTimesRoot;
     public TextMeshProUGUI level1TimeText;
     public TextMeshProUGUI level2TimeText;
     public TextMeshProUGUI level3TimeText;
@@ -81,6 +82,29 @@ public class HudManager : MonoBehaviour
         level3TimeText.text = TimerManager.timerMan.GetSavedTime("3-" + chapter);
         level4TimeText.text = TimerManager.timerMan.GetSavedTime("4-" + chapter);
         level5TimeText.text = TimerManager.timerMan.GetSavedTime("5-" + chapter);
+
+        //Start fading in the levels
+        StartCoroutine(FadeInLevels());
+    }
+
+    IEnumerator FadeInLevels()
+    {
+        CanvasGroup[] canvasGroups = levelTimesRoot.GetComponentsInChildren<CanvasGroup>();
+
+        //Hide all canvas groups
+        foreach (CanvasGroup canvasGroup in canvasGroups)
+            canvasGroup.alpha = 0;
+
+        //Fade in levels one by one
+        foreach (CanvasGroup canvasGroup in canvasGroups)
+        {
+            while (canvasGroup.alpha < 1)
+            {
+                canvasGroup.alpha += 2f * Time.deltaTime;
+
+                yield return null;
+            }
+        }
     }
 
     public void LoadNextChapter()
