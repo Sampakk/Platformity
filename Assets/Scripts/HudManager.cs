@@ -19,17 +19,7 @@ public class HudManager : MonoBehaviour
 
     [Header("Levels")]
     public GameObject levelTimesRoot;
-    public TextMeshProUGUI level1TimeText;
-    public TextMeshProUGUI level2TimeText;
-    public TextMeshProUGUI level3TimeText;
-    public TextMeshProUGUI level4TimeText;
-    public TextMeshProUGUI level5TimeText;
-    public TextMeshProUGUI level1OldTimeText;
-    public TextMeshProUGUI level2OldTimeText;
-    public TextMeshProUGUI level3OldTimeText;
-    public TextMeshProUGUI level4OldTimeText;
-    public TextMeshProUGUI level5OldTimeText;
-
+    public TextMeshProUGUI[] levelTimeTexts;
 
     // Start is called before the first frame update
     void Start()
@@ -82,20 +72,28 @@ public class HudManager : MonoBehaviour
         //Update completion text
         completeText.text = "You have completed chapter " + chapter;
 
-        //Update level times with new highscores
-        level1TimeText.text = TimerManager.timerMan.GetSavedTime("1-" + chapter);
-        level2TimeText.text = TimerManager.timerMan.GetSavedTime("2-" + chapter);
-        level3TimeText.text = TimerManager.timerMan.GetSavedTime("3-" + chapter);
-        level4TimeText.text = TimerManager.timerMan.GetSavedTime("4-" + chapter);
-        level5TimeText.text = TimerManager.timerMan.GetSavedTime("5-" + chapter);
+        //Update all level times
+        for (int i = 0; i < levelTimeTexts.Length; i++)
+        {
+            TextMeshProUGUI timeText = levelTimeTexts[i];
 
-        //update times with old times
-        level1OldTimeText.text = TimerManager.timerMan.GetOldTime("1-" + chapter) + " -> ";
-        level2OldTimeText.text = TimerManager.timerMan.GetOldTime("2-" + chapter) + " -> ";
-        level3OldTimeText.text = TimerManager.timerMan.GetOldTime("3-" + chapter) + " -> ";
-        level4OldTimeText.text = TimerManager.timerMan.GetOldTime("4-" + chapter) + " -> ";
-        level5OldTimeText.text = TimerManager.timerMan.GetOldTime("5-" + chapter) + " -> ";
+            int level = i + 1;        
+            float newTime = float.Parse(TimerManager.timerMan.GetSavedTime(level + "-" + chapter));
+            float oldTime = float.Parse(TimerManager.timerMan.GetOldTime(level + "-" + chapter));
 
+            if (oldTime == 0) //First time ever
+            {
+                timeText.text = newTime + "s";
+            }
+            else if (newTime < oldTime) //New highscore
+            {
+                timeText.text = "<s>" + oldTime + "</s>" + "/" + newTime;
+            }
+            else //Old time is better
+            {
+                timeText.text = "<s>" + newTime + "</s>" + "/" + oldTime;
+            }         
+        }
 
         //Start fading in the levels
         StartCoroutine(FadeInLevels());

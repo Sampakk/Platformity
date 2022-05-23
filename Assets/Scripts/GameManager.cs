@@ -46,7 +46,11 @@ public class GameManager : MonoBehaviour
     {
         //If in editor, skip this level
         if (Input.GetKeyDown(KeyCode.P))
+        {
+            TimerManager.timerMan.LevelCompleted();
             LoadLevel(0, false);
+        }
+            
 
 #if UNITY_EDITOR
 

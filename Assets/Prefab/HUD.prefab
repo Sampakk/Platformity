@@ -166,10 +166,10 @@ RectTransform:
   m_Father: {fileID: 3651681089695069315}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -30}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &5568193232587713724
 CanvasGroup:
@@ -617,10 +617,10 @@ RectTransform:
   m_Father: {fileID: 3651681089695069315}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -270}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &9047430195202486494
 CanvasGroup:
@@ -971,10 +971,10 @@ RectTransform:
   m_Father: {fileID: 3651681089695069315}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -90}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &4404727548677617573
 CanvasGroup:
@@ -1055,7 +1055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3651681089695069315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1078,7 +1078,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -166.39, y: 0}
-  m_SizeDelta: {x: 500, y: 0}
+  m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5331233042387243413
 MonoBehaviour:
@@ -2731,10 +2731,10 @@ RectTransform:
   m_Father: {fileID: 3651681089695069315}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -210}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &7047972396484956500
 CanvasGroup:
@@ -2780,10 +2780,10 @@ RectTransform:
   m_Father: {fileID: 3651681089695069315}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -150}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &8470778264052954671
 CanvasGroup:
@@ -3426,16 +3426,12 @@ MonoBehaviour:
   completionRoot: {fileID: 8106087016073908424}
   completeText: {fileID: 6632977003723102972}
   levelTimesRoot: {fileID: 1751384271157708367}
-  level1TimeText: {fileID: 6234559178333189547}
-  level2TimeText: {fileID: 6234092034834673492}
-  level3TimeText: {fileID: 942357286358630205}
-  level4TimeText: {fileID: 4462309057964403412}
-  level5TimeText: {fileID: 8859072277067641794}
-  level1OldTimeText: {fileID: 7399999356421223237}
-  level2OldTimeText: {fileID: 8625404174150625311}
-  level3OldTimeText: {fileID: 2473121677517224737}
-  level4OldTimeText: {fileID: 2556415646625423423}
-  level5OldTimeText: {fileID: 6426190454545862571}
+  levelTimeTexts:
+  - {fileID: 6234559178333189547}
+  - {fileID: 6234092034834673492}
+  - {fileID: 942357286358630205}
+  - {fileID: 4462309057964403412}
+  - {fileID: 8859072277067641794}
 --- !u!1 &8629121316701022488
 GameObject:
   m_ObjectHideFlags: 0
@@ -3936,7 +3932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 24s
+  m_text: <s>24s</s>/23s
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad09ed00b060c1040a190b3f05061d59, type: 2}
   m_sharedMaterial: {fileID: -3588271199174955087, guid: ad09ed00b060c1040a190b3f05061d59, type: 2}
