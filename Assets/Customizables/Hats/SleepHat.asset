@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2465038f2f82ccf4589edc685e94c8c7, type: 3}
-  m_Name: TestHat2
+  m_Name: SleepHat
   m_EditorClassIdentifier: 
-  itemName: Test Hat2
-  itemPrice: 100
-  itemSprite: {fileID: 21300000, guid: 1ba3e6a2b92f6ec4da5e74d9c829c5da, type: 3}
+  itemName: Sleep Hat
+  itemPrice: 150
+  itemSprite: {fileID: 21300000, guid: e760aa9e9cf0ad343bc8f282d0d46e77, type: 3}
   itemType: 0

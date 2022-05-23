@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     [Header("Hovering")]
     public float hoverRange = 0.5f;
     public float hoverSpeed = 2f;
+    float offset;
 
     Vector3 startPos;
 
@@ -27,7 +28,7 @@ public class Item : MonoBehaviour
         itemPriceText.text = "Price: " + customizable.itemPrice;
 
         //Update sprite
-        SpriteRenderer itemSprite = GetComponentInChildren<SpriteRenderer>();
+        SpriteRenderer itemSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         itemSprite.sprite = customizable.itemSprite;
         itemSprite.color = Color.gray;
     }
@@ -35,7 +36,7 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float yOffset = Mathf.Sin(Time.time * hoverSpeed) * (hoverRange / 2f);
+        float yOffset = Mathf.Sin(Time.time * hoverSpeed + offset) * (hoverRange / 2f);
         transform.position = new Vector3(transform.position.x, startPos.y + yOffset, transform.position.z);
     }
 
@@ -44,5 +45,10 @@ public class Item : MonoBehaviour
         CustomizationManager customization = FindObjectOfType<CustomizationManager>();
         if (customization != null)
             customization.BuyCustomizable(customizable);
+    }
+
+    public void SetOffset(float offset)
+    {
+        this.offset = offset;
     }
 }

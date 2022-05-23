@@ -10,10 +10,15 @@ public class ShopManager : MonoBehaviour
 
     public TextMeshProUGUI coinsText;
 
+    [Header("Items")]
+    public Transform itemsRoot;
+
     // Start is called before the first frame update
     void Start()
     {
         UpdateCoinsText();
+
+        OffsetItems();
     }
 
     // Update is called once per frame
@@ -26,5 +31,18 @@ public class ShopManager : MonoBehaviour
     {
         coins = PlayerPrefs.GetInt("Coins", 0);
         coinsText.text = "Coins: " + coins;
+    }
+
+    void OffsetItems()
+    {
+        //Get all items
+        Item[] items = itemsRoot.GetComponentsInChildren<Item>();
+
+        //Set offset for every item
+        for (int i = 0; i < items.Length; i++)
+        {
+            Item item = items[i];
+            item.SetOffset(item.hoverRange * i);
+        }
     }
 }
