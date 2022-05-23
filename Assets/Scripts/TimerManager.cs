@@ -27,13 +27,11 @@ public class TimerManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        Debug.Log("oldtimes updated");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(oldTimes + "<- oldtimes");
 
         if (timerGoing)
         {
