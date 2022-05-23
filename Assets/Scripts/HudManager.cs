@@ -112,6 +112,10 @@ public class HudManager : MonoBehaviour
         //Fade in levels one by one
         foreach (CanvasGroup canvasGroup in canvasGroups)
         {
+            //Audio
+            AudioManager.audioMan.PlayLevelTimeSound();
+
+            //Get rect & scale it bigger
             RectTransform rect = canvasGroup.GetComponent<RectTransform>();
             rect.localScale = new Vector3(1.5f, 1.5f, 1f);
 

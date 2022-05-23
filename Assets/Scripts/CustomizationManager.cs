@@ -7,10 +7,7 @@ using UnityEngine;
 public class CustomizationManager : MonoBehaviour
 {
     Animator anim;
-    AudioSource audioSrc;
     PlayerMovement player;
-
-    public AudioClip buySound;
 
     [Header("Customizables")]
     public Customizable[] hats;
@@ -24,7 +21,6 @@ public class CustomizationManager : MonoBehaviour
     void Start()
     {
         anim = GetComponentInParent<Animator>();
-        audioSrc = GetComponent<AudioSource>();
         player = GetComponentInParent<PlayerMovement>();
 
         UpdateCustomizationsOnStart();
@@ -141,7 +137,7 @@ public class CustomizationManager : MonoBehaviour
                         if (coins >= customizable.itemPrice)
                         {
                             //Audio
-                            audioSrc.PlayOneShot(buySound, 1f);
+                            AudioManager.audioMan.PlayBuySound();
 
                             //Decrease coins & update shop ui
                             coins -= customizable.itemPrice;

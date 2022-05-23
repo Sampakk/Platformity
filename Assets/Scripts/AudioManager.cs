@@ -8,6 +8,11 @@ public class AudioManager : MonoBehaviour
     AudioSource audioSrc;
     AudioSource musicSrc;
 
+    [Header("UI Sounds")]
+    public AudioClip levelTimeSound;
+    public AudioClip buySound;
+
+    [Header("Player Sounds")]
     public AudioClip throwSound;
     public AudioClip jumpSound;
     public AudioClip deathSound;
@@ -70,5 +75,15 @@ public class AudioManager : MonoBehaviour
     public void PlayCompleteSound()
     {
         audioSrc.PlayOneShot(completeSound, 0.2f);
+    }
+
+    public void PlayLevelTimeSound()
+    {
+        audioSrc.PlayOneShot(levelTimeSound, 1f);
+    }
+
+    public void PlayBuySound()
+    {
+        audioSrc.PlayOneShot(buySound, 1f);
     }
 }
