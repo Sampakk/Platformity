@@ -24,6 +24,12 @@ public class HudManager : MonoBehaviour
     public TextMeshProUGUI level3TimeText;
     public TextMeshProUGUI level4TimeText;
     public TextMeshProUGUI level5TimeText;
+    public TextMeshProUGUI level1OldTimeText;
+    public TextMeshProUGUI level2OldTimeText;
+    public TextMeshProUGUI level3OldTimeText;
+    public TextMeshProUGUI level4OldTimeText;
+    public TextMeshProUGUI level5OldTimeText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -76,12 +82,20 @@ public class HudManager : MonoBehaviour
         //Update completion text
         completeText.text = "You have completed chapter " + chapter;
 
-        //Update level times
+        //Update level times with new highscores
         level1TimeText.text = TimerManager.timerMan.GetSavedTime("1-" + chapter);
         level2TimeText.text = TimerManager.timerMan.GetSavedTime("2-" + chapter);
         level3TimeText.text = TimerManager.timerMan.GetSavedTime("3-" + chapter);
         level4TimeText.text = TimerManager.timerMan.GetSavedTime("4-" + chapter);
         level5TimeText.text = TimerManager.timerMan.GetSavedTime("5-" + chapter);
+
+        //update times with old times
+        level1OldTimeText.text = TimerManager.timerMan.GetOldTime("1-" + chapter) + " -> ";
+        level2OldTimeText.text = TimerManager.timerMan.GetOldTime("2-" + chapter) + " -> ";
+        level3OldTimeText.text = TimerManager.timerMan.GetOldTime("3-" + chapter) + " -> ";
+        level4OldTimeText.text = TimerManager.timerMan.GetOldTime("4-" + chapter) + " -> ";
+        level5OldTimeText.text = TimerManager.timerMan.GetOldTime("5-" + chapter) + " -> ";
+
 
         //Start fading in the levels
         StartCoroutine(FadeInLevels());

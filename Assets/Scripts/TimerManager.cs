@@ -15,6 +15,7 @@ public class TimerManager : MonoBehaviour
     bool timerGoing = false;
     string allTimes = "";
     float timeRounded;
+    string oldTimes = "";
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,15 @@ public class TimerManager : MonoBehaviour
         allTimes = PlayerPrefs.GetString(timerPrefsName);
 
         DontDestroyOnLoad(gameObject);
+
+        Debug.Log("oldtimes updated");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(oldTimes + "<- oldtimes");
+
         if (timerGoing)
         {
             timer += Time.deltaTime;
@@ -72,6 +77,7 @@ public class TimerManager : MonoBehaviour
 
             timerGoing = true;
         }
+        else if(SceneManager.GetActiveScene().buildIndex == 0) oldTimes = PlayerPrefs.GetString(timerPrefsName);
     }
 
     public string GetSavedTime(string sceneName)
@@ -98,7 +104,6 @@ public class TimerManager : MonoBehaviour
                 string allTimesUpdated = allTimes.Replace(savedTime.ToString(), timeRounded.ToString());
                 allTimes = allTimesUpdated;
                 SaveTimer(allTimesUpdated);
-                Debug.Log(allTimesUpdated + " AlltimesUpdated variable");
             }
         }
         else
@@ -109,6 +114,25 @@ public class TimerManager : MonoBehaviour
         StopTimer();
     }
 
+    public string GetOldTime(string sceneName)
+    {
+        string[] oldTimers = oldTimes.Split(' ');
+
+        if (oldTimers.Contains(sceneName))
+        {
+            int index = Array.IndexOf(oldTimers, sceneName);
+            string savedOldTime = oldTimers[index + 1];
+            return savedOldTime;
+            //if (float.Parse(savedOldTime) < float.Parse(GetSavedTime(sceneName)))
+            //{
+            //    return savedOldTime.ToString();
+            //}
+            //else return GetSavedTime(sceneName);
+        }
+        else return "None";
+
+
+    }
     public void StopTimer()
     {
         timerGoing = false;
