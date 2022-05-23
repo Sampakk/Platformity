@@ -98,7 +98,6 @@ public class TimerManager : MonoBehaviour
                 string allTimesUpdated = allTimes.Replace(savedTime.ToString(), timer.ToString());
                 SaveTimer(allTimesUpdated);
             }
-            else Debug.Log("shit time");
         }
         else
         {
@@ -106,7 +105,6 @@ public class TimerManager : MonoBehaviour
             SaveTimer(allTimes);
         }
         StopTimer();
-        //Debug.Log(PlayerPrefs.GetString(timerPrefsName));
     }
 
     public void StopTimer()
@@ -125,5 +123,3 @@ public class TimerManager : MonoBehaviour
         hud.highScoreText.text = "Highscore: " + highScore;
     }
 }
-//PlayerPrefs.SetString(playerPrefsName, allTimes);
-//allTimes += SceneManager.GetActiveScene().name.ToString() + "," + Math.Round(timer, 2) + ",";

@@ -109,7 +109,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 loadedScene = true;
                 LevelAnimation(false);
-            }  
+                TimerManager.timerMan.LevelCompleted();
+            }
         }
         else if (collision.gameObject.tag == "Ice")
         {

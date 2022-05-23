@@ -102,7 +102,6 @@ public class GameManager : MonoBehaviour
 
             //Save completion & save time
             PlayerPrefs.SetInt(levelPrefsName, 1);
-            timerManager.LevelCompleted();
         }     
 
         SceneManager.LoadScene(nextScene);
