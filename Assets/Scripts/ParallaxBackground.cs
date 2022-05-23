@@ -6,7 +6,8 @@ public class ParallaxBackground : MonoBehaviour
 {
     PlayerMovement player;
 
-    public float parallaxAmount = 0.2f;
+    public float parallaxAmountX = 0.2f;
+    public float parallaxAmountY = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class ParallaxBackground : MonoBehaviour
         if (player != null)
         {
             Vector3 pos = transform.position;
-            pos.x = -player.transform.position.x * parallaxAmount;
+            pos.x = -player.transform.position.x * parallaxAmountX;
+            pos.y = -player.transform.position.y * parallaxAmountY;
 
             transform.position = pos;
         }
