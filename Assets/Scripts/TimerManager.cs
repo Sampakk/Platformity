@@ -14,6 +14,7 @@ public class TimerManager : MonoBehaviour
     float timer = 0;
     bool timerGoing = false;
     string allTimes = "";
+    float timeRounded;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,6 @@ public class TimerManager : MonoBehaviour
         else Destroy(gameObject);
 
         allTimes = PlayerPrefs.GetString(timerPrefsName);
-        Debug.Log(allTimes);
 
         DontDestroyOnLoad(gameObject);
     }
@@ -33,6 +33,8 @@ public class TimerManager : MonoBehaviour
         if (timerGoing)
         {
             timer += Time.deltaTime;
+
+            timeRounded = (float)Math.Round(timer, 2);
 
             if (hud != null)
             {
@@ -64,7 +66,6 @@ public class TimerManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1)
         {
-            Debug.Log(GetSavedTime(SceneManager.GetActiveScene().name));
             string savedTime = GetSavedTime(SceneManager.GetActiveScene().name);
             //Debug.Log(savedTime);
             UpdateHSHud(savedTime);
@@ -92,16 +93,17 @@ public class TimerManager : MonoBehaviour
         if (times.Contains(SceneManager.GetActiveScene().name))
         {
             float savedTime = float.Parse(GetSavedTime(SceneManager.GetActiveScene().name));
-
-            if (timer < savedTime && timer != 0)
+            if (timeRounded < savedTime)
             {
-                string allTimesUpdated = allTimes.Replace(savedTime.ToString(), timer.ToString());
+                string allTimesUpdated = allTimes.Replace(savedTime.ToString(), timeRounded.ToString());
+                allTimes = allTimesUpdated;
                 SaveTimer(allTimesUpdated);
+                Debug.Log(allTimesUpdated + " AlltimesUpdated variable");
             }
         }
         else
         {
-            allTimes += SceneManager.GetActiveScene().name.ToString() + " " + Math.Round(timer, 2) + " ";
+            allTimes += SceneManager.GetActiveScene().name.ToString() + " " + Math.Round(timeRounded, 2) + " ";
             SaveTimer(allTimes);
         }
         StopTimer();
