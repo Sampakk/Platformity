@@ -87,7 +87,7 @@ public class TimerManager : MonoBehaviour
             string savedTime = times[index + 1];
             return savedTime;
         }
-        else return "none";
+        else return "0";
     }
 
     public void LevelCompleted()
@@ -127,7 +127,7 @@ public class TimerManager : MonoBehaviour
             //}
             //else return GetSavedTime(sceneName);
         }
-        else return "None";
+        else return "0";
 
 
     }
