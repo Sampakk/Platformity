@@ -98,9 +98,16 @@ public class HudManager : MonoBehaviour
         //Fade in levels one by one
         foreach (CanvasGroup canvasGroup in canvasGroups)
         {
+            RectTransform rect = canvasGroup.GetComponent<RectTransform>();
+            rect.localScale = new Vector3(1.5f, 1.5f, 1f);
+
             while (canvasGroup.alpha < 1)
             {
-                canvasGroup.alpha += 2f * Time.deltaTime;
+                //Fade in
+                canvasGroup.alpha += 3f * Time.deltaTime;
+
+                //Scale back to normal
+                rect.localScale = Vector3.MoveTowards(rect.localScale, Vector3.one, 2f * Time.deltaTime);
 
                 yield return null;
             }
