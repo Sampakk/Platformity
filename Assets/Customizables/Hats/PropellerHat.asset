@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2465038f2f82ccf4589edc685e94c8c7, type: 3}
-  m_Name: TestHat
+  m_Name: PropellerHat
   m_EditorClassIdentifier: 
-  itemName: Test Hat
-  itemPrice: 50
-  itemSprite: {fileID: 21300000, guid: 88704671cff358e49a7227af4d888bfb, type: 3}
+  itemName: Propeller Hat
+  itemPrice: 100
+  itemSprite: {fileID: 21300000, guid: 4e2b02c622c8b4948ba7008d147f44e9, type: 3}
   itemType: 0
