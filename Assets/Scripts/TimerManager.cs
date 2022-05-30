@@ -61,16 +61,12 @@ public class TimerManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        //Debug.Log("Level Loaded");
-        //Debug.Log(scene.name);
-        //Debug.Log(mode);
 
         hud = FindObjectOfType<HudManager>();
 
-        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1) //Not menu or shop
         {
             string savedTime = GetSavedTime(SceneManager.GetActiveScene().name);
-            //Debug.Log(savedTime);
             UpdateHSHud(savedTime);
 
             timerGoing = true;

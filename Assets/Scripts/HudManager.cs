@@ -81,6 +81,8 @@ public class HudManager : MonoBehaviour
             float newTime = float.Parse(TimerManager.timerMan.GetSavedTime(level + "-" + chapter));
             float oldTime = float.Parse(TimerManager.timerMan.GetOldTime(level + "-" + chapter));
 
+            timeText.color = Color.white;
+
             if (oldTime == 0) //First time ever
             {
                 timeText.text = newTime + "s";
@@ -88,10 +90,12 @@ public class HudManager : MonoBehaviour
             else if (newTime < oldTime) //New highscore
             {
                 timeText.text = "<s>" + oldTime + "</s>" + "/" + newTime;
+                timeText.color = Color.green;
             }
             else //Old time is better
             {
-                timeText.text = "<s>" + newTime + "</s>" + "/" + oldTime;
+                timeText.text = /*"<s>" + newTime + "</s>" + "/" +*/"" + oldTime;
+
             }         
         }
 
