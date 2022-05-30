@@ -6382,6 +6382,8 @@ MonoBehaviour:
   controlsRoot: {fileID: 1406522459}
   header: {fileID: 405053998}
   levelButtonRoots: {fileID: 1057631549}
+  normalModeButton: {fileID: 943284929}
+  speedrunModeButton: {fileID: 939232490}
   masterVolumeSlider: {fileID: 344068040}
   masterVolumeText: {fileID: 1440889729}
   musicVolumeSlider: {fileID: 465349953}
@@ -9834,7 +9836,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 939232491}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 538245699}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: UpdateGameMode
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &939232491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9970,7 +9984,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 943284930}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 538245699}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: UpdateGameMode
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &943284930
 MonoBehaviour:
   m_ObjectHideFlags: 0
