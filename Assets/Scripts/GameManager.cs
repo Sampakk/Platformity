@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour
         int chapter = (int)char.GetNumericValue(sceneName[2]);
         Debug.Log("Level " + level);
 
-        if (level == 5 && !reload)
+        int timerState = PlayerPrefs.GetInt("Timer", 0);
+        if ((level == 5 && !reload) && timerState == 1) //Chapter completed, only if timer is on
         {
             //Show completion screen on hud
             HudManager.hudMan.UpdateCompletion(chapter);

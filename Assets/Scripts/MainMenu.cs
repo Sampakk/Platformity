@@ -19,7 +19,11 @@ public class MainMenu : MonoBehaviour
 
     [Header("Gamemode Buttons")]
     public Button normalModeButton;
-    public Button speedrunModeButton;
+    public Button hardModeButton;
+    public Button hcModeButton;
+
+    [Header("Timer Toggle")]
+    public Toggle timerToggle;
 
     [Header("Volume Sliders")]
     public Slider masterVolumeSlider;
@@ -57,6 +61,10 @@ public class MainMenu : MonoBehaviour
         //Get header text
         headerText = header.GetComponent<TextMeshProUGUI>();
         headerFontSize = headerText.fontSize;
+
+        //Setup timer toggle
+        if (PlayerPrefs.GetInt("Timer", 0) == 0) timerToggle.isOn = false;
+        else timerToggle.isOn = true;
 
         //Setup master volume slider
         masterVolumeSlider.onValueChanged.AddListener(delegate { UpdateMasterVolume(); });
@@ -218,6 +226,13 @@ public class MainMenu : MonoBehaviour
                 }   
             }
         }
+    }
+
+    //Updates timer toggle to playerprefs
+    public void UpdateTimerToggle()
+    {
+        int state = (timerToggle.isOn) ? 1 : 0;
+        PlayerPrefs.SetInt("Timer", state);
     }
 
     //Show levels root

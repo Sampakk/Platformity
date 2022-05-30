@@ -152,5 +152,17 @@ public class HudManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         completionRoot.SetActive(false);
+
+        //Hide or show timer
+        if (PlayerPrefs.GetInt("Timer") == 0) //Hide
+        {
+            timerText.enabled = false;
+            highScoreText.enabled = false;
+        }
+        else //Show
+        {
+            timerText.enabled = true;
+            highScoreText.enabled = true;
+        }
     }
 }
