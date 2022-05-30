@@ -205,11 +205,16 @@ public class MainMenu : MonoBehaviour
                     {
                         button.interactable = true;
                     }
-                    else if (gamemode == 1) //Speedrun
+                    else if (gamemode == 1) //Hard
                     {
                         if ((levelIndex - 2) % 5 != 0)
                             button.interactable = false;
-                    }                  
+                    }
+                    else if (gamemode == 2) //Hardcore
+                    {
+                        if (levelIndex > 2)
+                            button.interactable = false;
+                    }
                 }   
             }
         }
