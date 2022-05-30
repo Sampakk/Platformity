@@ -17,6 +17,10 @@ public class MainMenu : MonoBehaviour
     public RectTransform header;
     public GameObject levelButtonRoots;
 
+    [Header("Gamemode Buttons")]
+    public Button normalModeButton;
+    public Button speedrunModeButton;
+
     [Header("Volume Sliders")]
     public Slider masterVolumeSlider;
     public TextMeshProUGUI masterVolumeText;
@@ -34,6 +38,7 @@ public class MainMenu : MonoBehaviour
     public float maxAngle = 5f;
     public float turnSpeed = 4f;
 
+    Button[] levelButtons;
     TextMeshProUGUI headerText;
     float headerFontSize;
 
@@ -66,7 +71,7 @@ public class MainMenu : MonoBehaviour
         musicVolumeText.text = "Music Volume: " + musicVolumeSlider.value;
 
         //Setup level buttons
-        Button[] levelButtons = levelButtonRoots.GetComponentsInChildren<Button>();
+        levelButtons = levelButtonRoots.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
@@ -86,10 +91,13 @@ public class MainMenu : MonoBehaviour
             if (levelIndex > 2)
             {
                 string levelPrefsName = "Level" + levelIndex;
+
                 if (PlayerPrefs.GetInt(levelPrefsName) == 0)
                     button.interactable = false;
             }
         }
+
+        UpdateLevelButtons();
     }
 
     // Update is called once per frame
@@ -163,6 +171,48 @@ public class MainMenu : MonoBehaviour
 
         PlayerPrefs.SetFloat("MusicVolume", value);
         AudioManager.audioMan.UpdateMusicVolume();
+    }
+
+    //Updates gamemode to playerprefs
+    public void UpdateGameMode(int index)
+    {
+        PlayerPrefs.SetInt("Gamemode", index);
+
+        UpdateLevelButtons();
+    }
+
+    void UpdateLevelButtons()
+    {
+        int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
+
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            Button button = levelButtons[i];
+            int levelIndex = i + 2;
+
+            //Check if level isn't completed and then disable button
+            if (levelIndex > 2)
+            {
+                string levelPrefsName = "Level" + levelIndex;
+
+                if (PlayerPrefs.GetInt(levelPrefsName) == 0)
+                {
+                    button.interactable = false;
+                }
+                else //Unlocked, check if not the first level of chapter
+                {
+                    if (gamemode == 0) //Normal
+                    {
+                        button.interactable = true;
+                    }
+                    else if (gamemode == 1) //Speedrun
+                    {
+                        if ((levelIndex - 2) % 5 != 0)
+                            button.interactable = false;
+                    }                  
+                }   
+            }
+        }
     }
 
     //Show levels root
