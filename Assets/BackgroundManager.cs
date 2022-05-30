@@ -41,18 +41,36 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = backgroundRoot.transform.position;
+        Vector3 posB = backgroundSR.transform.position;
+        Vector3 posM = middlegroundSR.transform.position;
+        Vector3 posF = foregroundSR.transform.position;
         Quaternion rot = backgroundRoot.transform.rotation;
 
         if (player != null && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1) 
         {
-            //Transfrom positions and rotation relative to player
-            pos.x = -player.transform.position.x * background.parallaxAmountXf;
-            pos.y = -player.transform.position.y * background.parallaxAmountYf;
+            //Transfrom positions and rotation relative to player for back image
+            posB.x = -player.transform.position.x * background.parallaxAmountXb;
+            posB.y = -player.transform.position.y * background.parallaxAmountYb;
+            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * background.parallaxAmountZrotb);
+
+            backgroundSR.transform.position = posB;
+            backgroundSR.transform.rotation = rot;
+
+            //Transfrom positions and rotation relative to player for middle image
+            posM.x = -player.transform.position.x * background.parallaxAmountXm;
+            posM.y = -player.transform.position.y * background.parallaxAmountYm;
+            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * background.parallaxAmountZrotm);
+
+            middlegroundSR.transform.position = posM;
+            middlegroundSR.transform.rotation = rot;
+
+            //Transfrom positions and rotation relative to player for fore image
+            posF.x = -player.transform.position.x * background.parallaxAmountXf;
+            posF.y = -player.transform.position.y * background.parallaxAmountYf;
             rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * background.parallaxAmountZrotf);
 
-            backgroundRoot.transform.position = pos;
-            backgroundRoot.transform.rotation = rot;
+            foregroundSR.transform.position = posF;
+            foregroundSR.transform.rotation = rot;
         }
     }
 
