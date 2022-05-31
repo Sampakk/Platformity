@@ -57,6 +57,11 @@ public class SteamAchievements : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
             SetAchievement("ACH_HC_COMPLETED");
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SteamUserStats.ResetAllStats(true);
+        }
     }
 
     public void SetAchievement(string achievementName)
