@@ -48,9 +48,9 @@ public class BackgroundManager : MonoBehaviour
 
         if (player != null && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1) 
         {
-            Vector3 scaleB = new Vector3(-player.transform.position.x * background.parallaxAmountScaleb, -player.transform.position.x * background.parallaxAmountScaleb, 0f);
-            Vector3 scaleM = new Vector3(-player.transform.position.x * background.parallaxAmountScalem, -player.transform.position.x * background.parallaxAmountScalem, 0f);
-            Vector3 scaleF = new Vector3(-player.transform.position.x * background.parallaxAmountScalef, -player.transform.position.x * background.parallaxAmountScalef, 0f);
+            Vector3 scaleB = new Vector3((Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizeb), (Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizeb), 0f);
+            Vector3 scaleM = new Vector3((Mathf.Abs(-player.transform.position.x /18) -1 * -background.imageMaxSizem) , (Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizem), 0f);
+            Vector3 scaleF = new Vector3((Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizef), (Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizef), 0f);
 
             //Transfrom positions and rotation relative to player for back image
             posB.x = -player.transform.position.x * background.parallaxAmountXb;
@@ -62,8 +62,7 @@ public class BackgroundManager : MonoBehaviour
 
             if (background.parallaxAmountScaleb != 0) 
             {
-                if (-background.parallaxScaleDeadzoneb < player.transform.position.x && player.transform.position.x < background.parallaxScaleDeadzoneb) backgroundSR.transform.localScale = new Vector3(background.parallaxAmountScaleb * background.parallaxScaleDeadzoneb, background.parallaxAmountScaleb * background.parallaxScaleDeadzoneb, 0);
-                else backgroundSR.transform.localScale = scaleB;
+                backgroundSR.transform.localScale = scaleB;
             }
 
             //Transfrom positions and rotation relative to player for middle image
@@ -76,8 +75,7 @@ public class BackgroundManager : MonoBehaviour
 
             if (background.parallaxAmountScalem != 0)
             {
-                if (-background.parallaxScaleDeadzonem < player.transform.position.x && player.transform.position.x < background.parallaxScaleDeadzonem) middlegroundSR.transform.localScale = new Vector3(background.parallaxAmountScalem * background.parallaxScaleDeadzonem, background.parallaxAmountScalem * background.parallaxScaleDeadzonem, 0);
-                else middlegroundSR.transform.localScale = scaleM;
+                middlegroundSR.transform.localScale = scaleM;
             }
 
             //Transfrom positions and rotation relative to player for fore image
@@ -90,8 +88,7 @@ public class BackgroundManager : MonoBehaviour
 
             if (background.parallaxAmountScalef != 0) 
             {
-                if (-background.parallaxScaleDeadzonef < player.transform.position.x && player.transform.position.x < background.parallaxScaleDeadzonef) foregroundSR.transform.localScale = new Vector3(background.parallaxAmountScalef * background.parallaxScaleDeadzonef, background.parallaxAmountScalef * background.parallaxScaleDeadzonef, 0);
-                else foregroundSR.transform.localScale = scaleF;
+                foregroundSR.transform.localScale = scaleF;
             }
         }
     }
