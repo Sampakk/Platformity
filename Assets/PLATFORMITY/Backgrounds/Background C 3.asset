@@ -20,14 +20,14 @@ MonoBehaviour:
   parallaxAmountYb: 0
   parallaxAmountZrotb: 1
   parallaxAmountScaleb: 0
-  parallaxScaleDeadzoneb: 0
+  divideAmountb: 18
   parallaxAmountXm: 0
   parallaxAmountYm: 0
   parallaxAmountZrotm: 2
   parallaxAmountScalem: 0
-  parallaxScaleDeadzonem: 0
+  divideAmountm: 18
   parallaxAmountXf: 0
   parallaxAmountYf: 0
   parallaxAmountZrotf: 3
   parallaxAmountScalef: 0
-  parallaxScaleDeadzonef: 0
+  divideAmountf: 18

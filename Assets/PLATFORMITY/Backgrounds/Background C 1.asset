@@ -19,15 +19,15 @@ MonoBehaviour:
   parallaxAmountXb: 0.3
   parallaxAmountYb: 0.5
   parallaxAmountZrotb: 0
-  parallaxAmountScaleb: 0.12
-  imageMaxSizeb: 3
+  parallaxAmountScaleb: 1.2
+  divideAmountb: 18
   parallaxAmountXm: 0.2
   parallaxAmountYm: 0.3
   parallaxAmountZrotm: 0
-  parallaxAmountScalem: 0.08
-  imageMaxSizem: 2
+  parallaxAmountScalem: 0.8
+  divideAmountm: 18
   parallaxAmountXf: 0.1
   parallaxAmountYf: 0.1
   parallaxAmountZrotf: 0
-  parallaxAmountScalef: 0.04
-  imageMaxSizef: 1
+  parallaxAmountScalef: 0.4
+  divideAmountf: 18

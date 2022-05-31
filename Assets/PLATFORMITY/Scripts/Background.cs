@@ -16,19 +16,19 @@ public class Background : ScriptableObject
     public float parallaxAmountYb;
     public float parallaxAmountZrotb;
     public float parallaxAmountScaleb;
-    public float imageMaxSizeb;
+    public float divideAmountb;
 
     [Header("Middle values")]
     public float parallaxAmountXm;
     public float parallaxAmountYm;
     public float parallaxAmountZrotm;
     public float parallaxAmountScalem;
-    public float imageMaxSizem;
+    public float divideAmountm;
 
     [Header("Fore values")]
     public float parallaxAmountXf;
     public float parallaxAmountYf;
     public float parallaxAmountZrotf;
     public float parallaxAmountScalef;
-    public float imageMaxSizef;
+    public float divideAmountf;
 }

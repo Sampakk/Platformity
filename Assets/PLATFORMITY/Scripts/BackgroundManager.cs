@@ -48,9 +48,9 @@ public class BackgroundManager : MonoBehaviour
 
         if (player != null && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1) 
         {
-            Vector3 scaleB = new Vector3((Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizeb), (Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizeb), 0f);
-            Vector3 scaleM = new Vector3((Mathf.Abs(-player.transform.position.x /18) -1 * -background.imageMaxSizem) , (Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizem), 0f);
-            Vector3 scaleF = new Vector3((Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizef), (Mathf.Abs(-player.transform.position.x / 18) - 1 * -background.imageMaxSizef), 0f);
+            Vector3 scaleB = new Vector3((Mathf.Abs(-player.transform.position.x / background.divideAmountb) - 1 * -background.parallaxAmountScaleb), (Mathf.Abs(-player.transform.position.x / background.divideAmountb) - 1 * -background.parallaxAmountScaleb), 0f);
+            Vector3 scaleM = new Vector3((Mathf.Abs(-player.transform.position.x / background.divideAmountm) -1 * -background.parallaxAmountScalem) , (Mathf.Abs(-player.transform.position.x / background.divideAmountm) - 1 * -background.parallaxAmountScalem), 0f);
+            Vector3 scaleF = new Vector3((Mathf.Abs(-player.transform.position.x / background.divideAmountf) - 1 * -background.parallaxAmountScalef), (Mathf.Abs(-player.transform.position.x / background.divideAmountf) - 1 * -background.parallaxAmountScalef), 0f);
 
             //Transfrom positions and rotation relative to player for back image
             posB.x = -player.transform.position.x * background.parallaxAmountXb;
