@@ -67,7 +67,7 @@ public class HudManager : MonoBehaviour
         }
     }
 
-    public void UpdateCompletion(int chapter)
+    public void UpdateCompletion(string chapter)
     {
         //Show cursor
         Cursor.lockState = CursorLockMode.None;
@@ -102,7 +102,6 @@ public class HudManager : MonoBehaviour
             else //Old time is better
             {
                 timeText.text = /*"<s>" + newTime + "</s>" + "/" +*/"" + oldTime;
-
             }         
         }
 
