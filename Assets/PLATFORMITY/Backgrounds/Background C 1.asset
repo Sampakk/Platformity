@@ -19,12 +19,12 @@ MonoBehaviour:
   parallaxAmountXb: 0.06
   parallaxAmountYb: 0.06
   parallaxAmountZrotb: 0
-  parallaxAmountScaleb: 0.06
+  parallaxAmountScaleb: 0
   parallaxAmountXm: 0.04
   parallaxAmountYm: 0.04
   parallaxAmountZrotm: 0
-  parallaxAmountScalem: 0.04
+  parallaxAmountScalem: 0
   parallaxAmountXf: 0.02
   parallaxAmountYf: 0.02
   parallaxAmountZrotf: 0
-  parallaxAmountScalef: 0.02
+  parallaxAmountScalef: 0

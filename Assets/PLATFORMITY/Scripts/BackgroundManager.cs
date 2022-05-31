@@ -60,7 +60,7 @@ public class BackgroundManager : MonoBehaviour
             backgroundSR.transform.position = posB;
             backgroundSR.transform.rotation = rot;
 
-            backgroundSR.transform.localScale = scaleB;
+            if (background.parallaxAmountScaleb != 0) backgroundSR.transform.localScale = scaleB;
 
             //Transfrom positions and rotation relative to player for middle image
             posM.x = -player.transform.position.x * background.parallaxAmountXm;
@@ -70,7 +70,7 @@ public class BackgroundManager : MonoBehaviour
             middlegroundSR.transform.position = posM;
             middlegroundSR.transform.rotation = rot;
 
-            middlegroundSR.transform.localScale = scaleM;
+            if (background.parallaxAmountScalem != 0) middlegroundSR.transform.localScale = scaleM;
 
             //Transfrom positions and rotation relative to player for fore image
             posF.x = -player.transform.position.x * background.parallaxAmountXf;
@@ -79,8 +79,7 @@ public class BackgroundManager : MonoBehaviour
 
             foregroundSR.transform.position = posF;
             foregroundSR.transform.rotation = rot;
-
-            foregroundSR.transform.localScale = scaleF;
+            if(background.parallaxAmountScalef != 0) foregroundSR.transform.localScale = scaleF;
         }
     }
 
