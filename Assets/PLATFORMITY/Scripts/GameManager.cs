@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
             TimerManager.timerMan.LevelCompleted();
             LoadLevel(0, false);
         }
-            
 
 #if UNITY_EDITOR
 
@@ -82,7 +81,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(float delay, bool reload)
     {
-        string levelPrefsName = "Level" + GetNextScene(reload);
+        int nextScene = GetNextScene(reload);
+        string levelPrefsName = "Level" + nextScene;
 
         //Check if level is last of its chapter
         string sceneName = SceneManager.GetActiveScene().name;
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             {
                 //Load to next level
                 StartCoroutine(LoadScene(delay, reload));
-            }           
+            }
         }
         else
         {
@@ -128,6 +128,24 @@ public class GameManager : MonoBehaviour
 
         //Unlock next level
         PlayerPrefs.SetInt(levelPrefsName, 1);
+
+        //Completed the last level, completion achievement
+        if (nextScene == 0)
+        {
+            int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
+            if (gamemode == 0) //Normal
+            {
+                SteamAchievements.achievements.SetAchievement("ACH_NORMAL_COMPLETED");
+            }
+            else if (gamemode == 1) //Hard
+            {
+                SteamAchievements.achievements.SetAchievement("ACH_HARD_COMPLETED");
+            }
+            else if (gamemode == 2) //HC
+            {
+                SteamAchievements.achievements.SetAchievement("ACH_HC_COMPLETED");
+            }           
+        }
     }
 
     public void LoadNextChapter()
