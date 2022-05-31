@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 1
   backSprite: {fileID: 21300000, guid: a3c05205761e9cc4f9ec30a3e4d436da, type: 3}
+  startScaleXb: 1
+  startScaleYb: 1
   middleSprite: {fileID: 21300000, guid: 1f81e25180ac0d14dbde9bc8befad46b, type: 3}
+  startScaleXm: 1
+  startScaleYm: 1
   foreSprite: {fileID: 21300000, guid: 69713ba79a2a83442ac2366fffcae159, type: 3}
+  startScaleXf: 1
+  startScaleYf: 1
   parallaxAmountXb: 0
   parallaxAmountYb: 0
   parallaxAmountZrotb: 0

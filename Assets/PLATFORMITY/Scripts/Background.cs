@@ -7,9 +7,19 @@ public class Background : ScriptableObject
 {
     public int chapter;
 
+    [Header("Back")]
     public Sprite backSprite;
+    public float startScaleXb;
+    public float startScaleYb;
+    [Header("Middle")]
     public Sprite middleSprite;
+    public float startScaleXm;
+    public float startScaleYm;
+
+    [Header("Fore")]
     public Sprite foreSprite;
+    public float startScaleXf;
+    public float startScaleYf;
 
     [Header("Back values")]
     public float parallaxAmountXb;

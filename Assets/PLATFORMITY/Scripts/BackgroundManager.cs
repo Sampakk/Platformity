@@ -20,6 +20,7 @@ public class BackgroundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         StartCoroutine(GetPlayer());
         
         //Get scenename and extract chapter number from it
@@ -36,6 +37,10 @@ public class BackgroundManager : MonoBehaviour
             middlegroundSR.sprite = background.middleSprite;
             foregroundSR.sprite = background.foreSprite;
         }
+
+        backgroundSR.transform.localScale = new Vector3(background.startScaleXb, background.startScaleYb, 1);
+        middlegroundSR.transform.localScale = new Vector3(background.startScaleXm, background.startScaleYm, 1);
+        foregroundSR.transform.localScale = new Vector3(background.startScaleXf, background.startScaleYf, 1);
     }
 
     // Update is called once per frame
