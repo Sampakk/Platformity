@@ -95,30 +95,26 @@ public class GameManager : MonoBehaviour
             //Check if not completed before & if so, award player with coins
             if (!reload)
             {
-                //First time completed level, add coins & save them
+                //First time completed level
                 if (PlayerPrefs.GetInt(levelPrefsName) == 0)
                 {
+                    //Add 50 coins to player
                     int coins = PlayerPrefs.GetInt("Coins");
                     coins += 50;
 
                     PlayerPrefs.SetInt("Coins", coins);
+
+                    //Achievements
+                    string chapterAchievement = "ACH_CHAPTER" + chapter + "_NORMAL";
+                    SteamAchievements.achievements.SetAchievement(chapterAchievement);
                 }
 
                 //Save completion & save time
                 PlayerPrefs.SetInt(levelPrefsName, 1);
             }
 
-            //Timer, skip chapter completion screen if timer isn't on
-            if (timerOn)
-            {
-                //Show completion screen on hud
-                HudManager.hudMan.UpdateCompletion(chapter);
-            }
-            else
-            {
-                //Load to next level
-                StartCoroutine(LoadScene(delay, reload));
-            }
+            //Show completion screen on hud
+            HudManager.hudMan.UpdateCompletion(chapter);
         }
         else
         {
