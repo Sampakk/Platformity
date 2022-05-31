@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: Background C 6
   m_EditorClassIdentifier: 
   chapter: 1
-  backSprite: {fileID: 21300000, guid: a3c05205761e9cc4f9ec30a3e4d436da, type: 3}
-  middleSprite: {fileID: 21300000, guid: 1f81e25180ac0d14dbde9bc8befad46b, type: 3}
-  foreSprite: {fileID: 21300000, guid: 69713ba79a2a83442ac2366fffcae159, type: 3}
+  backSprite: {fileID: 21300000, guid: 440eeab699f21f843863cc37968185af, type: 3}
+  middleSprite: {fileID: 21300000, guid: 440eeab699f21f843863cc37968185af, type: 3}
+  foreSprite: {fileID: 21300000, guid: 440eeab699f21f843863cc37968185af, type: 3}
   parallaxAmountXb: 0
   parallaxAmountYb: 0
-  parallaxAmountZrotb: 0
-  parallaxAmountScaleb: 0
+  parallaxAmountZrotb: 2
+  parallaxAmountScaleb: 3
   divideAmountb: 18
   parallaxAmountXm: 0
   parallaxAmountYm: 0
-  parallaxAmountZrotm: 0
-  parallaxAmountScalem: 0
+  parallaxAmountZrotm: 3
+  parallaxAmountScalem: 2
   divideAmountm: 18
   parallaxAmountXf: 0
   parallaxAmountYf: 0
-  parallaxAmountZrotf: 0
-  parallaxAmountScalef: 0
+  parallaxAmountZrotf: 4
+  parallaxAmountScalef: 1
   divideAmountf: 18
