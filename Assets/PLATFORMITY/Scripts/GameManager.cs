@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public Vector3Int endPosition;
     public int CurrentLevelPool;
 
+    [Header("Gradient Background")]
+    public SpriteRenderer background;
+    public Sprite whiteBackground;
+    public Sprite blackBackground;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +40,18 @@ public class GameManager : MonoBehaviour
         {
             foreach (SpriteRenderer sprite in FindObjectsOfType<SpriteRenderer>())
             {
-                if (sprite.color == Color.black) sprite.color = Color.white;
-                else if (sprite.color == Color.white) sprite.color = Color.black;
+                if (sprite != background)
+                {
+                    if (sprite.color == Color.black) sprite.color = Color.white;
+                    else if (sprite.color == Color.white) sprite.color = Color.black;
+                }           
             }
+
+            background.sprite = whiteBackground;
+        }
+        else
+        {
+            background.sprite = blackBackground;
         }
     }
 
@@ -57,25 +71,63 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    int GetNextScene(bool reload)
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = (reload) ? currentScene : currentScene + 1;
+        if (nextScene > CurrentLevelPool) nextScene = 0;
+
+        return nextScene;
+    }
+
     public void LoadLevel(float delay, bool reload)
     {
+        string levelPrefsName = "Level" + GetNextScene(reload);
+
         //Check if level is last of its chapter
         string sceneName = SceneManager.GetActiveScene().name;
         int level = (int)char.GetNumericValue(sceneName[0]);
         int chapter = (int)char.GetNumericValue(sceneName[2]);
-        Debug.Log("Level " + level);
 
-        int timerState = PlayerPrefs.GetInt("Timer", 0);
-        if ((level == 5 && !reload) && timerState == 1) //Chapter completed, only if timer is on
+        bool timerOn = (PlayerPrefs.GetInt("Timer", 0) == 1) ? true : false;
+        if ((level == 5 && !reload)) //Chapter completed
         {
-            //Show completion screen on hud
-            HudManager.hudMan.UpdateCompletion(chapter);
+            //Check if not completed before & if so, award player with coins
+            if (!reload)
+            {
+                //First time completed level, add coins & save them
+                if (PlayerPrefs.GetInt(levelPrefsName) == 0)
+                {
+                    int coins = PlayerPrefs.GetInt("Coins");
+                    coins += 50;
+
+                    PlayerPrefs.SetInt("Coins", coins);
+                }
+
+                //Save completion & save time
+                PlayerPrefs.SetInt(levelPrefsName, 1);
+            }
+
+            //Timer, skip chapter completion screen if timer isn't on
+            if (timerOn)
+            {
+                //Show completion screen on hud
+                HudManager.hudMan.UpdateCompletion(chapter);
+            }
+            else
+            {
+                //Load to next level
+                StartCoroutine(LoadScene(delay, reload));
+            }           
         }
         else
         {
             //Load to next level
             StartCoroutine(LoadScene(delay, reload));
-        }  
+        }
+
+        //Unlock next level
+        PlayerPrefs.SetInt(levelPrefsName, 1);
     }
 
     public void LoadNextChapter()
@@ -87,28 +139,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        int nextScene = (reload) ? currentScene : currentScene + 1;
-        if (nextScene > CurrentLevelPool) nextScene = 0;
-
-        //Save this level completed
-        if (!reload)
-        {
-            string levelPrefsName = "Level" + nextScene;
-
-            //First time completed level, add coins & save them
-            if (PlayerPrefs.GetInt(levelPrefsName) == 0)
-            {
-                int coins = PlayerPrefs.GetInt("Coins");
-                coins += 10;
-
-                PlayerPrefs.SetInt("Coins", coins);
-            }
-
-            //Save completion & save time
-            PlayerPrefs.SetInt(levelPrefsName, 1);
-        }     
-
+        int nextScene = GetNextScene(reload);
         SceneManager.LoadScene(nextScene);
     }  
 }
