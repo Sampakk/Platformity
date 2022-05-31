@@ -55,31 +55,44 @@ public class BackgroundManager : MonoBehaviour
             //Transfrom positions and rotation relative to player for back image
             posB.x = -player.transform.position.x * background.parallaxAmountXb;
             posB.y = -player.transform.position.y * background.parallaxAmountYb;
-            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * -player.transform.position.y * background.parallaxAmountZrotb);
+            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * player.transform.position.y * background.parallaxAmountZrotb);
 
             backgroundSR.transform.position = posB;
             backgroundSR.transform.rotation = rot;
 
-            if (background.parallaxAmountScaleb != 0) backgroundSR.transform.localScale = scaleB;
+            if (background.parallaxAmountScaleb != 0) 
+            {
+                if (-background.parallaxScaleDeadzoneb < player.transform.position.x && player.transform.position.x < background.parallaxScaleDeadzoneb) backgroundSR.transform.localScale = new Vector3(background.parallaxAmountScaleb * background.parallaxScaleDeadzoneb, background.parallaxAmountScaleb * background.parallaxScaleDeadzoneb, 0);
+                else backgroundSR.transform.localScale = scaleB;
+            }
 
             //Transfrom positions and rotation relative to player for middle image
             posM.x = -player.transform.position.x * background.parallaxAmountXm;
             posM.y = -player.transform.position.y * background.parallaxAmountYm;
-            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * -player.transform.position.y * background.parallaxAmountZrotm);
+            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * player.transform.position.y * background.parallaxAmountZrotm);
 
             middlegroundSR.transform.position = posM;
             middlegroundSR.transform.rotation = rot;
 
-            if (background.parallaxAmountScalem != 0) middlegroundSR.transform.localScale = scaleM;
+            if (background.parallaxAmountScalem != 0)
+            {
+                if (-background.parallaxScaleDeadzonem < player.transform.position.x && player.transform.position.x < background.parallaxScaleDeadzonem) middlegroundSR.transform.localScale = new Vector3(background.parallaxAmountScalem * background.parallaxScaleDeadzonem, background.parallaxAmountScalem * background.parallaxScaleDeadzonem, 0);
+                else middlegroundSR.transform.localScale = scaleM;
+            }
 
             //Transfrom positions and rotation relative to player for fore image
             posF.x = -player.transform.position.x * background.parallaxAmountXf;
             posF.y = -player.transform.position.y * background.parallaxAmountYf;
-            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * -player.transform.position.y * background.parallaxAmountZrotf);
+            rot.eulerAngles = new Vector3(0, 0, -player.transform.position.x * player.transform.position.y * background.parallaxAmountZrotf);
 
             foregroundSR.transform.position = posF;
             foregroundSR.transform.rotation = rot;
-            if(background.parallaxAmountScalef != 0) foregroundSR.transform.localScale = scaleF;
+
+            if (background.parallaxAmountScalef != 0) 
+            {
+                if (-background.parallaxScaleDeadzonef < player.transform.position.x && player.transform.position.x < background.parallaxScaleDeadzonef) foregroundSR.transform.localScale = new Vector3(background.parallaxAmountScalef * background.parallaxScaleDeadzonef, background.parallaxAmountScalef * background.parallaxScaleDeadzonef, 0);
+                else foregroundSR.transform.localScale = scaleF;
+            }
         }
     }
 

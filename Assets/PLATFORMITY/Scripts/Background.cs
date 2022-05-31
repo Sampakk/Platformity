@@ -16,16 +16,19 @@ public class Background : ScriptableObject
     public float parallaxAmountYb;
     public float parallaxAmountZrotb;
     public float parallaxAmountScaleb;
+    public float parallaxScaleDeadzoneb;
 
     [Header("Middle values")]
     public float parallaxAmountXm;
     public float parallaxAmountYm;
     public float parallaxAmountZrotm;
     public float parallaxAmountScalem;
+    public float parallaxScaleDeadzonem;
 
     [Header("Fore values")]
     public float parallaxAmountXf;
     public float parallaxAmountYf;
     public float parallaxAmountZrotf;
     public float parallaxAmountScalef;
+    public float parallaxScaleDeadzonef;
 }
