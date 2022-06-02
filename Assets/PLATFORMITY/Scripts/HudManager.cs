@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -16,6 +17,12 @@ public class HudManager : MonoBehaviour
     [Header("Completion")]
     public GameObject completionRoot;
     public TextMeshProUGUI completeText;
+    public TextMeshProUGUI earnedCoinsText;
+    public float fadeInSpeed = 3f;
+
+    [Header("Buttons")]
+    public Button continueButton;
+    public Button menuButton;
 
     [Header("Levels")]
     public GameObject levelTimesRoot;
@@ -60,7 +67,7 @@ public class HudManager : MonoBehaviour
         }
     }
 
-    public void UpdateCompletion(int chapter)
+    public void UpdateCompletion(string chapter)
     {
         //Show cursor
         Cursor.lockState = CursorLockMode.None;
@@ -95,9 +102,13 @@ public class HudManager : MonoBehaviour
             else //Old time is better
             {
                 timeText.text = /*"<s>" + newTime + "</s>" + "/" +*/"" + oldTime;
-
             }         
         }
+
+        //Hide earned coins & buttons
+        earnedCoinsText.text = "";
+        continueButton.gameObject.SetActive(false);
+        menuButton.gameObject.SetActive(false);
 
         //Start fading in the levels
         StartCoroutine(FadeInLevels());
@@ -124,7 +135,7 @@ public class HudManager : MonoBehaviour
             while (canvasGroup.alpha < 1)
             {
                 //Fade in
-                canvasGroup.alpha += 3f * Time.deltaTime;
+                canvasGroup.alpha += fadeInSpeed * Time.deltaTime;
 
                 //Scale back to normal
                 rect.localScale = Vector3.MoveTowards(rect.localScale, Vector3.one, 2f * Time.deltaTime);
@@ -132,11 +143,39 @@ public class HudManager : MonoBehaviour
                 yield return null;
             }
         }
+
+        //Fade in earned coins & buttons
+        StartCoroutine(FadeInCoinsAndButtons());
+    }
+
+    IEnumerator FadeInCoinsAndButtons()
+    {
+        string coinsString = "You earned 50 coins!";
+
+        //Fade in earned coins
+        for (int i = 0; i < coinsString.Length; i++)
+        {
+            earnedCoinsText.text += coinsString[i];
+
+            if (coinsString[i] != ' ') //Skip empty spaces
+                yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(0.25f);
+
+        //Enable buttons
+        continueButton.gameObject.SetActive(true);
+        menuButton.gameObject.SetActive(true);
     }
 
     public void LoadNextChapter()
     {
         GameManager.game.LoadNextChapter();
+    }
+
+    public void LoadToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void OnEnable()

@@ -21,8 +21,8 @@ TagManager:
   - Particle
   - BlockBlocker
   - FadeBlock
-  - 
-  - 
+  - FallingSpike
+  - Bounds
   - 
   - 
   - 

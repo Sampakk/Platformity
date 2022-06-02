@@ -33,22 +33,34 @@ public class SteamAchievements : MonoBehaviour
         if (!initialized)
         {
             if (SteamManager.Initialized)
+            {
                 initialized = true;
 
-            string name = SteamFriends.GetPersonaName();
-            Debug.Log(name);
+                SteamUserStats.RequestCurrentStats();
+
+                //Print appID
+                AppId_t appId_t = SteamUtils.GetAppID();
+                Debug.Log("App ID: " + appId_t);
+
+                //Print username
+                string name = SteamFriends.GetPersonaName();
+                Debug.Log(name);
+            }
         }
 
-        if (initialized)
+        //DEBUG INPUT
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SetAchievement("ACH_NORMAL_COMPLETED");
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            SetAchievement("ACH_HARD_COMPLETED");
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            SetAchievement("ACH_HC_COMPLETED");
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                SetAchievement("NORMAL_COMPLETED");
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                SetAchievement("HARD_COMPLETED");
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-                SetAchievement("HC_COMPLETED");
+            SteamUserStats.ResetAllStats(true);
         }
     }
 
@@ -57,13 +69,18 @@ public class SteamAchievements : MonoBehaviour
         if (!initialized)
             return;
 
-        //Set achievement completed and store it
-        SteamUserStats.SetAchievement(achievementName);
-        SteamUserStats.StoreStats();
+        //Check if achievement is already completed
+        SteamUserStats.GetAchievement(achievementName, out bool completed);
 
-
-        bool isCompleted = false;
-        SteamUserStats.GetAchievement(achievementName, out isCompleted);
-        Debug.Log("Completed: " + isCompleted);
+        if (!completed)
+        {
+            //Set achievement completed and store it
+            SteamUserStats.SetAchievement(achievementName);
+            SteamUserStats.StoreStats();
+        }
+        else
+        {
+            Debug.Log(achievementName + ": completed!");
+        }
     }
 }

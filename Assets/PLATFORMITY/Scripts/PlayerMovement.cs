@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!loadedScene)
             {
+                Debug.Log("hait");
                 loadedScene = true;
                 Die();
             }
