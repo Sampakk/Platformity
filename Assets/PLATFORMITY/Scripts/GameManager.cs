@@ -72,9 +72,34 @@ public class GameManager : MonoBehaviour
 
     int GetNextScene(bool reload)
     {
+        //Load to next scene on normal mode
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = (reload) ? currentScene : currentScene + 1;
         if (nextScene > CurrentLevelPool) nextScene = 0;
+
+        //Check for gamemodes as they are different
+        if (reload)
+        {
+            int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
+            if (gamemode == 1) //Hard
+            {
+                int levelIndex = currentScene - 1; //First level is 1
+                if (levelIndex > 5) //Other than chapter 1
+                {
+                    int chapter = Mathf.CeilToInt((float)levelIndex / 5);
+                    nextScene = chapter * 5 - 5;
+                    nextScene += 2;
+                }
+                else
+                {
+                    nextScene = 2; //First levels build index
+                }
+            }
+            else if (gamemode == 2) //HC
+            {
+                nextScene = 2;
+            }
+        }     
 
         return nextScene;
     }
@@ -87,7 +112,8 @@ public class GameManager : MonoBehaviour
         //Check if level is last of its chapter
         string sceneName = SceneManager.GetActiveScene().name;
         int level = (int)char.GetNumericValue(sceneName[0]);
-        int chapter = (int)char.GetNumericValue(sceneName[2]);
+        string chapter = "";
+        for (int i = 0; i < sceneName.Length; i++) if (i > 1) chapter += sceneName[i];
 
         bool timerOn = (PlayerPrefs.GetInt("Timer", 0) == 1) ? true : false;
         if ((level == 5 && !reload)) //Chapter completed
