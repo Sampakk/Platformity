@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae6286035f728ce4293f45ed3d5a4ed2, type: 3}
-  m_Name: Background C 10
+  m_Name: Background C 17
   m_EditorClassIdentifier: 
   chapter: 1
   backSprite: {fileID: 21300000, guid: 928dd548277a011419d7b630f9f5dc08, type: 3}

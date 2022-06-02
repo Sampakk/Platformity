@@ -22,15 +22,17 @@ public class BackgroundManager : MonoBehaviour
     {
 
         StartCoroutine(GetPlayer());
-        
+
         //Get scenename and extract chapter number from it
         string sceneName = SceneManager.GetActiveScene().name;
-        chapter = (int)char.GetNumericValue(sceneName[2]);
+        string chapter = "";
+        for (int i = 0; i < sceneName.Length; i++) if (i > 1) chapter += sceneName[i];
 
         if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1)
         {
             //Get background index which starts from 0 so its -1
-            background = backgrounds[chapter - 1];
+            background = backgrounds[int.Parse(chapter) - 1];
+            Debug.Log("Background Chapter: " + chapter + " - 1");
 
             //Set sprites from the scriptable objects
             backgroundSR.sprite = background.backSprite;
