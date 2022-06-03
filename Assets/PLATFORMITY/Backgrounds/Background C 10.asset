@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Background C 10
   m_EditorClassIdentifier: 
   chapter: 1
-  backSprite: {fileID: 21300000, guid: 928dd548277a011419d7b630f9f5dc08, type: 3}
-  startScaleXb: 1
-  startScaleYb: 1
-  middleSprite: {fileID: 21300000, guid: 560dd0e6ca8c0024d8863069a0d06582, type: 3}
+  backSprite: {fileID: 21300000, guid: 153269a6ad3c2a9489856572691d6e4a, type: 3}
+  startScaleXb: 2.5
+  startScaleYb: 2.5
+  middleSprite: {fileID: 0}
   startScaleXm: 1
   startScaleYm: 1
-  foreSprite: {fileID: 21300000, guid: ae19fd1c40913514da62a5c454a2b28d, type: 3}
+  foreSprite: {fileID: 0}
   startScaleXf: 1
   startScaleYf: 1
-  parallaxAmountXb: 0
-  parallaxAmountYb: 0
+  parallaxAmountXb: 0.005
+  parallaxAmountYb: 0.005
   parallaxAmountZrotb: 0
   parallaxAmountScaleb: 0
   divideAmountb: 18
