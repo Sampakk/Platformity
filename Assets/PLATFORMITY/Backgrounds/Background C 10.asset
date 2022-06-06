@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 1
   backSprite: {fileID: 21300000, guid: 153269a6ad3c2a9489856572691d6e4a, type: 3}
-  startScaleXb: 2.5
-  startScaleYb: 2.5
+  startScaleXb: 3
+  startScaleYb: 3
   middleSprite: {fileID: 0}
   startScaleXm: 1
   startScaleYm: 1
