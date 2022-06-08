@@ -130,13 +130,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (13)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,6 +191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (3)
@@ -244,13 +252,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (15)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -301,6 +313,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (15)
@@ -311,11 +327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.5
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_LocalPosition.z
@@ -358,13 +374,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (16)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -415,6 +435,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock
@@ -529,13 +553,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (1)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,6 +614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (11)
@@ -643,6 +675,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (6)
@@ -700,13 +736,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (18)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -757,6 +797,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (9)
@@ -814,6 +858,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (14)
@@ -871,13 +919,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (14)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -928,6 +980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (10)
@@ -1033,6 +1089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4468518206082010468, guid: 93d0a8307b51a35479ea2288da5ff0c2, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d0a8307b51a35479ea2288da5ff0c2, type: 3}
 --- !u!1001 &710857028
@@ -1042,13 +1102,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (12)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1099,6 +1163,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock
@@ -1156,6 +1224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (2)
@@ -1213,6 +1285,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (1)
@@ -1274,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrampolineBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 737308459390467139, guid: 72deb231c11aa9a40b301410f9a6f28d, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 737308459390467140, guid: 72deb231c11aa9a40b301410f9a6f28d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1327,13 +1407,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (10)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1384,13 +1468,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (4)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1441,6 +1529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (5)
@@ -1498,6 +1590,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (3)
@@ -1555,13 +1651,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (2)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1612,6 +1712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (5)
@@ -1669,6 +1773,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (13)
@@ -1726,13 +1834,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (8)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1776,63 +1888,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
---- !u!1001 &1706000752
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_Name
-      value: StaticBlock (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496331212802469502, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
 --- !u!1001 &1734089296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1840,13 +1895,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (7)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1897,6 +1956,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (12)
@@ -1954,6 +2017,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (8)
@@ -2014,6 +2081,10 @@ PrefabInstance:
     - target: {fileID: 5014445730331969000, guid: 6e4748f3c59e3a24881d98c9f4035d28, type: 3}
       propertyPath: m_Name
       value: BlockBlocker
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014445730331969003, guid: 6e4748f3c59e3a24881d98c9f4035d28, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5014445730331969004, guid: 6e4748f3c59e3a24881d98c9f4035d28, type: 3}
       propertyPath: m_RootOrder
@@ -2076,13 +2147,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (17)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2133,13 +2208,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (19)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2190,13 +2269,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (9)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2247,13 +2330,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (6)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2304,13 +2391,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307983720548460808, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 307983720548460811, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_Name
       value: StaticSpikeBlock (11)
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 307983720548460815, guid: 760a604f712893b4f960b658b5e84b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2361,6 +2452,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock (4)

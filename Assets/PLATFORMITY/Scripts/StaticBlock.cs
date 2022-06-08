@@ -54,7 +54,7 @@ public class StaticBlock : MonoBehaviour
             if (transform.position != lastPos || width != lastWidth || height != lastHeight)
             {
                 //Force scale
-                transform.localScale = Vector3.one;
+                //transform.localScale = Vector3.one;  resets everything to one. 
 
                 //Update sprite repeating
                 sprite.size = new Vector2(width, height);
