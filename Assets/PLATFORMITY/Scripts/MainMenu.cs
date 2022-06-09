@@ -115,7 +115,6 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(EnableGamemodeButtons());
 
         UpdateGameMode(PlayerPrefs.GetInt("Gamemode", 0));
-        UpdateLevelButtons();
     }
 
     // Update is called once per frame
@@ -212,10 +211,6 @@ public class MainMenu : MonoBehaviour
             }
         }
 
-        //Load to normal mode first
-        PlayerPrefs.SetInt("Gamemode", 0);
-        UpdateLevelButtons();
-
         //After that, load new mode that we want
         PlayerPrefs.SetInt("Gamemode", index);
         UpdateLevelButtons();
@@ -241,6 +236,7 @@ public class MainMenu : MonoBehaviour
     void UpdateLevelButtons()
     {
         int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
+        Debug.Log("Gamemode: " + gamemode);
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
@@ -273,7 +269,13 @@ public class MainMenu : MonoBehaviour
                     else
                     {
                         if (PlayerPrefs.GetInt(hardLevelPrefsName, 0) == 1)
+                        {
                             button.interactable = true;
+                        }
+                        else
+                        {
+                            button.interactable = false;
+                        }
                     }                      
                 }
                 else if (gamemode == 2) //HC mode
