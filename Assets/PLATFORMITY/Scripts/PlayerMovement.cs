@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     float moveX;
     float yVelocity;
     bool isOnIce;
+    bool touchingIce;
     bool loadedScene;
 
     // Start is called before the first frame update
@@ -45,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
 
         Footsteps();
+
+        touchingIce = false;
 
         if (yVelocity > rb.velocity.y)
         {
@@ -93,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
-        else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds")
+        else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds" && !touchingIce)
         {
             isOnIce = false;
         }
@@ -125,6 +128,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (rb.gravityScale == gravityScale)
                 rb.gravityScale = -gravityScale;
+        }
+        else if (collision.tag == "Ice")
+        {
+            touchingIce = true;
         }
     }
 
