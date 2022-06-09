@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Effects")]
     public GameObject deadEffectPrefab;
+    public GameObject jumpEffectPrefab;
 
     bool canTakeInput = true;
     float gravityScale;
@@ -146,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
             isOnIce = false;
         }
     }
+
     void GetInput()
     {
         //Horizontal movement
@@ -164,6 +166,10 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+
+                //Particle effect
+                GameObject jumpEffect = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
+                Destroy(jumpEffect, 1f);
 
                 //Play audio
                 AudioManager.audioMan.PlayJumpSound();

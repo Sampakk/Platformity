@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a6d31ddbd18c7419c324deea5e4378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buySound: {fileID: 8300000, guid: ebeedbd373ec7934faec3a9caa1ffb98, type: 3}
   hats:
   - {fileID: 11400000, guid: 71246191a11a3dd488c7756f666fc92b, type: 2}
   - {fileID: 11400000, guid: cdffc93d0371a6641b39076710aeb680, type: 2}
@@ -376,6 +375,7 @@ MonoBehaviour:
   verticalClamp: 30
   footstepDelay: 0.225
   deadEffectPrefab: {fileID: 7256910364144001365, guid: fba41285aed80b74984e5fa8b5f2a871, type: 3}
+  jumpEffectPrefab: {fileID: 926070990914663807, guid: 6939ae75e2fa1c544984dbcd9f47568d, type: 3}
 --- !u!114 &5302102199768438240
 MonoBehaviour:
   m_ObjectHideFlags: 0
