@@ -21,6 +21,9 @@ public class MainMenu : MonoBehaviour
     public Button normalModeButton;
     public Button hardModeButton;
     public Button hcModeButton;
+    string normalModeText;
+    string hardModeText;
+    string hcModeText;
 
     [Header("Timer Toggle")]
     public Toggle timerToggle;
@@ -105,6 +108,13 @@ public class MainMenu : MonoBehaviour
             }
         }
 
+        //Setup gamemode buttons on start
+        normalModeButton.interactable = true;
+        hardModeButton.interactable = false;
+        hcModeButton.interactable = false;
+        StartCoroutine(EnableGamemodeButtons());
+
+        UpdateGameMode(PlayerPrefs.GetInt("Gamemode", 0));
         UpdateLevelButtons();
     }
 
@@ -184,9 +194,48 @@ public class MainMenu : MonoBehaviour
     //Updates gamemode to playerprefs
     public void UpdateGameMode(int index)
     {
-        PlayerPrefs.SetInt("Gamemode", index);
+        Button[] gamemodeButtons = { normalModeButton, hardModeButton, hcModeButton };
+        string[] gamemodeTexts = { "Normal", "Hard", "HC" };
 
+        //Update buttons visuals
+        for (int i = 0; i < gamemodeButtons.Length; i++)
+        {
+            if (index == i) //Selected button
+            {
+                TextMeshProUGUI text = gamemodeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                text.text = "> " + gamemodeTexts[i] + " <";
+            }
+            else //Other button
+            {
+                TextMeshProUGUI text = gamemodeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                text.text = gamemodeTexts[i];
+            }
+        }
+
+        //Load to normal mode first
+        PlayerPrefs.SetInt("Gamemode", 0);
         UpdateLevelButtons();
+
+        //After that, load new mode that we want
+        PlayerPrefs.SetInt("Gamemode", index);
+        UpdateLevelButtons();
+    }
+
+    IEnumerator EnableGamemodeButtons()
+    {
+        //Wait for steam manager to be initialized
+        while (!SteamAchievements.achievements.initialized)
+            yield return null;
+
+        if (SteamAchievements.achievements.HasCompletedAchievement("ACH_NORMAL_COMPLETED")) //Completed normal
+        {
+            hardModeButton.interactable = true;
+        }
+
+        if (SteamAchievements.achievements.HasCompletedAchievement("ACH_HARD_COMPLETED")) //Completed hard
+        {
+            hcModeButton.interactable = true;
+        }
     }
 
     void UpdateLevelButtons()
@@ -202,28 +251,35 @@ public class MainMenu : MonoBehaviour
             if (levelIndex > 2)
             {
                 string levelPrefsName = "Level" + levelIndex;
+                string hardLevelPrefsName = "HardLevel" + levelIndex;
 
-                if (PlayerPrefs.GetInt(levelPrefsName) == 0)
+                if (gamemode == 0) //Normal mode
                 {
-                    button.interactable = false;
-                }
-                else //Unlocked, check if not the first level of chapter
-                {
-                    if (gamemode == 0) //Normal
+                    if (PlayerPrefs.GetInt(levelPrefsName, 0) == 0)
+                    {
+                        button.interactable = false;
+                    }
+                    else //Unlocked, check if not the first level of chapter
                     {
                         button.interactable = true;
                     }
-                    else if (gamemode == 1) //Hard
+                }
+                else if (gamemode == 1) //Hard mode
+                {
+                    if ((levelIndex - 2) % 5 != 0)
                     {
-                        if ((levelIndex - 2) % 5 != 0)
-                            button.interactable = false;
+                        button.interactable = false;
                     }
-                    else if (gamemode == 2) //Hardcore
+                    else
                     {
-                        if (levelIndex > 2)
-                            button.interactable = false;
-                    }
-                }   
+                        if (PlayerPrefs.GetInt(hardLevelPrefsName, 0) == 1)
+                            button.interactable = true;
+                    }                      
+                }
+                else if (gamemode == 2) //HC mode
+                {
+                    button.interactable = false;
+                }
             }
         }
     }
