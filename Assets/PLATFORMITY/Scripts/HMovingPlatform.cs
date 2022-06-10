@@ -19,16 +19,15 @@ public class HMovingPlatform : MonoBehaviour
 
     void Start()
     {
-
-        player = FindObjectOfType<PlayerMovement>();
-        playerRB = player.gameObject.GetComponent<Rigidbody2D>();
-
         rb = GetComponent<Rigidbody2D>(); 
         direction = StartDirection;
     }
 
     void FixedUpdate()
     {
+        player = FindObjectOfType<PlayerMovement>();
+        playerRB = player.gameObject.GetComponent<Rigidbody2D>();
+
         platformPosition = rb.transform.position.x;
         
 
@@ -47,7 +46,7 @@ public class HMovingPlatform : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        playerRB.AddForce(rb.velocity * platformMultiplier);
+        if(collision.tag == "Player") playerRB.AddForce(rb.velocity * platformMultiplier);
     }
 
     void MoveRight()
