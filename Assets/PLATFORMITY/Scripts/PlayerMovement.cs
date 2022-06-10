@@ -88,9 +88,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!loadedScene)
             {
-                Debug.Log("hait");
                 loadedScene = true;
-                Die();
+
+                StartCoroutine(Die());
             }
         }
         else if (collision.gameObject.tag == "Trampoline")
@@ -162,6 +162,10 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D)) moveX += 1;
             if (Input.GetKey(KeyCode.A)) moveX -= 1;
         }
+        else
+        {
+            moveX = 0;
+        }
 
         if (IsGrounded())
         {
@@ -198,15 +202,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
+        rb.simulated = false;
+        canTakeInput = false;
+
+        //Play audio
+        AudioManager.audioMan.PlayDeathSound();
+
+        //Animation
+        anim.SetTrigger("Die");
+
+        //Wait
+        yield return new WaitForSeconds(0.25f);
+
         //Instantiate effect
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         GameObject deadEffect = Instantiate(deadEffectPrefab, spawnPos, Quaternion.identity);
         Destroy(deadEffect, 1f);
-
-        //Play audio
-        AudioManager.audioMan.PlayDeathSound();
 
         //Reload scene
         FindObjectOfType<GameManager>().LoadLevel(1f, true);
@@ -266,6 +279,8 @@ public class PlayerMovement : MonoBehaviour
         else //Load next level
         {
             moveX = 0;
+            rb.simulated = false;
+            canTakeInput = false;
 
             FindObjectOfType<GameManager>().LoadLevel(0, false);
         }
