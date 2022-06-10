@@ -9,6 +9,7 @@ public class SpikeSpawner : MonoBehaviour
     float timer;
     public enum direction {up,down,left,right};
     public direction shootDirection;
+    public bool Moving;
     Quaternion rot;
 
     Vector3 downPos;
@@ -32,6 +33,13 @@ public class SpikeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Moving)
+        {
+            downPos = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.5f, gameObject.transform.localPosition.z);
+            upPos = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 1.5f, gameObject.transform.localPosition.z);
+            leftPos = new Vector3(gameObject.transform.localPosition.x - 1.5f, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+            rightPos = new Vector3(gameObject.transform.localPosition.x + 1.5f, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+        }
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
