@@ -5,6 +5,10 @@ using UnityEngine;
 public class HMovingPlatform : MonoBehaviour
 {
 
+    PlayerMovement player;
+    Rigidbody2D playerRB;
+    public int platformMultiplier;
+
     public float maxX;
     public float minX;
     private float platformPosition;
@@ -15,13 +19,16 @@ public class HMovingPlatform : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
+        player = FindObjectOfType<PlayerMovement>();
+        playerRB = player.gameObject.GetComponent<Rigidbody2D>();
+
+        rb = GetComponent<Rigidbody2D>(); 
         direction = StartDirection;
     }
 
     void FixedUpdate()
     {
-
         platformPosition = rb.transform.position.x;
         
 
@@ -35,7 +42,12 @@ public class HMovingPlatform : MonoBehaviour
             MoveRight();
         else
             MoveLeft();
-        
+
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        playerRB.AddForce(rb.velocity * platformMultiplier);
     }
 
     void MoveRight()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class VMovingPlatform : MonoBehaviour
 {
-
     public float maxY;
     public float minY;
     private float platformPosition;
