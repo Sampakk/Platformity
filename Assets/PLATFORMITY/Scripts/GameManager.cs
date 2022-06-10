@@ -122,12 +122,16 @@ public class GameManager : MonoBehaviour
 
         if ((level == 5 && !reload)) //Chapter completed
         {
+            bool firstTime = false;
+
             //Check if not completed before & if so, award player with coins
             if (!reload)
             {
                 //First time completed level
                 if (PlayerPrefs.GetInt(levelPrefsName) == 0)
                 {
+                    firstTime = true;
+
                     //Add 50 coins to player
                     int coins = PlayerPrefs.GetInt("Coins");
                     coins += 50;
@@ -141,7 +145,7 @@ public class GameManager : MonoBehaviour
             }
 
             //Show completion screen on hud
-            HudManager.hudMan.UpdateCompletion(chapter);
+            HudManager.hudMan.UpdateCompletion(chapter, firstTime);
         }
         else
         {
