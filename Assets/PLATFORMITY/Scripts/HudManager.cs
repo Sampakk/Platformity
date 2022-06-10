@@ -67,7 +67,7 @@ public class HudManager : MonoBehaviour
         }
     }
 
-    public void UpdateCompletion(string chapter)
+    public void UpdateCompletion(string chapter, bool firstTime)
     {
         //Show cursor
         Cursor.lockState = CursorLockMode.None;
@@ -111,10 +111,10 @@ public class HudManager : MonoBehaviour
         menuButton.gameObject.SetActive(false);
 
         //Start fading in the levels
-        StartCoroutine(FadeInLevels());
+        StartCoroutine(FadeInLevels(firstTime));
     }
 
-    IEnumerator FadeInLevels()
+    IEnumerator FadeInLevels(bool firstTime)
     {
         CanvasGroup[] canvasGroups = levelTimesRoot.GetComponentsInChildren<CanvasGroup>();
 
@@ -145,22 +145,25 @@ public class HudManager : MonoBehaviour
         }
 
         //Fade in earned coins & buttons
-        StartCoroutine(FadeInCoinsAndButtons());
+        StartCoroutine(FadeInCoinsAndButtons(firstTime));
     }
 
-    IEnumerator FadeInCoinsAndButtons()
+    IEnumerator FadeInCoinsAndButtons(bool firstTime)
     {
-        string coinsString = "You earned 50 coins!";
-
-        //Fade in earned coins
-        for (int i = 0; i < coinsString.Length; i++)
+        if (firstTime) //Earned coins on first time
         {
-            earnedCoinsText.text += coinsString[i];
+            string coinsString = "You earned 50 coins!";
 
-            if (coinsString[i] != ' ') //Skip empty spaces
-                yield return new WaitForSeconds(0.05f);
+            //Fade in earned coins
+            for (int i = 0; i < coinsString.Length; i++)
+            {
+                earnedCoinsText.text += coinsString[i];
+
+                if (coinsString[i] != ' ') //Skip empty spaces
+                    yield return new WaitForSeconds(0.05f);
+            }
         }
-
+        
         yield return new WaitForSeconds(0.25f);
 
         //Enable buttons
