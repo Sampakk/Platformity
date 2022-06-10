@@ -26,7 +26,7 @@ public class HMovingPlatform : MonoBehaviour
     void FixedUpdate()
     {
         player = FindObjectOfType<PlayerMovement>();
-        playerRB = player.gameObject.GetComponent<Rigidbody2D>();
+        if(player != null) playerRB = player.gameObject.GetComponent<Rigidbody2D>();
 
         platformPosition = rb.transform.position.x;
         
