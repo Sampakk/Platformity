@@ -31,9 +31,12 @@ public class GameManager : MonoBehaviour
         GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
         player.GetComponent<PlayerMovement>().LevelAnimation(true);
 
-        //Hide cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        //Hide cursor but not in shop scene
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
+        }    
 
         //Flip colors if scene index is even
         if (SceneManager.GetActiveScene().buildIndex % 2 != 0)

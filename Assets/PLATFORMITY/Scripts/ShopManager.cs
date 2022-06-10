@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class ShopManager : MonoBehaviour
@@ -35,10 +36,7 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            ChangeCategory(true);
-        else if (Input.GetKeyDown(KeyCode.Q))
-            ChangeCategory(false);
+
     }
 
     public void UpdateCoinsText()
@@ -49,6 +47,9 @@ public class ShopManager : MonoBehaviour
 
     public void ChangeCategory(bool next)
     {
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
+
         //Loop to next category
         if (next)
         {

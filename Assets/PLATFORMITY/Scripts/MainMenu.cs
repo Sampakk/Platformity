@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -214,6 +215,9 @@ public class MainMenu : MonoBehaviour
         //After that, load new mode that we want
         PlayerPrefs.SetInt("Gamemode", index);
         UpdateLevelButtons();
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     IEnumerator EnableGamemodeButtons()
@@ -300,6 +304,9 @@ public class MainMenu : MonoBehaviour
         controlsRoot.SetActive(false);
 
         StartCoroutine(FadeInContent(true));
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     //Show controls root
@@ -309,6 +316,9 @@ public class MainMenu : MonoBehaviour
         controlsRoot.SetActive(true);
 
         StartCoroutine(FadeInContent(false));
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     IEnumerator FadeInContent(bool isLevels)
@@ -338,6 +348,15 @@ public class MainMenu : MonoBehaviour
     public void LoadLevel(int index)
     {
         StartCoroutine(FadeInAndLoadLevel(index));
+    }
+
+    //Reset all playerprefs
+    public void ResetAllProgress()
+    {
+        PlayerPrefs.DeleteAll();
+
+        //Reload scene
+        SceneManager.LoadScene(0);
     }
 
     //Exit game
