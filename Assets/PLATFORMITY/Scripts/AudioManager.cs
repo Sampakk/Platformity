@@ -18,6 +18,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip completeSound;
 
+    [Header("Trampoline Sounds")]
+    public AudioClip[] trampolineSounds;
+
     [Header("Footsteps")]
     public AudioClip[] footstepSounds;
     int footstepIndex = 0;
@@ -65,6 +68,12 @@ public class AudioManager : MonoBehaviour
     public void PlayJumpSound()
     {
         audioSrc.PlayOneShot(jumpSound);
+    }
+
+    public void PlayTrampolineSound()
+    {
+        int random = Random.Range(0, trampolineSounds.Length);
+        audioSrc.PlayOneShot(trampolineSounds[random]);
     }
 
     public void PlayDeathSound()

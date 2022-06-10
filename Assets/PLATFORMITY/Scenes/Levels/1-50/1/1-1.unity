@@ -161,6 +161,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 854790038}
     m_Modifications:
+    - target: {fileID: 496331212802469497, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 496331212802469498, guid: 5f976ff0d46e66a469352fde68ed0644, type: 3}
       propertyPath: m_Name
       value: StaticBlock
@@ -304,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4468518206082010468, guid: 93d0a8307b51a35479ea2288da5ff0c2, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d0a8307b51a35479ea2288da5ff0c2, type: 3}
 --- !u!1001 &2954155275270328748
@@ -315,7 +323,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2954155274829935541, guid: 52b4864b2eeae4943973c2cfb07052e0, type: 3}
       propertyPath: m_text
-      value: Use "a" & "D" to move
+      value: Get to the right side of the map
       objectReference: {fileID: 0}
     - target: {fileID: 2954155275034233857, guid: 52b4864b2eeae4943973c2cfb07052e0, type: 3}
       propertyPath: m_Pivot.x

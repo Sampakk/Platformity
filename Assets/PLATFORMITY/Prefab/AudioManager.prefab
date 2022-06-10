@@ -144,8 +144,8 @@ MonoBehaviour:
   levelTimeSound: {fileID: 8300000, guid: 482b1c5ccd4784d4f92c6f94034998f9, type: 3}
   buySound: {fileID: 8300000, guid: ebeedbd373ec7934faec3a9caa1ffb98, type: 3}
   throwSound: {fileID: 8300000, guid: ae700394cf3defb4298e12a485206db1, type: 3}
-  jumpSound: {fileID: 8300000, guid: 590784c81bd33b148b1ca8d7ded00fbe, type: 3}
-  deathSound: {fileID: 8300000, guid: de99db922b0a0294ea9400fe9ebf281d, type: 3}
+  jumpSound: {fileID: 8300000, guid: 15ef63a6b64831b43be3e19548f2ea22, type: 3}
+  deathSound: {fileID: 8300000, guid: 027dbba24dc59114fa0ec0a0a778699b, type: 3}
   completeSound: {fileID: 8300000, guid: e758c53e3d74d62449ab894fe44a3003, type: 3}
   footstepSounds:
   - {fileID: 8300000, guid: 744f29219c4c9fa43945abfce71c63fd, type: 3}

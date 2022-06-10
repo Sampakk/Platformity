@@ -1950,6 +1950,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fc58f367cf6fdd409bf987f421f8375, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: bc62e9e959e00cc458a1a23a396e37a0, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 77b984ccf8cd23940a6502f4046aa642, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe878e2101a6e6d479d1a7bf12126e09, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineJumpSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineJumpSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 40eb3254bb5f89e48ba31e8733f444a8, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineJumpSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 31d9240c302150344a1f68bb223fe62f, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineJumpSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 570bc058f5227f343ba5239aa4b81662, type: 3}
+    - target: {fileID: 1245427940431188452, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
+      propertyPath: trampolineJumpSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f598aab14a09554e87cdb801ef34629, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3424bdd3b380d34d9d60ae85bfbd15e, type: 3}
 --- !u!1 &152557322
@@ -19825,7 +19881,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1437134774}
   m_HandleRect: {fileID: 1437134773}
   m_Direction: 2
-  m_Value: 0.99999976
+  m_Value: 1
   m_Size: 0.8
   m_NumberOfSteps: 0
   m_OnValueChanged:

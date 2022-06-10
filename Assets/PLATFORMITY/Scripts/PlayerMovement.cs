@@ -95,6 +95,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
+            //Audio
+            if (yVelocity < -4f)
+                AudioManager.audioMan.PlayTrampolineSound();
+
+            //Add upwards force
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
         else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds" && !touchingIce)
