@@ -144,9 +144,10 @@ MonoBehaviour:
   levelTimeSound: {fileID: 8300000, guid: 482b1c5ccd4784d4f92c6f94034998f9, type: 3}
   buySound: {fileID: 8300000, guid: ebeedbd373ec7934faec3a9caa1ffb98, type: 3}
   throwSound: {fileID: 8300000, guid: ae700394cf3defb4298e12a485206db1, type: 3}
-  jumpSound: {fileID: 8300000, guid: 590784c81bd33b148b1ca8d7ded00fbe, type: 3}
-  deathSound: {fileID: 8300000, guid: de99db922b0a0294ea9400fe9ebf281d, type: 3}
+  jumpSound: {fileID: 8300000, guid: 2b0df535b37e85f49b8373a32d3f6640, type: 3}
+  deathSound: {fileID: 8300000, guid: 027dbba24dc59114fa0ec0a0a778699b, type: 3}
   completeSound: {fileID: 8300000, guid: e758c53e3d74d62449ab894fe44a3003, type: 3}
+  trampolineSounds: []
   footstepSounds:
   - {fileID: 8300000, guid: 744f29219c4c9fa43945abfce71c63fd, type: 3}
   - {fileID: 8300000, guid: 5de2633d3202a7648ac697b0646763d0, type: 3}
@@ -191,7 +192,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1068432d548239e4ba7bf6f515e33ef2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 553678d9976a78842a2c55dd80654df6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1

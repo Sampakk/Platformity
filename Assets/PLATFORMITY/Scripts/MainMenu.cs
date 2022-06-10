@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -21,6 +22,9 @@ public class MainMenu : MonoBehaviour
     public Button normalModeButton;
     public Button hardModeButton;
     public Button hcModeButton;
+    string normalModeText;
+    string hardModeText;
+    string hcModeText;
 
     [Header("Timer Toggle")]
     public Toggle timerToggle;
@@ -105,7 +109,13 @@ public class MainMenu : MonoBehaviour
             }
         }
 
-        UpdateLevelButtons();
+        //Setup gamemode buttons on start
+        normalModeButton.interactable = true;
+        hardModeButton.interactable = false;
+        hcModeButton.interactable = false;
+        StartCoroutine(EnableGamemodeButtons());
+
+        UpdateGameMode(PlayerPrefs.GetInt("Gamemode", 0));
     }
 
     // Update is called once per frame
@@ -184,14 +194,53 @@ public class MainMenu : MonoBehaviour
     //Updates gamemode to playerprefs
     public void UpdateGameMode(int index)
     {
-        PlayerPrefs.SetInt("Gamemode", index);
+        Button[] gamemodeButtons = { normalModeButton, hardModeButton, hcModeButton };
+        string[] gamemodeTexts = { "Normal", "Hard", "HC" };
 
+        //Update buttons visuals
+        for (int i = 0; i < gamemodeButtons.Length; i++)
+        {
+            if (index == i) //Selected button
+            {
+                TextMeshProUGUI text = gamemodeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                text.text = "> " + gamemodeTexts[i] + " <";
+            }
+            else //Other button
+            {
+                TextMeshProUGUI text = gamemodeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                text.text = gamemodeTexts[i];
+            }
+        }
+
+        //After that, load new mode that we want
+        PlayerPrefs.SetInt("Gamemode", index);
         UpdateLevelButtons();
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    IEnumerator EnableGamemodeButtons()
+    {
+        //Wait for steam manager to be initialized
+        while (!SteamAchievements.achievements.initialized)
+            yield return null;
+
+        if (SteamAchievements.achievements.HasCompletedAchievement("ACH_NORMAL_COMPLETED")) //Completed normal
+        {
+            hardModeButton.interactable = true;
+        }
+
+        if (SteamAchievements.achievements.HasCompletedAchievement("ACH_HARD_COMPLETED")) //Completed hard
+        {
+            hcModeButton.interactable = true;
+        }
     }
 
     void UpdateLevelButtons()
     {
         int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
+        Debug.Log("Gamemode: " + gamemode);
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
@@ -202,28 +251,41 @@ public class MainMenu : MonoBehaviour
             if (levelIndex > 2)
             {
                 string levelPrefsName = "Level" + levelIndex;
+                string hardLevelPrefsName = "HardLevel" + levelIndex;
 
-                if (PlayerPrefs.GetInt(levelPrefsName) == 0)
+                if (gamemode == 0) //Normal mode
                 {
-                    button.interactable = false;
-                }
-                else //Unlocked, check if not the first level of chapter
-                {
-                    if (gamemode == 0) //Normal
+                    if (PlayerPrefs.GetInt(levelPrefsName, 0) == 0)
+                    {
+                        button.interactable = false;
+                    }
+                    else //Unlocked, check if not the first level of chapter
                     {
                         button.interactable = true;
                     }
-                    else if (gamemode == 1) //Hard
+                }
+                else if (gamemode == 1) //Hard mode
+                {
+                    if ((levelIndex - 2) % 5 != 0)
                     {
-                        if ((levelIndex - 2) % 5 != 0)
-                            button.interactable = false;
+                        button.interactable = false;
                     }
-                    else if (gamemode == 2) //Hardcore
+                    else
                     {
-                        if (levelIndex > 2)
+                        if (PlayerPrefs.GetInt(hardLevelPrefsName, 0) == 1)
+                        {
+                            button.interactable = true;
+                        }
+                        else
+                        {
                             button.interactable = false;
-                    }
-                }   
+                        }
+                    }                      
+                }
+                else if (gamemode == 2) //HC mode
+                {
+                    button.interactable = false;
+                }
             }
         }
     }
@@ -242,6 +304,9 @@ public class MainMenu : MonoBehaviour
         controlsRoot.SetActive(false);
 
         StartCoroutine(FadeInContent(true));
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     //Show controls root
@@ -251,6 +316,9 @@ public class MainMenu : MonoBehaviour
         controlsRoot.SetActive(true);
 
         StartCoroutine(FadeInContent(false));
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     IEnumerator FadeInContent(bool isLevels)
@@ -280,6 +348,15 @@ public class MainMenu : MonoBehaviour
     public void LoadLevel(int index)
     {
         StartCoroutine(FadeInAndLoadLevel(index));
+    }
+
+    //Reset all playerprefs
+    public void ResetAllProgress()
+    {
+        PlayerPrefs.DeleteAll();
+
+        //Reload scene
+        SceneManager.LoadScene(0);
     }
 
     //Exit game

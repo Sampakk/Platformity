@@ -31,9 +31,12 @@ public class GameManager : MonoBehaviour
         GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
         player.GetComponent<PlayerMovement>().LevelAnimation(true);
 
-        //Hide cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        //Hide cursor but not in shop scene
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
+        }    
 
         //Flip colors if scene index is even
         if (SceneManager.GetActiveScene().buildIndex % 2 != 0)
@@ -106,8 +109,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(float delay, bool reload)
     {
+        int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
         int nextScene = GetNextScene(reload);
         string levelPrefsName = "Level" + nextScene;
+        string hardLevelPrefsName = "HardLevel" + nextScene;
 
         //Check if level is last of its chapter
         string sceneName = SceneManager.GetActiveScene().name;
@@ -115,7 +120,6 @@ public class GameManager : MonoBehaviour
         string chapter = "";
         for (int i = 0; i < sceneName.Length; i++) if (i > 1) chapter += sceneName[i];
 
-        bool timerOn = (PlayerPrefs.GetInt("Timer", 0) == 1) ? true : false;
         if ((level == 5 && !reload)) //Chapter completed
         {
             //Check if not completed before & if so, award player with coins
@@ -133,10 +137,7 @@ public class GameManager : MonoBehaviour
                     //Achievements
                     string chapterAchievement = "ACH_CHAPTER" + chapter + "_NORMAL";
                     SteamAchievements.achievements.SetAchievement(chapterAchievement);
-                }
-
-                //Save completion & save time
-                PlayerPrefs.SetInt(levelPrefsName, 1);
+                } 
             }
 
             //Show completion screen on hud
@@ -149,12 +150,23 @@ public class GameManager : MonoBehaviour
         }
 
         //Unlock next level
-        PlayerPrefs.SetInt(levelPrefsName, 1);
+        if (!reload)
+        {
+            if (gamemode == 0) //Normal mode
+            {
+                //Save completion & save time
+                PlayerPrefs.SetInt(levelPrefsName, 1);
+            }
+            else if (gamemode == 1) //Hard mode
+            {
+                //Save completion & save time
+                PlayerPrefs.SetInt(hardLevelPrefsName, 1);
+            }
+        }         
 
         //Completed the last level, completion achievement
         if (nextScene == 0)
         {
-            int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
             if (gamemode == 0) //Normal
             {
                 SteamAchievements.achievements.SetAchievement("ACH_NORMAL_COMPLETED");

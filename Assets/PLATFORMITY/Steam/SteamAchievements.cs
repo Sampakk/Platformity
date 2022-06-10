@@ -7,10 +7,10 @@ public class SteamAchievements : MonoBehaviour
 {
     public static SteamAchievements achievements;
 
-    bool initialized = false;
+    public bool initialized = false;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called before start
+    void Awake()
     {
         //Setup singleton
         if (achievements == null)
@@ -22,6 +22,8 @@ public class SteamAchievements : MonoBehaviour
             if (achievements != this)
                 Destroy(gameObject);
         }
+
+        initialized = false;
 
         DontDestroyOnLoad(gameObject);
     }
@@ -82,5 +84,13 @@ public class SteamAchievements : MonoBehaviour
         {
             Debug.Log(achievementName + ": completed!");
         }
+    }
+
+    public bool HasCompletedAchievement(string achievementName)
+    {
+        //Check if achievement is already completed
+        SteamUserStats.GetAchievement(achievementName, out bool completed);
+
+        return completed;
     }
 }

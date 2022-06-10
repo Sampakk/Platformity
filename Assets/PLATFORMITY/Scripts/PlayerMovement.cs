@@ -22,12 +22,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Effects")]
     public GameObject deadEffectPrefab;
+    public GameObject jumpEffectPrefab;
 
     bool canTakeInput = true;
     float gravityScale;
     float moveX;
     float yVelocity;
     bool isOnIce;
+    bool touchingIce;
     bool loadedScene;
 
     // Start is called before the first frame update
@@ -45,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
 
         Footsteps();
+
+        touchingIce = false;
 
         if (yVelocity > rb.velocity.y)
         {
@@ -84,16 +88,21 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!loadedScene)
             {
-                Debug.Log("hait");
                 loadedScene = true;
-                Die();
+
+                StartCoroutine(Die());
             }
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
+            //Audio
+            if (yVelocity < -4f)
+                AudioManager.audioMan.PlayTrampolineSound();
+
+            //Add upwards force
             rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
-        else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds")
+        else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds" && !touchingIce)
         {
             isOnIce = false;
         }
@@ -126,6 +135,10 @@ public class PlayerMovement : MonoBehaviour
             if (rb.gravityScale == gravityScale)
                 rb.gravityScale = -gravityScale;
         }
+        else if (collision.tag == "Ice")
+        {
+            touchingIce = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -139,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
             isOnIce = false;
         }
     }
+
     void GetInput()
     {
         //Horizontal movement
@@ -147,6 +161,10 @@ public class PlayerMovement : MonoBehaviour
             moveX = 0;
             if (Input.GetKey(KeyCode.D)) moveX += 1;
             if (Input.GetKey(KeyCode.A)) moveX -= 1;
+        }
+        else
+        {
+            moveX = 0;
         }
 
         if (IsGrounded())
@@ -157,6 +175,10 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+
+                //Particle effect
+                GameObject jumpEffect = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
+                Destroy(jumpEffect, 1f);
 
                 //Play audio
                 AudioManager.audioMan.PlayJumpSound();
@@ -180,15 +202,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
+        rb.simulated = false;
+        canTakeInput = false;
+
+        //Play audio
+        AudioManager.audioMan.PlayDeathSound();
+
+        //Animation
+        anim.SetTrigger("Die");
+
+        //Wait
+        yield return new WaitForSeconds(0.25f);
+
         //Instantiate effect
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         GameObject deadEffect = Instantiate(deadEffectPrefab, spawnPos, Quaternion.identity);
         Destroy(deadEffect, 1f);
-
-        //Play audio
-        AudioManager.audioMan.PlayDeathSound();
 
         //Reload scene
         FindObjectOfType<GameManager>().LoadLevel(1f, true);
@@ -248,6 +279,8 @@ public class PlayerMovement : MonoBehaviour
         else //Load next level
         {
             moveX = 0;
+            rb.simulated = false;
+            canTakeInput = false;
 
             FindObjectOfType<GameManager>().LoadLevel(0, false);
         }
