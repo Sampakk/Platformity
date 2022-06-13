@@ -825,6 +825,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3705640200970010027, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3705640200970010028, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1153,6 +1157,10 @@ PrefabInstance:
     - target: {fileID: 3705640200970010027, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
       propertyPath: m_Size.x
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705640200970010027, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3705640200970010028, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
       propertyPath: m_RootOrder
@@ -1787,6 +1795,10 @@ PrefabInstance:
     - target: {fileID: 3705640200970010027, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
       propertyPath: m_Size.x
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705640200970010027, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3705640200970010028, guid: d5c97b34a997d0f41a13d4f4bb55b118, type: 3}
       propertyPath: m_RootOrder
