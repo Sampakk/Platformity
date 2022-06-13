@@ -53,7 +53,7 @@ public class BackgroundManager : MonoBehaviour
         Vector3 posF = foregroundSR.transform.position;
         Quaternion rot = backgroundRoot.transform.rotation;
 
-        if (player != null && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1) 
+        if (player != null && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1 && background != null) 
         {
             Vector3 scaleB = new Vector3((Mathf.Abs(-player.transform.position.x / background.divideAmountb) - 1 * -background.parallaxAmountScaleb), (Mathf.Abs(-player.transform.position.x / background.divideAmountb) - 1 * -background.parallaxAmountScaleb), 0f);
             Vector3 scaleM = new Vector3((Mathf.Abs(-player.transform.position.x / background.divideAmountm) -1 * -background.parallaxAmountScalem) , (Mathf.Abs(-player.transform.position.x / background.divideAmountm) - 1 * -background.parallaxAmountScalem), 0f);
