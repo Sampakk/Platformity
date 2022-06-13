@@ -24,16 +24,16 @@ MonoBehaviour:
   startScaleYf: 1
   parallaxAmountXb: 0
   parallaxAmountYb: 0
-  parallaxAmountZrotb: 11
+  parallaxAmountZrotb: 7
   parallaxAmountScaleb: 3
   divideAmountb: 180
   parallaxAmountXm: 0
   parallaxAmountYm: 0
-  parallaxAmountZrotm: 10.5
+  parallaxAmountZrotm: 7
   parallaxAmountScalem: 2
   divideAmountm: 180
   parallaxAmountXf: 0
   parallaxAmountYf: 0
-  parallaxAmountZrotf: 10
+  parallaxAmountZrotf: 7
   parallaxAmountScalef: 1
   divideAmountf: 180
