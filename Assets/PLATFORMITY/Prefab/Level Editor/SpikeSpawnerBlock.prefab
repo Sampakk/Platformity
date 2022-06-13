@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.9622642, g: 0.3326481, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5ef047696f1cdbe479751b6d3130f561, type: 3}
+  m_Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23225f4fc4c5f784ba7cb83c4d8696f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatTexture: 0
+  width: 1
+  height: 1
 --- !u!114 &5081126633124578283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +163,4 @@ MonoBehaviour:
   spawnInterval: 1
   fallingSpike: {fileID: 5685973917442219396, guid: 7930af97c93cede48887f813be499985, type: 3}
   shootDirection: 1
+  Moving: 0
