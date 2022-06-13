@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         //Load to next scene on normal mode
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = (reload) ? currentScene : currentScene + 1;
-        if (nextScene - 2 > levelCount) nextScene = 0;
+        if (nextScene - 2 == levelCount) nextScene = 0;
 
         //Check for gamemodes as they are different
         if (reload)

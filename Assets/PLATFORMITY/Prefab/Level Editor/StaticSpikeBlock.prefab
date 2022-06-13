@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 1
   m_SpriteTileMode: 0
@@ -118,6 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23225f4fc4c5f784ba7cb83c4d8696f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatTexture: 0
+  width: 1
+  height: 1
 --- !u!68 &6120394090079010889
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -134,10 +137,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.49944055, y: -0.4994154}
-  - {x: -0.3906318, y: -0.49210358}
+  - {x: 0.4523021, y: -0.48726654}
+  - {x: -0.454579, y: -0.4838524}
   - {x: -0.00030517578, y: 0.49983692}
-  - {x: 0.4052558, y: -0.47941113}
+  - {x: 0.453732, y: -0.47941113}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
