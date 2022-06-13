@@ -189,7 +189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2954155274829935541, guid: 52b4864b2eeae4943973c2cfb07052e0, type: 3}
       propertyPath: m_text
-      value: "You can stop moving platform by \nadding blocks on it's path"
+      value: "You can stop moving platforms by \nadding blocks on it's path"
       objectReference: {fileID: 0}
     - target: {fileID: 2954155275034233857, guid: 52b4864b2eeae4943973c2cfb07052e0, type: 3}
       propertyPath: m_Pivot.x
