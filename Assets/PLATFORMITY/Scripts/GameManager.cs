@@ -110,9 +110,9 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(float delay, bool reload)
     {
         int gamemode = PlayerPrefs.GetInt("Gamemode", 0);
+        int levelUnlockIndex = gamemode + 1;
         int nextScene = GetNextScene(reload);
         string levelPrefsName = "Level" + nextScene;
-        string hardLevelPrefsName = "HardLevel" + nextScene;
 
         //Check if level is last of its chapter
         string sceneName = SceneManager.GetActiveScene().name;
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
             if (!reload)
             {
                 //First time completed level
-                if (PlayerPrefs.GetInt(levelPrefsName) == 0)
+                if (PlayerPrefs.GetInt(levelPrefsName) < levelUnlockIndex)
                 {
                     firstTime = true;
 
@@ -139,8 +139,21 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.SetInt("Coins", coins);
 
                     //Achievements
-                    string chapterAchievement = "ACH_CHAPTER" + chapter + "_NORMAL";
-                    SteamAchievements.achievements.SetAchievement(chapterAchievement);
+                    if (gamemode == 0) //Normal
+                    {
+                        string chapterAchievement = "ACH_CHAPTER" + chapter + "_NORMAL";
+                        SteamAchievements.achievements.SetAchievement(chapterAchievement);
+                    }
+                    else if (gamemode == 1) //Hard
+                    {
+                        string chapterAchievement = "ACH_CHAPTER" + chapter + "_HARD";
+                        SteamAchievements.achievements.SetAchievement(chapterAchievement);
+                    }
+                    else if (gamemode == 2) //HC
+                    {
+                        string chapterAchievement = "ACH_CHAPTER" + chapter + "_HC";
+                        SteamAchievements.achievements.SetAchievement(chapterAchievement);
+                    }
                 } 
             }
 
@@ -156,16 +169,8 @@ public class GameManager : MonoBehaviour
         //Unlock next level
         if (!reload)
         {
-            if (gamemode == 0) //Normal mode
-            {
-                //Save completion & save time
-                PlayerPrefs.SetInt(levelPrefsName, 1);
-            }
-            else if (gamemode == 1) //Hard mode
-            {
-                //Save completion & save time
-                PlayerPrefs.SetInt(hardLevelPrefsName, 1);
-            }
+            //Save completion & time
+            PlayerPrefs.SetInt(levelPrefsName, levelUnlockIndex);
         }         
 
         //Completed the last level, completion achievement

@@ -230,12 +230,12 @@ public class MainMenu : MonoBehaviour
         while (!SteamAchievements.achievements.initialized)
             yield return null;
 
-        if (SteamAchievements.achievements.HasCompletedAchievement("ACH_NORMAL_COMPLETED")) //Completed normal
+        if (PlayerPrefs.GetInt("Level52", 0) >= 1) //Hard mode button, check if completed 50th level on normal
         {
             hardModeButton.interactable = true;
         }
 
-        if (SteamAchievements.achievements.HasCompletedAchievement("ACH_HARD_COMPLETED")) //Completed hard
+        if (PlayerPrefs.GetInt("Level52", 0) == 2) //HC mode button, check if completed 50th level on hard
         {
             hcModeButton.interactable = true;
         }
@@ -255,7 +255,6 @@ public class MainMenu : MonoBehaviour
             if (levelIndex > 2)
             {
                 string levelPrefsName = "Level" + levelIndex;
-                string hardLevelPrefsName = "HardLevel" + levelIndex;
 
                 if (gamemode == 0) //Normal mode
                 {
@@ -276,7 +275,7 @@ public class MainMenu : MonoBehaviour
                     }
                     else
                     {
-                        if (PlayerPrefs.GetInt(hardLevelPrefsName, 0) == 1)
+                        if (PlayerPrefs.GetInt(levelPrefsName, 0) >= 2)
                         {
                             button.interactable = true;
                         }

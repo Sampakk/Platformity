@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Crown
   m_EditorClassIdentifier: 
   itemName: Crown
-  itemPrice: 150
+  itemPrice: 800
   itemSprite: {fileID: 21300000, guid: 5a13af817dbbae84d861c8b4a8286878, type: 3}
   itemType: 0

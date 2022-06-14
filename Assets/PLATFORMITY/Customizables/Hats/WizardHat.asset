@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WizardHat
   m_EditorClassIdentifier: 
   itemName: Wizard Hat
-  itemPrice: 50
+  itemPrice: 100
   itemSprite: {fileID: 21300000, guid: 1ba3e6a2b92f6ec4da5e74d9c829c5da, type: 3}
   itemType: 0

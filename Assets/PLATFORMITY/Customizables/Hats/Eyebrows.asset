@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Eyebrows
   m_EditorClassIdentifier: 
   itemName: Eyebrows
-  itemPrice: 25
+  itemPrice: 50
   itemSprite: {fileID: 21300000, guid: 5ebbfbbcc8736e54b9a8a20800dc7f2d, type: 3}
   itemType: 0
