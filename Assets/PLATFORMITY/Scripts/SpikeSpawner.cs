@@ -5,13 +5,13 @@ using UnityEngine;
 public class SpikeSpawner : MonoBehaviour
 {
     public float spawnInterval = 1;
-    public GameObject fallingSpike;
-    float timer;
+    public GameObject fallingSpike; 
     public enum direction {up,down,left,right};
     public direction shootDirection;
     public bool Moving;
-    Quaternion rot;
 
+    float timer;
+    Quaternion rot;
     Vector3 downPos;
     Vector3 upPos;
     Vector3 leftPos;
@@ -20,14 +20,20 @@ public class SpikeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
         timer = spawnInterval;
 
-        downPos = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y -1.5f, gameObject.transform.localPosition.z);
-        upPos = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 1.5f, gameObject.transform.localPosition.z);
-        leftPos = new Vector3(gameObject.transform.localPosition.x - 1.5f, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
-        rightPos = new Vector3(gameObject.transform.localPosition.x + 1.5f, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+        downPos = new Vector3(transform.localPosition.x, transform.localPosition.y -1.5f, transform.localPosition.z);
+        upPos = new Vector3(transform.localPosition.x, transform.localPosition.y + 1.5f, transform.localPosition.z);
+        leftPos = new Vector3(transform.localPosition.x - 1.5f, transform.localPosition.y, transform.localPosition.z);
+        rightPos = new Vector3(transform.localPosition.x + 1.5f, transform.localPosition.y, transform.localPosition.z);
+
+        //Rotate to look towards shoot direction
+        if (shootDirection == direction.up) //Upwards
+            transform.localRotation = Quaternion.Euler(0, 0, 180f);
+        else if (shootDirection == direction.right) //Right
+            transform.localRotation = Quaternion.Euler(0, 0, 90f);
+        else if (shootDirection == direction.left) //Left
+            transform.localRotation = Quaternion.Euler(0, 0, 270f);
     }
 
     // Update is called once per frame
@@ -35,11 +41,12 @@ public class SpikeSpawner : MonoBehaviour
     {
         if (Moving)
         {
-            downPos = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.5f, gameObject.transform.localPosition.z);
-            upPos = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 1.5f, gameObject.transform.localPosition.z);
-            leftPos = new Vector3(gameObject.transform.localPosition.x - 1.5f, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
-            rightPos = new Vector3(gameObject.transform.localPosition.x + 1.5f, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+            downPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
+            upPos = new Vector3(transform.localPosition.x, transform.localPosition.y + 1.5f, transform.localPosition.z);
+            leftPos = new Vector3(transform.localPosition.x - 1.5f, transform.localPosition.y, transform.localPosition.z);
+            rightPos = new Vector3(transform.localPosition.x + 1.5f, transform.localPosition.y, transform.localPosition.z);
         }
+
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
