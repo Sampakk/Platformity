@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bc0e632db3b6548aa10bf178ba3ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMultiplier: 0
+  platformMultiplier: 25
   maxX: 7
   minX: -11
   StartDirection: 0

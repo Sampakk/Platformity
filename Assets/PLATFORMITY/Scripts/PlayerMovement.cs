@@ -108,6 +108,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Trampoline")
+        {
+            //Audio
+            if (yVelocity < -4f)
+                AudioManager.audioMan.PlayTrampolineSound();
+
+            //Add upwards force
+            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Goal")
