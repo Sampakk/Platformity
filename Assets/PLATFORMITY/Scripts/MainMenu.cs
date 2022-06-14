@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
 
     [Header("Menu & Levels")]
     public RectTransform header;
+    public Scrollbar levelScrollbar;
     public GameObject levelButtonRoots;
 
     [Header("Gamemode Buttons")]
@@ -81,6 +82,9 @@ public class MainMenu : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(delegate { UpdateMusicVolume(); });
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         musicVolumeText.text = "Music Volume: " + musicVolumeSlider.value;
+
+        //Setup scrollbar to be top position
+        levelScrollbar.value = 1f;
 
         //Setup level buttons
         levelButtons = levelButtonRoots.GetComponentsInChildren<Button>();
