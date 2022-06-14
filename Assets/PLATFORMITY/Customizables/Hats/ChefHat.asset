@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ChefHat
   m_EditorClassIdentifier: 
   itemName: Chef Hat
-  itemPrice: 100
+  itemPrice: 50
   itemSprite: {fileID: 21300000, guid: 26c893da1a6bf05408b3c5befe4056cc, type: 3}
   itemType: 0

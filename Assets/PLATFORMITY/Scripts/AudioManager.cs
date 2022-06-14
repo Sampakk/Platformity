@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayJumpSound()
     {
-        audioSrc.PlayOneShot(jumpSound);
+        audioSrc.PlayOneShot(jumpSound, 0.5f);
     }
 
     public void PlayTrampolineSound()

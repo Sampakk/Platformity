@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StinkyHat
   m_EditorClassIdentifier: 
   itemName: Stinky Hat
-  itemPrice: 100
+  itemPrice: 75
   itemSprite: {fileID: 21300000, guid: 64657ad83836e224b9e7e07ec943a299, type: 3}
   itemType: 0
