@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bc0e632db3b6548aa10bf178ba3ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMultiplier: 27
+  platformMultiplier: 25
   maxX: 14
   minX: -14
   StartDirection: 1
