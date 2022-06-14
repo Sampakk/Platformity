@@ -235,7 +235,7 @@ public class MainMenu : MonoBehaviour
             hardModeButton.interactable = true;
         }
 
-        if (PlayerPrefs.GetInt("Level52", 0) == 2) //HC mode button, check if completed 50th level on hard
+        if (PlayerPrefs.GetInt("Level52", 0) >= 2) //HC mode button, check if completed 50th level on hard
         {
             hcModeButton.interactable = true;
         }

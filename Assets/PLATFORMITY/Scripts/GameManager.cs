@@ -170,11 +170,12 @@ public class GameManager : MonoBehaviour
         if (!reload)
         {
             //Save completion & time
-            PlayerPrefs.SetInt(levelPrefsName, levelUnlockIndex);
+            if (PlayerPrefs.GetInt(levelPrefsName, 0) < levelUnlockIndex)
+                PlayerPrefs.SetInt(levelPrefsName, levelUnlockIndex);
         }         
 
         //Completed the last level, completion achievement
-        if (nextScene == 0)
+        if (level == 5 && chapter == "10")
         {
             if (gamemode == 0) //Normal
             {
