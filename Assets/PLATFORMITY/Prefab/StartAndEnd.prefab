@@ -5396,7 +5396,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 913f2310d1471f64bb20d8de52604647, type: 2}
   - {fileID: 11400000, guid: 77ca8020e46656344829824b550cd40b, type: 2}
   - {fileID: 11400000, guid: 4925f2cc792bdca428b64d69ad00c22f, type: 2}
-  - {fileID: 11400000, guid: 60a970dd125d85d478034d3718301f17, type: 2}
+  - {fileID: 11400000, guid: e82ed593a29153b4ca06c23497101c23, type: 2}
   backgroundSR: {fileID: 9011916033589073273}
   middlegroundSR: {fileID: 757415662163073806}
   foregroundSR: {fileID: 6338608505748227769}
