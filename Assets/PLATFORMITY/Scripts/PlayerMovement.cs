@@ -175,10 +175,6 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D)) moveX += 1;
             if (Input.GetKey(KeyCode.A)) moveX -= 1;
         }
-        else
-        {
-            moveX = 0;
-        }
 
         if (IsGrounded())
         {
