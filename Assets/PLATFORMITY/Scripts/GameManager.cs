@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
         {
             background.sprite = blackBackground;
         }
+
+        //Change to play music if menu music is on & not on shop
+        if (SceneManager.GetActiveScene().buildIndex > 1)
+            AudioManager.audioMan.ChangeMusic(false);
     }
 
     // Update is called once per frame
@@ -214,6 +218,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         int nextScene = GetNextScene(reload);
+
+        //Change music if going to menu
+        if (nextScene == 0)
+            AudioManager.audioMan.ChangeMusic(true);
+
         SceneManager.LoadScene(nextScene);
     }  
 }

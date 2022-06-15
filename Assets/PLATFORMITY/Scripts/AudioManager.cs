@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioMan;
     AudioSource audioSrc;
     AudioSource musicSrc;
+
+    [Header("Music")]
+    public AudioClip menuMusic;
+    public AudioClip playMusic;
 
     [Header("UI Sounds")]
     public AudioClip levelTimeSound;
@@ -35,6 +40,14 @@ public class AudioManager : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         musicSrc = transform.GetChild(0).GetComponent<AudioSource>();
 
+        //Set menu music to default
+        if (musicSrc.isPlaying)
+        {
+            musicSrc.Stop();
+            musicSrc.clip = menuMusic;
+            musicSrc.Play();
+        }
+
         //Setup music volume
         UpdateMusicVolume();
 
@@ -45,6 +58,34 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ChangeMusic(bool menu)
+    {
+        if (menu) //Change to menu music if play music is on
+        {
+            if (musicSrc.clip != menuMusic)
+            {
+                if (musicSrc.isPlaying)
+                {
+                    musicSrc.Stop();
+                    musicSrc.clip = menuMusic;
+                    musicSrc.Play();
+                }
+            }       
+        }
+        else //Change to play music if menu music is on
+        {
+            if (musicSrc.clip != playMusic)
+            {
+                if (musicSrc.isPlaying)
+                {
+                    musicSrc.Stop();
+                    musicSrc.clip = playMusic;
+                    musicSrc.Play();
+                }
+            }           
+        }
     }
 
     public void UpdateMusicVolume()

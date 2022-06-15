@@ -50,21 +50,24 @@ public class HudManager : MonoBehaviour
         string levelName = SceneManager.GetActiveScene().name;
         levelText.text = "Level: " + levelName;
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (SceneManager.GetActiveScene().buildIndex < 2) //On menu/shop
         {
             canvas.enabled = false;
         }
-        else
+        else //On levels
         {
             canvas.enabled = true;
         }
 
-        //Back to menu with esc
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //Back to menu with esc, only if completion screen is not shown
+        if (!completionRoot.activeSelf)
         {
-            SceneManager.LoadScene(0);
-            timer.StopTimer();
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                LoadToMenu();
+                timer.StopTimer();
+            }
+        }  
     }
 
     public void UpdateCompletion(string chapter, bool firstTime)
@@ -178,6 +181,8 @@ public class HudManager : MonoBehaviour
 
     public void LoadToMenu()
     {
+        AudioManager.audioMan.ChangeMusic(true);
+
         SceneManager.LoadScene(0);
     }
 
