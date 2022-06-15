@@ -50,10 +50,13 @@ public class PlayerMovement : MonoBehaviour
 
         touchingIce = false;
 
-        yVelocity = -10;
         if (Input.GetKey(KeyCode.Space))
         {
-            yVelocity *= 1.5f;
+            yVelocity = -10 * 1.5f;
+        }
+        else
+        {
+            yVelocity = -10;
         }
     }   
 
@@ -116,12 +119,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
+            //Add upwards force
+            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+
             //Audio
             if (yVelocity < -4f)
                 AudioManager.audioMan.PlayTrampolineSound();
-
-            //Add upwards force
-            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
     }
 
@@ -138,12 +141,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
+            //Add upwards force
+            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+
             //Audio
             if (yVelocity < -4f)
                 AudioManager.audioMan.PlayTrampolineSound();
-
-            //Add upwards force
-            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
     }
 
