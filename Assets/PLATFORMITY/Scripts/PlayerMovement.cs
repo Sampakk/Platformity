@@ -167,28 +167,28 @@ public class PlayerMovement : MonoBehaviour
             moveX = 0;
             if (Input.GetKey(KeyCode.D)) moveX += 1;
             if (Input.GetKey(KeyCode.A)) moveX -= 1;
-        }
 
-        if (IsGrounded())
-        {
-            yVelocity = 0;
-
-            //Jumping
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (IsGrounded())
             {
-                rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                yVelocity = 0;
 
-                //Particle effect
-                GameObject jumpEffect = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
-                Destroy(jumpEffect, 1f);
+                //Jumping
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
 
-                //Play audio
-                AudioManager.audioMan.PlayJumpSound();
+                    //Particle effect
+                    GameObject jumpEffect = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
+                    Destroy(jumpEffect, 1f);
 
-                //Jump animation
-                anim.SetTrigger("Jump");
+                    //Play audio
+                    AudioManager.audioMan.PlayJumpSound();
+
+                    //Jump animation
+                    anim.SetTrigger("Jump");
+                }
             }
-        }
+        } 
     }
 
     void Footsteps()
