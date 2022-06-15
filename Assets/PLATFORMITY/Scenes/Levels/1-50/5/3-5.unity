@@ -421,7 +421,7 @@ MonoBehaviour:
   platformMultiplier: 25
   maxX: 14
   minX: -14
-  StartDirection: 1
+  StartDirection: 0
   speed: 4
 --- !u!1001 &1368579675
 PrefabInstance:
