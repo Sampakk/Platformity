@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSound: {fileID: 8300000, guid: 87bd619e7ae243a4d94392db2d58b630, type: 3}
-  loadLevelSound: {fileID: 8300000, guid: 5721a7ca16fb7cd4f947e7dd3af4d787, type: 3}
+  loadLevelSound: {fileID: 8300000, guid: a7d2071933a2c2340925ac91ff51a172, type: 3}
 --- !u!1 &35484993
 GameObject:
   m_ObjectHideFlags: 0
@@ -24718,7 +24718,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1437134773}
   m_Direction: 2
   m_Value: 0.5
-  m_Size: 0.48695648
+  m_Size: 0.4869565
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
