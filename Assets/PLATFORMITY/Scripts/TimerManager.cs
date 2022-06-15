@@ -78,7 +78,12 @@ public class TimerManager : MonoBehaviour
         {
             int index = Array.IndexOf(times, sceneName);
             string savedTime = times[index + 1];
-            return savedTime;
+            string firstFour = new string(savedTime.Take(4).ToArray());
+            if (savedTime.Length > 4) 
+            {
+                return firstFour;
+            } 
+            else return savedTime;
         }
         else return "0";
     }
