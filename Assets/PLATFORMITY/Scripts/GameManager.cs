@@ -18,6 +18,16 @@ public class GameManager : MonoBehaviour
     public Sprite whiteBackground;
     public Sprite blackBackground;
 
+    // Called before start
+    void Awake()
+    {
+#if UNITY_EDITOR
+        //If editor playmode is launched from scene that is not main menu, load to menu instead
+        HudManager hud = FindObjectOfType<HudManager>();
+        if (hud == null) SceneManager.LoadScene(0);
+#endif
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,15 +71,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
         //If in editor, skip this level
         if (Input.GetKeyDown(KeyCode.P))
         {
             TimerManager.timerMan.LevelCompleted();
             LoadLevel(0, false);
         }
-
-#if UNITY_EDITOR
-
 #endif
     }
 
@@ -102,6 +110,10 @@ public class GameManager : MonoBehaviour
             {
                 nextScene = 2;
             }
+
+            //Stop timer if gamemode is hard or hc
+            if (gamemode > 0)
+                timerManager.StopTimer();
         }     
 
         return nextScene;

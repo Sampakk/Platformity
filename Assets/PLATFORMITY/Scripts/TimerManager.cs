@@ -26,13 +26,11 @@ public class TimerManager : MonoBehaviour
         allTimes = PlayerPrefs.GetString(timerPrefsName);
 
         DontDestroyOnLoad(gameObject);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (timerGoing)
         {
             timer += Time.deltaTime;
@@ -61,7 +59,6 @@ public class TimerManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-
         hud = FindObjectOfType<HudManager>();
 
         if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 1) //Not menu or shop
@@ -131,9 +128,8 @@ public class TimerManager : MonoBehaviour
             //else return GetSavedTime(sceneName);
         }
         else return "0";
-
-
     }
+
     public void StopTimer()
     {
         timerGoing = false;

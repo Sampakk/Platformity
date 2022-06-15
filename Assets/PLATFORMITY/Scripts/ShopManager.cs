@@ -14,6 +14,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("Items")]
     public Transform itemsRoot;
+    List<Item> hatItems = new List<Item>();
 
     int coins;
     int category;
@@ -28,6 +29,11 @@ public class ShopManager : MonoBehaviour
         //Setup categories
         for (int i = 0; i < categories.Length; i++)
         {
+            //Enable category & get items in it
+            categories[i].SetActive(true);
+            hatItems.AddRange(categories[i].GetComponentsInChildren<Item>());
+
+            //Enable first category & disable others
             if (i == category) categories[i].SetActive(true);
             else categories[i].SetActive(false);
         }
@@ -43,6 +49,18 @@ public class ShopManager : MonoBehaviour
     {
         coins = PlayerPrefs.GetInt("Coins", 0);
         coinsText.text = "Coins: " + coins;
+    }
+
+    public void UpdateOwnedHats()
+    {
+        string ownedHats = PlayerPrefs.GetString("OwnedHats");
+
+        for (int i = 0; i < ownedHats.Length; i++)
+        {
+            //Check if owned & update items text
+            bool owned = (ownedHats[i] == '1') ? true : false;
+            hatItems[i].UpdateTexts(owned);
+        }
     }
 
     public void ChangeCategory(bool next)
