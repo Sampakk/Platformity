@@ -50,13 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
         touchingIce = false;
 
-        if (yVelocity > rb.velocity.y)
+        yVelocity = -10;
+        if (Input.GetKey(KeyCode.Space))
         {
-            yVelocity = rb.velocity.y / 2;
-            if (Input.GetKey(KeyCode.Space))
-            {
-                yVelocity = rb.velocity.y;
-            }
+            yVelocity *= 1.5f;
         }
     }   
 
@@ -101,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.tag == "Goal")
         {
             //Play audio
