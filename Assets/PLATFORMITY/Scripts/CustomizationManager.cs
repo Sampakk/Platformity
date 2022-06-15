@@ -189,6 +189,9 @@ public class CustomizationManager : MonoBehaviour
                             //Equip hat
                             EquipCustomizable(customizable);
 
+                            //Achievement
+                            SteamAchievements.achievements.SetAchievement("ACH_BOUGHT_HAT");
+
                             break;
                         }
                     }
