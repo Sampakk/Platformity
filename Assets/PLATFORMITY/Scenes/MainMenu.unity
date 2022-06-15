@@ -678,8 +678,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16886ef115f3f664b8de1f96c816ae4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSound: {fileID: 8300000, guid: 87bd619e7ae243a4d94392db2d58b630, type: 3}
-  loadLevelSound: {fileID: 8300000, guid: a7d2071933a2c2340925ac91ff51a172, type: 3}
+  hoverSound: {fileID: 8300000, guid: f9a7be6dede6d1447b6e26d14c5355da, type: 3}
+  loadLevelSound: {fileID: 8300000, guid: d38d375da7f9e854e902155d8554c3b4, type: 3}
 --- !u!1 &35484993
 GameObject:
   m_ObjectHideFlags: 0
