@@ -17,11 +17,15 @@ public class CustomizationManager : MonoBehaviour
     public Transform hatRoot;
     public SpriteRenderer hatSprite;
 
+    string ownedHats;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponentInParent<Animator>();
         player = GetComponentInParent<PlayerMovement>();
+
+        SetupOwnedHats();
 
         UpdateCustomizationsOnStart();
     }
@@ -32,6 +36,7 @@ public class CustomizationManager : MonoBehaviour
         Animations();
     }
 
+    //Animations
     void Animations()
     {
         float moveX = player.GetMoveX();
@@ -51,6 +56,7 @@ public class CustomizationManager : MonoBehaviour
         anim.SetBool("Grounded", player.IsGrounded());
     }
 
+    //Equips current customizable on start
     void UpdateCustomizationsOnStart()
     {
         //Update hat
@@ -58,6 +64,40 @@ public class CustomizationManager : MonoBehaviour
         EquipCustomizable(hats[equippedHat]);
     }
 
+    void SetupOwnedHats()
+    {
+        //Setup owned hats string
+        string newOwnedHats = "";
+        ownedHats = PlayerPrefs.GetString("OwnedHats");
+        int[] ownedHatsArray = ownedHats.Select(c => int.Parse(c.ToString())).ToArray();
+
+        for (int i = 0; i < hats.Length; i++)
+        {
+            if (i == 0) //First hat "no hat" is always owned
+            {
+                newOwnedHats += "1";
+            }
+            else
+            {
+                if (i < ownedHatsArray.Length) //Hat is found already from playerprefs
+                {
+                    newOwnedHats += ownedHatsArray[i].ToString();
+                }
+                else //Not found from playerprefs, therefore not owned
+                {
+                    newOwnedHats += "0";
+                }
+            }
+        }
+
+        //Save initialized hats string
+        ownedHats = newOwnedHats;
+        PlayerPrefs.SetString("OwnedHats", ownedHats);
+
+        Debug.Log("Owned hats: " + ownedHats);
+    }
+
+    //Equips the customizable, nothing else
     public void EquipCustomizable(Customizable customizable)
     {
         if (customizable.itemType == Customizable.ItemType.Hat) //Hat
@@ -73,6 +113,7 @@ public class CustomizationManager : MonoBehaviour
         }
     }
 
+    //Tries to buy customizable & if player owns it, equips that
     public void BuyCustomizable(Customizable customizable)
     {
         //Get our coins
@@ -80,7 +121,7 @@ public class CustomizationManager : MonoBehaviour
 
         if (customizable.itemType == Customizable.ItemType.Hat) //Hat
         {
-            //Get indx of hat we are going to buy
+            //Get index of hat we are going to buy
             int hatIndex = 0;
             for (int i = 0; i < hats.Length; i++)
             {
@@ -92,33 +133,23 @@ public class CustomizationManager : MonoBehaviour
             }
 
             //Setup owned hats & convert to array
-            string hatsString = "";
+            string boughtHatString = "";
             for (int i = 0; i < hats.Length; i++)
             {
-                if (i == 0)
-                {
-                    hatsString += "1";
-                }
-                else
-                {
-                    if (hats[i] == customizable)
-                        hatsString += "1";
-                    else
-                        hatsString += "0";
-                }
+                if (hats[i] == customizable) boughtHatString += "1";
+                else boughtHatString += "0";
             }
 
-            int[] hatsArray = hatsString.Select(c => int.Parse(c.ToString())).ToArray();
+            int[] boughtHatArray = boughtHatString.Select(c => int.Parse(c.ToString())).ToArray();
 
-            //Get owned hats from playerprefs & convert to array
-            string ownedHats = PlayerPrefs.GetString("OwnedHats", hatsString);
+            //Convert owned hats string to array
             int[] ownedHatsArray = ownedHats.Select(c => int.Parse(c.ToString())).ToArray();
 
             //Update prefs string
             for (int i = 0; i < hats.Length; i++)
             {
                 int owned = ownedHatsArray[i];
-                int unlocked = hatsArray[i];
+                int unlocked = boughtHatArray[i];
 
                 //Check if we own the hat
                 if (i == hatIndex && owned == 1)
@@ -162,6 +193,8 @@ public class CustomizationManager : MonoBehaviour
             //Save new hat to playerprefs
             ownedHats = string.Join("", ownedHatsArray); //Int array to string
             PlayerPrefs.SetString("OwnedHats", ownedHats);
+
+            Debug.Log("Owned hats: " + ownedHats);
         }
         else if (customizable.itemType == Customizable.ItemType.Eyes) //Eyes
         {
