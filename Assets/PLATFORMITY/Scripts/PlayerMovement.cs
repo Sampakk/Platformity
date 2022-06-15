@@ -117,15 +117,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isOnIce = true;
         }
-        else if (collision.gameObject.tag == "Trampoline")
-        {
-            //Add upwards force
-            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+        //else if (collision.gameObject.tag == "Trampoline")
+        //{
+        //    //Add upwards force
+        //    rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
 
-            //Audio
-            if (yVelocity < -4f)
-                AudioManager.audioMan.PlayTrampolineSound();
-        }
+        //    //Audio
+        //    if (yVelocity < -4f)
+        //        AudioManager.audioMan.PlayTrampolineSound();
+        //}
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -141,8 +141,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
-            //Add upwards force
-            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //Add upwards force
+                rb.AddForce(new Vector2(0, 20), ForceMode2D.Impulse);
+            }
+            else
+            {
+                //Add upwards force
+                rb.AddForce(new Vector2(0,10) , ForceMode2D.Impulse);
+            }
 
             //Audio
             if (yVelocity < -4f)
