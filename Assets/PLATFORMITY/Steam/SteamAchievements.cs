@@ -51,6 +51,7 @@ public class SteamAchievements : MonoBehaviour
         }
 
         //DEBUG INPUT
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1))
             SetAchievement("ACH_NORMAL_COMPLETED");
 
@@ -61,9 +62,8 @@ public class SteamAchievements : MonoBehaviour
             SetAchievement("ACH_HC_COMPLETED");
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
             SteamUserStats.ResetAllStats(true);
-        }
+#endif
     }
 
     public void SetAchievement(string achievementName)
@@ -84,6 +84,10 @@ public class SteamAchievements : MonoBehaviour
         {
             Debug.Log(achievementName + ": completed!");
         }
+
+        //Check all for completionist achievement
+        if (achievementName != "ACH_COMPLETIONIST")
+            StartCoroutine(CheckIfCompletedAll());
     }
 
     public bool HasCompletedAchievement(string achievementName)
@@ -92,5 +96,30 @@ public class SteamAchievements : MonoBehaviour
         SteamUserStats.GetAchievement(achievementName, out bool completed);
 
         return completed;
+    }
+
+    IEnumerator CheckIfCompletedAll()
+    {
+        //Wait for few frames so the game wont crash :D
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+        //Check completions
+        bool completedNormal = HasCompletedAchievement("ACH_NORMAL_COMPLETED");
+        bool completedHard = HasCompletedAchievement("ACH_HARD_COMPLETED");
+        bool completedHc = HasCompletedAchievement("ACH_HC_COMPLETED");
+
+        if (!completedNormal || !completedHard || !completedHc)
+            yield break;
+
+        //Check hats
+        bool boughtHat = HasCompletedAchievement("ACH_BOUGHT_HAT");
+        bool boughtAllHats = HasCompletedAchievement("ACH_ALL_HATS_BOUGHT");
+
+        if (!boughtHat || !boughtAllHats)
+            yield break;
+
+        //Completed all
+        SetAchievement("ACH_COMPLETIONIST");
     }
 }
