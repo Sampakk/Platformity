@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643b2841dfaf90844a7cb645c8325eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: 7cfeb10ed724bc64a9248f212ddce37d, type: 3}
+  playMusic: {fileID: 8300000, guid: fcf38762153255045851460170d1fd63, type: 3}
   levelTimeSound: {fileID: 8300000, guid: 482b1c5ccd4784d4f92c6f94034998f9, type: 3}
   buySound: {fileID: 8300000, guid: ebeedbd373ec7934faec3a9caa1ffb98, type: 3}
   throwSound: {fileID: 8300000, guid: ae700394cf3defb4298e12a485206db1, type: 3}
