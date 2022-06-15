@@ -93,36 +93,15 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(Die());
             }
         }
-        else if (collision.gameObject.tag == "Trampoline")
-        {
-            //Audio
-            if (yVelocity < -4f)
-                AudioManager.audioMan.PlayTrampolineSound();
-
-            //Add upwards force
-            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
-        }
         else if (collision.gameObject.tag != "Ice" && collision.gameObject.tag != "Bounds" && !touchingIce)
         {
             isOnIce = false;
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Trampoline")
-        {
-            //Audio
-            if (yVelocity < -4f)
-                AudioManager.audioMan.PlayTrampolineSound();
-
-            //Add upwards force
-            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject.tag);
         if (collision.tag == "Goal")
         {
             //Play audio
@@ -139,6 +118,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isOnIce = true;
         }
+        else if (collision.gameObject.tag == "Trampoline")
+        {
+            //Audio
+            if (yVelocity < -4f)
+                AudioManager.audioMan.PlayTrampolineSound();
+
+            //Add upwards force
+            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
+        }
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -151,6 +139,15 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.tag == "Ice")
         {
             touchingIce = true;
+        }
+        else if (collision.gameObject.tag == "Trampoline")
+        {
+            //Audio
+            if (yVelocity < -4f)
+                AudioManager.audioMan.PlayTrampolineSound();
+
+            //Add upwards force
+            rb.AddForce(transform.up * -yVelocity, ForceMode2D.Impulse);
         }
     }
 
