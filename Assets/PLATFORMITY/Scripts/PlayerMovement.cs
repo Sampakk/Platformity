@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         touchingIce = false;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
             yVelocity = -10 * 1.5f;
         }
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Trampoline")
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
             {
                 //Add upwards force
                 rb.AddForce(new Vector2(0, 20), ForceMode2D.Impulse);
@@ -184,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
                 yVelocity = 0;
 
                 //Jumping
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
                 {
                     rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
 
