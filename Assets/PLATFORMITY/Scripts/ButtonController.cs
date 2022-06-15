@@ -58,7 +58,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void ResetMouseOver()
     {
-        rect.localScale = Vector3.one;
+        if (rect != null)
+            rect.localScale = Vector3.one;
+
         mouseOver = false;
     }
 }

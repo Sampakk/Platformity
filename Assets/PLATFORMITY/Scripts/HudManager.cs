@@ -12,11 +12,14 @@ public class HudManager : MonoBehaviour
 
     EventSystem eventSystem;
     TimerManager timer;
-
-    public Canvas canvas;
+   
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI highScoreText;
+
+    [Header("Root Windows")]
+    public GameObject hudRoot;
+    public GameObject gameplayRoot;
 
     [Header("Completion")]
     public GameObject completionRoot;
@@ -55,13 +58,30 @@ public class HudManager : MonoBehaviour
         string levelName = SceneManager.GetActiveScene().name;
         levelText.text = "Level: " + levelName;
 
-        if (SceneManager.GetActiveScene().buildIndex < 2) //On menu/shop
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (sceneIndex == 0) //On menu
         {
-            canvas.enabled = false;
+            if (hudRoot.activeSelf) //Hide hud
+                hudRoot.SetActive(false);
+
+            if (gameplayRoot.activeSelf) //Hide gameplay root
+                gameplayRoot.SetActive(false);
+        }
+        else if (sceneIndex == 1) //On shop
+        {
+            if (!hudRoot.activeSelf) //Show hud
+                hudRoot.SetActive(true);
+
+            if (gameplayRoot.activeSelf) //Hide gameplay root
+                gameplayRoot.SetActive(false);
         }
         else //On levels
         {
-            canvas.enabled = true;
+            if (!hudRoot.activeSelf) //Show hud
+                hudRoot.SetActive(true);
+
+            if (!gameplayRoot.activeSelf) //Show gameplay root
+                gameplayRoot.SetActive(true);
         }
 
         //Back to menu with esc, only if completion screen is not shown
