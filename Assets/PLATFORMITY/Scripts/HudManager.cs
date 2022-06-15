@@ -45,6 +45,9 @@ public class HudManager : MonoBehaviour
         eventSystem = GetComponentInChildren<EventSystem>();
         timer = FindObjectOfType<TimerManager>();
 
+        //Disable eventsystem as we start from menu & there is already one
+        eventSystem.enabled = false;
+
         //Hide completion root
         completionRoot.SetActive(false);
 
@@ -232,9 +235,19 @@ public class HudManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Clear selected button
-        eventSystem.SetSelectedGameObject(null);
+        if (eventSystem != null)
+        {
+            //Clear selected button
+            eventSystem.SetSelectedGameObject(null);
 
+            //Enable / disable eventsystem
+            if (scene.buildIndex > 1) //On levels
+                eventSystem.enabled = true;
+            else //On menu/shop
+                eventSystem.enabled = false;
+        }        
+
+        //Hide completion screen
         completionRoot.SetActive(false);
 
         //Hide or show timer
