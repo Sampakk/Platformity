@@ -345,12 +345,18 @@ public class MainMenu : MonoBehaviour
     public void LoadShop()
     {
         StartCoroutine(FadeInAndLoadLevel(1));
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     //Load to level with index
     public void LoadLevel(int index)
     {
         StartCoroutine(FadeInAndLoadLevel(index));
+
+        //Clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     //Reset all playerprefs

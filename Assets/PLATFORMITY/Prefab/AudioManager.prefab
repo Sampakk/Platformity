@@ -144,7 +144,7 @@ MonoBehaviour:
   levelTimeSound: {fileID: 8300000, guid: 482b1c5ccd4784d4f92c6f94034998f9, type: 3}
   buySound: {fileID: 8300000, guid: ebeedbd373ec7934faec3a9caa1ffb98, type: 3}
   throwSound: {fileID: 8300000, guid: ae700394cf3defb4298e12a485206db1, type: 3}
-  jumpSound: {fileID: 8300000, guid: 2b0df535b37e85f49b8373a32d3f6640, type: 3}
+  jumpSound: {fileID: 8300000, guid: 12861d58c6a0e91449502606c82266c2, type: 3}
   deathSound: {fileID: 8300000, guid: 027dbba24dc59114fa0ec0a0a778699b, type: 3}
   completeSound: {fileID: 8300000, guid: e758c53e3d74d62449ab894fe44a3003, type: 3}
   trampolineSounds: []
@@ -192,7 +192,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1d86c088f35e50f4a83f416354defe08, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fcf38762153255045851460170d1fd63, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
