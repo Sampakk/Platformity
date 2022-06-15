@@ -189,7 +189,7 @@ public class CustomizationManager : MonoBehaviour
                             //Equip hat
                             EquipCustomizable(customizable);
 
-                            //Achievement
+                            //First hat bought achievement
                             SteamAchievements.achievements.SetAchievement("ACH_BOUGHT_HAT");
 
                             break;
@@ -206,7 +206,19 @@ public class CustomizationManager : MonoBehaviour
             ShopManager shop = FindObjectOfType<ShopManager>();
             if (shop != null) shop.UpdateOwnedHats();
 
+            //All hats bought achievement
+            bool allHatsOwned = true;
+            foreach(char character in ownedHats)
+            {
+                if (character != '1')
+                    allHatsOwned = false;
+            }
+
+            if (allHatsOwned)
+                SteamAchievements.achievements.SetAchievement("ACH_ALL_HATS_BOUGHT");
+
             Debug.Log("Owned hats: " + ownedHats);
+            Debug.Log("All hats owned: " + allHatsOwned);
         }
         else if (customizable.itemType == Customizable.ItemType.Eyes) //Eyes
         {
