@@ -23,9 +23,8 @@ public class Item : MonoBehaviour
     {
         startPos = transform.position;
 
-        //Update texts
-        itemNameText.text = customizable.itemName;
-        itemPriceText.text = "Price: " + customizable.itemPrice;
+        //Setup texts
+        UpdateTexts(false);
 
         //Update sprite
         SpriteRenderer itemSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -45,6 +44,16 @@ public class Item : MonoBehaviour
         CustomizationManager customization = FindObjectOfType<CustomizationManager>();
         if (customization != null)
             customization.BuyCustomizable(customizable);
+    }
+
+    public void UpdateTexts(bool owned)
+    {
+        //Name text
+        itemNameText.text = customizable.itemName;
+
+        //Price text
+        if (owned) itemPriceText.text = "Owned";
+        else itemPriceText.text = "Price: " + customizable.itemPrice;
     }
 
     public void SetOffset(float offset)

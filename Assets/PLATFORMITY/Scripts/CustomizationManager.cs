@@ -64,6 +64,7 @@ public class CustomizationManager : MonoBehaviour
         EquipCustomizable(hats[equippedHat]);
     }
 
+    //Setups owned hats string from playerprefs & if it's not correct repairs it on runtime
     void SetupOwnedHats()
     {
         //Setup owned hats string
@@ -93,6 +94,10 @@ public class CustomizationManager : MonoBehaviour
         //Save initialized hats string
         ownedHats = newOwnedHats;
         PlayerPrefs.SetString("OwnedHats", ownedHats);
+
+        //Update shop items to show what you own
+        ShopManager shop = FindObjectOfType<ShopManager>();
+        if (shop != null) shop.UpdateOwnedHats();
 
         Debug.Log("Owned hats: " + ownedHats);
     }
@@ -193,6 +198,10 @@ public class CustomizationManager : MonoBehaviour
             //Save new hat to playerprefs
             ownedHats = string.Join("", ownedHatsArray); //Int array to string
             PlayerPrefs.SetString("OwnedHats", ownedHats);
+
+            //Update shop items to show what you own
+            ShopManager shop = FindObjectOfType<ShopManager>();
+            if (shop != null) shop.UpdateOwnedHats();
 
             Debug.Log("Owned hats: " + ownedHats);
         }
