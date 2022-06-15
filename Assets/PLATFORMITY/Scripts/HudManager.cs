@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HudManager : MonoBehaviour
 {
     public static HudManager hudMan;
+
+    EventSystem eventSystem;
     TimerManager timer;
+
     public Canvas canvas;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI timerText;
@@ -34,7 +38,8 @@ public class HudManager : MonoBehaviour
         if (hudMan == null) hudMan = this;
         else Destroy(gameObject);
 
-        //Get timer
+        //Get components
+        eventSystem = GetComponentInChildren<EventSystem>();
         timer = FindObjectOfType<TimerManager>();
 
         //Hide completion root
@@ -176,11 +181,20 @@ public class HudManager : MonoBehaviour
 
     public void LoadNextChapter()
     {
+        //Reset button scales
+        continueButton.GetComponent<ButtonController>().ResetMouseOver();
+        menuButton.GetComponent<ButtonController>().ResetMouseOver();
+
         GameManager.game.LoadNextChapter();
     }
 
     public void LoadToMenu()
     {
+        //Reset button scales
+        continueButton.GetComponent<ButtonController>().ResetMouseOver();
+        menuButton.GetComponent<ButtonController>().ResetMouseOver();
+
+        //Change to menu music
         AudioManager.audioMan.ChangeMusic(true);
 
         SceneManager.LoadScene(0);
@@ -198,6 +212,9 @@ public class HudManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        //Clear selected button
+        eventSystem.SetSelectedGameObject(null);
+
         completionRoot.SetActive(false);
 
         //Hide or show timer
