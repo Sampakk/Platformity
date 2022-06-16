@@ -241,9 +241,9 @@ public class HudManager : MonoBehaviour
             eventSystem.SetSelectedGameObject(null);
 
             //Enable / disable eventsystem
-            if (scene.buildIndex > 1) //On levels
+            if (scene.buildIndex > 0) //On shop & levels
                 eventSystem.enabled = true;
-            else //On menu/shop
+            else //On menu
                 eventSystem.enabled = false;
         }        
 
