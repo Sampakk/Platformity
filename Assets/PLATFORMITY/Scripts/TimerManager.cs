@@ -97,7 +97,7 @@ public class TimerManager : MonoBehaviour
             try
             {
                 float savedTime = float.Parse(GetSavedTime(SceneManager.GetActiveScene().name));
-                if (timeRounded < savedTime)
+                if (timeRounded < savedTime || savedTime == 0)
                 {
                     string allTimesUpdated = allTimes.Replace(savedTime.ToString(), timeRounded.ToString());
                     allTimes = allTimesUpdated;
