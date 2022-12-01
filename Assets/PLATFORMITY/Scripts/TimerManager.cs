@@ -16,10 +16,14 @@ public class TimerManager : MonoBehaviour
     string allTimes = "";
     float timeRounded;
     string oldTimes = "";
+    Scene[] scenes;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Cleans up old highscores
+        CleanupHighscores();
+
         if (timerMan == null) timerMan = this;
         else Destroy(gameObject);
 
@@ -78,12 +82,18 @@ public class TimerManager : MonoBehaviour
         {
             int index = Array.IndexOf(times, sceneName);
             string savedTime = times[index + 1];
+            string firstThree = new string(savedTime.Take(3).ToArray());
             string firstFour = new string(savedTime.Take(4).ToArray());
-            if (savedTime.Length > 4) 
+            if (savedTime.Length > 3)
             {
-                return firstFour;
-            } 
-            else return savedTime;
+                return firstThree;
+            }
+            
+
+            else
+            {
+                return savedTime;
+            }
         }
         else return "0";
     }
@@ -125,6 +135,7 @@ public class TimerManager : MonoBehaviour
         {
             int index = Array.IndexOf(oldTimers, sceneName);
             string savedOldTime = oldTimers[index + 1];
+            Debug.Log(savedOldTime);
             return savedOldTime;
             //if (float.Parse(savedOldTime) < float.Parse(GetSavedTime(sceneName)))
             //{
@@ -149,5 +160,23 @@ public class TimerManager : MonoBehaviour
     void UpdateHSHud(string highScore)
     {
         hud.highScoreText.text = "Highscore: " + highScore;
+    }
+
+    void CleanupHighscores()
+    {
+        //Splits by " "
+        string[] times = PlayerPrefs.GetString(timerPrefsName).Split(' ');
+        foreach (string s in times)
+        {
+            int freq = s.Count(f => (f == '.'));
+
+            // If string contains more than 2 '.', split them and join them together so only the numbers before, after and the split itself remains (example 32.56.7.45 -> 32.56)
+            if(freq >= 2)
+            {
+                string[] timearray = s.Split('.');
+                string result = timearray[0] + "." + timearray[1];
+          
+            }
+        }
     }
 }
