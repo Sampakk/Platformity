@@ -82,17 +82,16 @@ public class TimerManager : MonoBehaviour
         {
             int index = Array.IndexOf(times, sceneName);
             string savedTime = times[index + 1];
-            string firstThree = new string(savedTime.Take(3).ToArray());
             string firstFour = new string(savedTime.Take(4).ToArray());
             if (savedTime.Length > 3)
             {
-                return firstThree;
+                return HSCleanupFunction(firstFour);
             }
             
 
             else
             {
-                return savedTime;
+                return HSCleanupFunction(savedTime);
             }
         }
         else return "0";
@@ -135,13 +134,7 @@ public class TimerManager : MonoBehaviour
         {
             int index = Array.IndexOf(oldTimers, sceneName);
             string savedOldTime = oldTimers[index + 1];
-            Debug.Log(savedOldTime);
-            return savedOldTime;
-            //if (float.Parse(savedOldTime) < float.Parse(GetSavedTime(sceneName)))
-            //{
-            //    return savedOldTime.ToString();
-            //}
-            //else return GetSavedTime(sceneName);
+            return HSCleanupFunction(savedOldTime);
         }
         else return "0";
     }
@@ -166,17 +159,30 @@ public class TimerManager : MonoBehaviour
     {
         //Splits by " "
         string[] times = PlayerPrefs.GetString(timerPrefsName).Split(' ');
+        string correctedTimes = "";
+
         foreach (string s in times)
         {
-            int freq = s.Count(f => (f == '.'));
-
-            // If string contains more than 2 '.', split them and join them together so only the numbers before, after and the split itself remains (example 32.56.7.45 -> 32.56)
-            if(freq >= 2)
-            {
-                string[] timearray = s.Split('.');
-                string result = timearray[0] + "." + timearray[1];
-          
-            }
+            correctedTimes += HSCleanupFunction(s) + " ";
         }
+        //push corrected times back to playerprefs
+        PlayerPrefs.SetString(timerPrefsName, correctedTimes);
+    }
+
+    string HSCleanupFunction(string s)
+    {
+
+        int freq = s.Count(f => (f == '.'));
+
+        // If string contains more than 2 '.', split them and join them together so only the numbers before, after and the split itself remains (example 32.56.7.45 -> 32.56)
+        if (freq >= 2)
+        {
+            string[] timearray = s.Split('.');
+            string result = timearray[0] + "." + timearray[1];
+            return result;
+
+        }
+        else return s;
     }
 }
+
